@@ -15,8 +15,12 @@
 
     <script>
         // Ketu do te lidhet VB6-a jote me vone
-        const rawData = `1 | Stockfish 17.1 | 1173 | 1533 | 3020 | +20.6 | 76.5%`; 
-        
+        const rawData = `1 | Stockfish 17.1 x64(AVX2) | 1173.0 | 1.533 | 3020.6 | +20.6 | 76.5%
+            2 | PlentyChess 7.0.0 x64(BMI2) | 24.5 | 52 | 2977.0 | -22.0 | 47.1%
+            3 | Alexandria 8.0.0 x64(BMI2) | 23.5 | 52 | 2962.0 | +2.0 | 45.1%
+            4 | Berserk 13.0 x64(AVX2) | 22.0 | 52 | 2939.0 | -16.0 | 42.3%
+            12 | Obsidian 16.0 x64(BMI2-5Pct) | 15.5 | 51 | 2844.0 | +26.0 | 30.3%
+            16 | Komodo Dragon 3.3 x64(AVX2-5Pct) | 14.0 | 51 | 2820.0 | +25.0 | 27.4%`;
         function render() {
             const rows = rawData.trim().split('\n');
             let html = '<table><tr><th>Rank</th><th>Engine</th><th>Elo</th><th>Gain</th></tr>';
