@@ -1,0 +1,116 @@
+  /* Chess-Engines-Tournaments-Tables */
+  /* Champion */
+.champion {
+  color: blue;
+  font-weight: bold;
+}
+
+  /* Champion */
+  .champion2 {
+    color: gold;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #333;
+    background-color: #fff8dc;
+  }
+
+  /* Promoted Teams */
+  .promoted {
+    color: #000099;
+    border-left: 1px solid blue;
+  }
+
+  /* Relegated Teams */
+  .relegated {
+    color: #ff00ff;
+    border-left: 1px solid green;
+  }
+
+  /* Promoted Teams */
+  .promoted2 {
+    color: green;
+    font-weight: bold;
+    background-color: #e6ffe6;
+    border-left: 4px solid green;
+  }
+
+  /* Relegated Teams */
+  .relegated2 {
+    color: red;
+    font-weight: bold;
+    background-color: #ffe6e6;
+    border-left: 4px solid red;
+  }
+
+  /* Opening */
+  .Opening {
+    color: #3333ee;
+    font-weight: bold;
+    background-color: #ffe6e6;
+  }
+  .Opening1 {
+    background-color: orange;
+    color: #3333ee;
+    font-weight: bold;
+  }
+  .Opening2 {
+    background-color: green;
+    color: #3333aa;
+    color: #ddeeff;
+    font-weight: bold;
+  }
+
+.season-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-to-top {
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #0077cc;
+    margin-left: 20px;
+    opacity: 0.7;
+}
+
+.back-to-top:hover {
+    text-decoration: underline;
+}
+.season-title {
+    display: flex;
+    justify-content: center;   /* centers the whole row */
+    align-items: center;
+    gap: 20px;                 /* space between title and link */
+    max-width: 100%;           /* prevents drifting to second monitor */
+}
+
+.back-to-top {
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #0077cc;
+}
+
+
+.season-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+.season-title .left {
+    flex: 1;
+    text-align: left;
+}
+
+.season-title .center-link {
+    flex: 1;
+    text-align: center;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: #0077cc;
+}
+
+.season-title .right {
+    flex: 1; /* empty spacer */
+}
