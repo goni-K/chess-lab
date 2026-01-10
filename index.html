@@ -68,7 +68,7 @@
 
 		.win { color: #4caf50; font-weight: bold; }
 		.loss { color: #f44336; font-weight: bold; }
-		.highlight { color: #ffd700; font-weight: bold; } /* Ngjyrë ari për vendin e parë */
+		.highlight { color: #ffd700; font-weight: bold; } 
     </style>
 </head>
 <body>
@@ -84,15 +84,33 @@
         <div class="nested">
             <div class="folder">Seasons</div>
 				<div class="nested">
-					<a class="file" href="FirstSeason.html">First Season (Full Archive)</a>
-					<a class="file" href="FirstSeason.html#Premier">Premier Division</a>
-					<a class="file" href="FirstSeason.html#First">1st Division</a>
+					<a class="file" href="html/FirstSeason.html">First Season (Full Archive)</a>
+					<a class="file" href="html/FirstSeason.html#Premier">Premier Division</a>
+					<a class="file" href="html/FirstSeason.html#First">1st Division</a>
 				</div>
 			<div class="folder">Testing</div>
 				<div class="nested">
 					<div class="folder">Gauntlet</div>
 					<div class="nested">
-						<a class="file" href="Alexandria8112(BMI2).html">Alexandria 8.1.12 Gauntlet(5Pct)</a>
+						<a class="file" href="html/Alexandria8112(BMI2-5Pct).html">Alexandria 8.1.12 x64(BMI2-5Pct)</a>
+					</div>
+				</div>
+			</div>
+        <div class="folder">Bullet (1Pct)</div>
+        <div class="nested">
+            <div class="folder">Seasons</div>
+				<div class="nested">
+				</div>
+			<div class="folder">Testing</div>
+				<div class="nested">
+					<div class="folder">Gauntlet</div>
+					<div class="nested">
+						<a class="file" href="html/PlentyChess700(BMI2-1Pct).html">PlentyChess 7.0.0 x64(BMI2-1Pct)</a>
+						<a class="file" href="html/Pawnocchio19(AVX2-1Pct).html">Pawnocchio 1.9 x64(AVX2-1Pct)</a>
+						<a class="file" href="html/Caissa124(BMI2-1Pct).html">Caissa 1.24 x64(BMI2-1Pct)</a>
+						<a class="file" href="html/Cinder031(AVX2-1Pct).html">Cinder 0.3.1 x64(AVX2-1Pct)</a>
+						<a class="file" href="html/Cinder041(AVX2-1Pct).html">Cinder 0.4.1 x64(AVX2-1Pct)</a>
+						<a class="file" href="html/Houdini501(1Pct).html">Houdini 5.01 x64(1Pct)</a>
 					</div>
 				</div>
 			</div>
@@ -102,13 +120,13 @@
 				<div class="nested">
 					<div class="folder">Gauntlet</div>
 					<div class="nested">
-						<a class="file" href="Stockfish171x64(AVX2).html">Stockfish 17.1 x64(AVX2)</a>
+						<a class="file" href="html/Stockfish171x64(AVX2).html">Stockfish 17.1 x64(AVX2)</a>
 					</div>
 				</div>
         <div class="nested">
             <div class="folder">WorldCup</div>
             <div class="nested">
-		        <a class="file" href="wc2022/groups.html">2022 Groups</a>
+		        <!-- <a class="file" href="wc2022/groups.html">2022 Groups</a> -->
             </div>
         </div>
     </div>
@@ -122,27 +140,19 @@
 <script>
 function openFile(url) {
     const frame = document.getElementById('content-frame');
-    
-    // 1. Ndalojmë çdo veprim tjetër që mund të mbyllë menunë
-    // (Nëse ke ndonjë event.stopPropagation, kjo është koha)
 
-    // 2. Kontrollojmë nëse po kërkojmë të njëjtin skedar por seksion tjetër
     const currentPath = frame.contentWindow.location.pathname;
     const newFile = url.split('#')[0];
     const hash = url.split('#')[1];
 
     if (currentPath.includes(newFile) && hash) {
-        // Jemi brenda të njëjtit skedar? Thjesht bëj scroll brenda iframe
         const element = frame.contentDocument.getElementById(hash);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
     } else {
-        // Është skedar i ri? Ngarkoje dhe prit të kërcejë te hash-i
         frame.src = url;
     }
-
-    // 3. E RËNDËSISHME: Mos shto asnjë rresht këtu që thërret toggleMenu()!
 }
 
     // Toggle folder visibility
