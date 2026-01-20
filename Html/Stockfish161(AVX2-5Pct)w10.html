@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="TourneyInfo.css"> -->
-    <title>Alexandria 8.1.12 x64(BMI2-5Pct)</title>
+    <title>Stockfish 16.1 x64(AVX2-5Pct)</title>
     <style>
         * {
             margin: 0;
@@ -408,16 +408,16 @@
 <body>
     <div class="container">
         <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
-        <h1>🏆 Alexandria 8.1.12 x64(BMI2-5Pct)</h1>
+        <h1>🏆 Stockfish 16.1 x64(AVX2-5Pct)</h1>
 <!-- <a href="../index.html" class="nav-back" style="font-weight: bold">&larr;Back to Overview</a> -->
             <table class="info-table">
                 <tr>
                     <td>Name:</td>
-                    <td>Alexandria 8.1.12 x64(BMI2-5Pct)</td>
+                    <td>Stockfish 16.1 x64(AVX2-5Pct)</td>
                 </tr>
                 <tr>
                     <td>Status:</td>
-                    <td class="status-finished">3.000 games played</td>
+                    <td class="status-finished">1.500 games played</td>
                 </tr>
                 <tr>
                     <td>Time Control:</td>
@@ -433,11 +433,11 @@
                 </tr>
                 <tr>
                     <td>Hardware:</td>
-                    <td>SFF-DELL: Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
+                    <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
                 </tr>
                 <tr>
                     <td>OS:</td>
-                    <td>Windows 11 Pro x64</td>
+                    <td>Windows 10 Pro x64</td>
                 </tr>
             <tr>
               <td>Environment:</td>
@@ -446,7 +446,7 @@
           </table>
         <!-- Rankings Section -->
         <div class="rankings-section">
-            <h1>Alexandria 8.1.12 x64(BMI2-5Pct) vs 30 Opponents</h1>
+            <h1 title="(5Pct) indicates the engine was tested using exactly 5% of the standard 3m + 2s Blitz time control.">Stockfish 16.1 x64(AVX2-5Pct) vs 30 Opponents</h1>
         <div class="table-wrapper">
             <table id="rankingsTable">
                 <thead>
@@ -473,38 +473,58 @@
         // ============================================
         
         // Main gauntlet team (stays fixed at top)
-        const mainTeam = [0, "Alexandria 8.1.12 x64(BMI2-5Pct)", 1907.5, 3000, 2886.3, 58.3, 63.5];
+        const mainTeam = [0, "Stockfish 16.1 x64(AVX2-5Pct)", 766.5, 1000, 2900.8, 48.8, 76.6];
         const data = [
-            [1, "Stockfish 17.1 x64(AVX2-5Pct)", 61.0, 100, 2918.0, 44.0, 61.0],
-            [2, "Reckless 0.8.0 x64(AVX2-5Pct)", 57.5, 100, 2889.0, 30.0, 57.5],
-            [3, "Stockfish 16 x64(AVX2-5Pct)", 52.0, 100, 2841.0, -2.0, 52.0],
-            [4, "Caissa 1.23 x64(BMI2-5Pct)", 46.0, 100, 2790.0, -33.0, 46.0],
-            [5, "Obsidian 16.0 x64(BMI2-5Pct)", 45.5, 100, 2786.0, -33.0, 45.5],
-            [6, "Caissa 1.24 x64(BMI2-5Pct)", 44.0, 100, 2771.0, -48.0, 44.0],
-            [7, "PlentyChess 6.0.0 x64(BMI2-5Pct)", 44.0, 100, 2768.0, -59.0, 44.0],
-            [8, "Clover 9.0 x64(AVX2-5Pct)", 43.0, 100, 2764.0, -49.0, 43.0],
-            [9, "Stormphrax 7.0.0 x64(BMI2-5Pct)", 39.5, 100, 2750.0, -13.0, 39.5],
-            [10, "Komodo Dragon 3.3 x64(AVX2-5Pct)", 39.0, 100, 2731.0, -65.0, 39.0],
-            [11, "Viridithas 18.0.0 x64(AVX2-5Pct)", 39.0, 100, 2730.0, -70.0, 39.0],
-            [12, "Clover 8.2.1 x64(AVX2-5Pct)", 38.5, 100, 2735.0, -41.0, 38.5],
-            [13, "Integral 5.0 x64(AVX2-5Pct)", 35.0, 100, 2712.0, -32.0, 35.0],
-            [14, "Horsie 1.1 x64(AVX2-5Pct)", 33.5, 100, 2688.0, -81.0, 33.5],
-            [15, "Motor 0.9.0 x64(AVX2-5Pct)", 33.5, 100, 2684.0, -94.0, 33.5],
-            [16, "Pawnocchio 1.8 x64(AVX2-5Pct)", 33.0, 100, 2681.0, -91.0, 33.0],
-            [17, "Quanticade 2.0o x64(BMI2-5Pct)", 32.5, 100, 2685.0, -65.0, 32.5],
-            [18, "Cinder 0.3.1 x64(AVX2-5Pct)", 31.5, 100, 2675.0, -76.0, 31.5],
-            [19, "Horsie 1.0 x64(AVX2-5Pct)", 31.5, 100, 2674.0, -79.0, 31.5],
-            [20, "Cinder 0.4.1 x64(AVX2-5Pct)", 30.5, 100, 2668.0, -73.0, 30.5],
-            [21, "Lizard 11.1 x64(AVX2-5Pct)", 30.5, 100, 2674.0, -50.0, 30.5],
-            [22, "Viridithas 16.0.0 x64(AVX2-5Pct)", 30.5, 100, 2672.0, -59.0, 30.5],
-            [23, "Halogen 14.0 x64(BMI2-5Pct)", 29.5, 100, 2661.0, -72.0, 29.5],
-            [24, "Astra 6.1.1 x64(BMI2-5Pct)", 29.0, 100, 2649.0, -104.0, 29.0],
-            [25, "Motor 0.7.0 x64(AVX2-5Pct)", 28.5, 100, 2648.0, -93.0, 28.5],
-            [26, "Uralochka 3.42a x64(AVX2-5Pct)", 28.0, 100, 2646.0, -87.0, 28.0],
-            [27, "Renegade 1.2.0 x64(BMI2-5Pct)", 27.5, 100, 2640.0, -96.0, 27.5],
-            [28, "Halogen 15.0 x64(BMI2-5Pct)", 27.0, 100, 2636.0, -98.0, 27.0],
-            [29, "Koivisto 9.0 x64(5Pct)", 26.5, 100, 2637.0, -78.0, 26.5],
-            [30, "Velvet 8.1.0 x64(AVX2-5Pct)", 25.5, 100, 2621.0, -111.0, 25.5]
+            [1, "Caissa 1.14.1 x64(AVX2-5Pct)", 8.0, 20, 2772.0, 44.0, 40.0],
+            [2, "Berserk 11.0 x64(AVX2-5Pct)", 7.0, 20, 2732.0, 65.0, 35.0],
+            [3, "RubiChess 20230918 x64(BMI2-5Pct)", 7.0, 20, 2732.0, -29.0, 35.0],
+            [4, "RubiChess 20240112 x64(AVX2-5Pct)", 7.0, 20, 2732.0, -62.0, 35.0],
+            [5, "Caissa 1.16 x64(BMI2-5Pct)", 7.0, 20, 2732.0, -76.0, 35.0],
+            [6, "RofChade 3.1 x64(BMI2-5Pct)", 6.5, 20, 2712.0, 34.0, 32.5],
+            [7, "Berserk 10.0 x64(5Pct)", 6.5, 20, 2712.0, 18.0, 32.5],
+            [8, "Alexandria 6.0.0 x64(BMI2-5Pct)", 6.5, 20, 2712.0, -8.0, 32.5],
+            [9, "Obsidian 10.0 x64(AVX2-5Pct)", 6.5, 20, 2712.0, -32.0, 32.5],
+            [10, "RubiChess 20230918 x64(AVX2-5Pct)", 6.5, 20, 2712.0, -45.0, 32.5],
+            [11, "RubiChess 20240112 x64(BMI2-5Pct)", 6.5, 20, 2712.0, -72.0, 32.5],
+            [12, "Booot 7.3 x64(AVX2-5Pct)", 6.0, 20, 2692.0, 71.0, 30.0],
+            [13, "Berserk 11.0 x64(5Pct)", 6.0, 20, 2692.0, 67.0, 30.0],
+            [14, "Berserk 11.0 x64(BMI2-5Pct)", 6.0, 20, 2692.0, 43.0, 30.0],
+            [15, "Clover 6.1 x64(AVX2-5Pct)", 6.0, 20, 2692.0, -49.0, 30.0],
+            [16, "Berserk 10.0 x64(BMI2-5Pct)", 5.5, 20, 2672.0, -34.0, 27.5],
+            [17, "RubiChess 20230410 x64(AVX2-5Pct)", 5.5, 20, 2672.0, -50.0, 27.5],
+            [18, "RubiChess 20230918 x64(5Pct)", 5.5, 20, 2672.0, -72.0, 27.5],
+            [19, "Caissa 1.15 x64(5Pct)", 5.5, 20, 2672.0, -79.0, 27.5],
+            [20, "Caissa 1.13.1 x64(5Pct)", 5.0, 20, 2652.0, 11.0, 25.0],
+            [21, "RubiChess 20221203 x64(BMI2-5Pct)", 5.0, 20, 2652.0, -62.0, 25.0],
+            [22, "Obsidian 9.0 x64(AVX2-5Pct)", 5.0, 20, 2652.0, -75.0, 25.0],
+            [23, "Koivisto 9.0 x64(5Pct)", 5.0, 20, 2652.0, -76.0, 25.0],
+            [24, "Caissa 1.15 x64(BMI2-5Pct)", 5.0, 20, 2652.0, -111.0, 25.0],
+            [25, "Alexandria 5.1.0 x64(AVX2-5Pct)", 4.5, 20, 2632.0, -18.0, 22.5],
+            [26, "Revenge 3.0 x64(BMI2-5Pct)", 4.5, 20, 2632.0, -29.0, 22.5],
+            [27, "Koivisto 8.0 x64(AVX2-5Pct)", 4.5, 20, 2632.0, -29.0, 22.5],
+            [28, "Berserk 9.0 x64(5Pct)", 4.5, 20, 2632.0, -38.0, 22.5],
+            [29, "Caissa 1.16 x64(5Pct)", 4.5, 20, 2632.0, -91.0, 22.5],
+            [30, "Komodo Dragon 1.0 x64(5Pct)", 4.0, 20, 2612.0, -19.0, 20.0],
+            [31, "Caissa 1.12.0 x64(AVX2-5Pct)", 4.0, 20, 2612.0, -52.0, 20.0],
+            [32, "Caissa 1.15 x64(AVX2-5Pct)", 4.0, 20, 2612.0, -141.0, 20.0],
+            [33, "Starzix 4.0 x64(AVX2-5Pct)", 3.5, 20, 2592.0, -19.0, 17.5],
+            [34, "Alexandria 4.0.0 x64(BMI2-5Pct)", 3.5, 20, 2592.0, -26.0, 17.5],
+            [35, "RubiChess 20220813 x64(5Pct)", 3.5, 20, 2592.0, -36.0, 17.5],
+            [36, "Seer 2.8.0 x64(AVX2-5Pct)", 3.5, 20, 2592.0, -39.0, 17.5],
+            [37, "Koivisto 8.0 x64(5Pct)", 3.5, 20, 2592.0, -40.0, 17.5],
+            [38, "Revenge 3.0 x64(5Pct)", 3.5, 20, 2592.0, -54.0, 17.5],
+            [39, "Obsidian 8.0 x64(AVX2-5Pct)", 3.5, 20, 2592.0, -90.0, 17.5],
+            [40, "RubiChess 20221203 x64(AVX2-5Pct)", 3.5, 20, 2592.0, -116.0, 17.5],
+            [41, "Igel 3.4.0 x64(BMI2-5Pct)", 3.0, 20, 2572.0, -57.0, 15.0],
+            [42, "Clover 5.0 x64(5Pct)", 3.0, 20, 2572.0, -75.0, 15.0],
+            [43, "Rebel 16.0 x64(5Pct)", 3.0, 20, 2572.0, -86.0, 15.0],
+            [44, "Alexandria 5.0.0 x64(BMI2-5Pct)", 3.0, 20, 2572.0, -98.0, 15.0],
+            [45, "Akimbo 0.8.0 x64(AVX2-5Pct)", 2.5, 20, 2552.0, -65.0, 12.5],
+            [46, "RubiChess 20220813 x64(AVX2-5Pct)", 2.5, 20, 2552.0, -93.0, 12.5],
+            [47, "RubiChess 20220813 x64(BMI2-5Pct)", 2.5, 20, 2552.0, -97.0, 12.5],
+            [48, "Caissa 1.11.0 x64(BMI2-5Pct)", 2.0, 20, 2532.0, -103.0, 10.0],
+            [49, "Clover 4.1 x64(AVX2-5Pct)", 2.0, 20, 2532.0, -108.0, 10.0],
+            [50, "Obsidian 7.0 x64(AVX2-5Pct)", 1.5, 20, 2512.0, -118.0, 7.5]
         ];
 
         // Automatically highlight teams with top 3 positive delta values

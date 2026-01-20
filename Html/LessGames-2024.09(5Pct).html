@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="TourneyInfo.css"> -->
-    <title>Alexandria 8.1.12 x64(BMI2-5Pct)</title>
+    <title>Less Games-2024.09(5Pct) Verification</title>
     <style>
         * {
             margin: 0;
@@ -13,37 +12,18 @@
         }
 
         body {
-            font-family: 'Courier New', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        /* Dark mode styles */
         body.dark-mode {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         }
 
-        .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-            max-width: 1200px;
-            width: 100%;
-            position: relative;
-        }
-
-        body.dark-mode .container {
-            background: #0f3460;
-            color: #e8e8e8;
-        }
-
         .theme-toggle {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
             background: #667eea;
@@ -54,6 +34,8 @@
             cursor: pointer;
             font-size: 14px;
             transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .theme-toggle:hover {
@@ -69,6 +51,11 @@
             background: #ff6b6b;
         }
 
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
         .info-section {
             background: white;
             border-radius: 12px;
@@ -80,6 +67,7 @@
         body.dark-mode .info-section {
             background: #0f3460;
         }
+
         h1 {
             text-align: center;
             color: #333;
@@ -123,7 +111,7 @@
         }
 
         .info-table td:first-child {
-            width: 240px;
+            width: 150px;
             font-weight: bold;
             color: #667eea;
             border-right: 2px solid #e0e0e0;
@@ -169,6 +157,15 @@
 
         body.dark-mode .status-finished {
             color: #2ecc71 !important;
+        }
+
+        .status-ongoing {
+            color: #f39c12 !important;
+            font-weight: bold;
+        }
+
+        body.dark-mode .status-ongoing {
+            color: #f1c40f !important;
         }
 
         .rankings-section {
@@ -333,26 +330,6 @@
             background: #4d1f1f;
         }
 
-        .main-team {
-            background: linear-gradient(90deg, #a8dadc 0%, #ffffff 100%);
-            border-bottom: 3px solid #457b9d !important;
-            font-weight: 600;
-        }
-
-        body.dark-mode .main-team {
-            background: linear-gradient(90deg, #1d35aa 0%, #0f34ff 100%);
-            border-bottom: 3px solid #a8dadc !important;
-        }
-
-        .main-team .team-name {
-            font-size: 1.1em;
-            color: #457b9d;
-        }
-
-        body.dark-mode .main-team .team-name {
-            color: #a8dadc;
-        }
-
         .top-3 {
             background: linear-gradient(90deg, #ffe4b3 0%, #ffffff 100%);
         }
@@ -366,13 +343,22 @@
         }
 
         @media (max-width: 768px) {
-            .container {
+            .info-section,
+            .rankings-section {
                 padding: 15px;
             }
 
             h1 {
                 font-size: 1.5em;
-                margin-top: 30px;
+            }
+
+            .info-table td {
+                padding: 12px;
+                font-size: 0.9em;
+            }
+
+            .info-table td:first-child {
+                width: 120px;
             }
 
             th, td {
@@ -406,18 +392,21 @@
   </style>
 </head>
 <body>
+	<!-- <a href="../index.html" class="nav-back" style="font-weight: bold">&larr;Back to Overview</a> -->
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    
     <div class="container">
-        <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
-        <h1>🏆 Alexandria 8.1.12 x64(BMI2-5Pct)</h1>
-<!-- <a href="../index.html" class="nav-back" style="font-weight: bold">&larr;Back to Overview</a> -->
+        <!-- Tournament Info Section -->
+        <div class="info-section">
+            <h1>🏆 Less Games-2024.09(5Pct) Verification</h1>
             <table class="info-table">
                 <tr>
                     <td>Name:</td>
-                    <td>Alexandria 8.1.12 x64(BMI2-5Pct)</td>
+                    <td>Less Games-2024.09(5Pct) Verification</td>
                 </tr>
                 <tr>
                     <td>Status:</td>
-                    <td class="status-finished">3.000 games played</td>
+                    <td class="status-finished">3.968 games played</td>
                 </tr>
                 <tr>
                     <td>Time Control:</td>
@@ -433,36 +422,38 @@
                 </tr>
                 <tr>
                     <td>Hardware:</td>
-                    <td>SFF-DELL: Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
+                    <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
                 </tr>
                 <tr>
                     <td>OS:</td>
-                    <td>Windows 11 Pro x64</td>
+                    <td>Windows 10 Pro x64</td>
                 </tr>
             <tr>
               <td>Environment:</td>
               <td>Local Testing Lab</td>
             </tr>
-          </table>
+            </table>
+        </div>
+
         <!-- Rankings Section -->
         <div class="rankings-section">
-            <h1>Alexandria 8.1.12 x64(BMI2-5Pct) vs 30 Opponents</h1>
-        <div class="table-wrapper">
-            <table id="rankingsTable">
-                <thead>
-                    <tr>
-                        <th class="sortable" data-column="0">Rank</th>
-                        <th class="sortable" data-column="1">Team</th>
-                        <th class="sortable" data-column="2">Points</th>
-                        <th class="sortable" data-column="3">Games</th>
-                        <th class="sortable sorted-desc" data-column="4">Elo</th>
-                        <th class="sortable" data-column="5">Delta</th>
-                        <th class="sortable" data-column="6">Score</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody">
-                </tbody>
-            </table>
+            <h1>📊 Crosstable - Less Games-2024.09(5Pct)</h1>
+            <div class="table-wrapper">
+                <table id="rankingsTable">
+                    <thead>
+                        <tr>
+							<th class="sortable" data-column="0">Rank</th>
+							<th class="sortable" data-column="1" title="(5Pct) indicates the engine was tested using exactly 5% of the standard 3m + 2s Blitz time control.">Team</th>
+							<th class="sortable" data-column="2">Points</th>
+							<th class="sortable" data-column="3">Games</th>
+							<th class="sortable sorted-desc" data-column="4">Elo</th>
+							<th class="sortable" data-column="5">Delta</th>
+							<th class="sortable" data-column="6">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -472,63 +463,45 @@
         // CONFIGURATION SECTION - EDIT THIS FOR EACH FILE
         // ============================================
         
-        // Main gauntlet team (stays fixed at top)
-        const mainTeam = [0, "Alexandria 8.1.12 x64(BMI2-5Pct)", 1907.5, 3000, 2886.3, 58.3, 63.5];
+        // All tournament participants (no fixed team in round-robin)
         const data = [
-            [1, "Stockfish 17.1 x64(AVX2-5Pct)", 61.0, 100, 2918.0, 44.0, 61.0],
-            [2, "Reckless 0.8.0 x64(AVX2-5Pct)", 57.5, 100, 2889.0, 30.0, 57.5],
-            [3, "Stockfish 16 x64(AVX2-5Pct)", 52.0, 100, 2841.0, -2.0, 52.0],
-            [4, "Caissa 1.23 x64(BMI2-5Pct)", 46.0, 100, 2790.0, -33.0, 46.0],
-            [5, "Obsidian 16.0 x64(BMI2-5Pct)", 45.5, 100, 2786.0, -33.0, 45.5],
-            [6, "Caissa 1.24 x64(BMI2-5Pct)", 44.0, 100, 2771.0, -48.0, 44.0],
-            [7, "PlentyChess 6.0.0 x64(BMI2-5Pct)", 44.0, 100, 2768.0, -59.0, 44.0],
-            [8, "Clover 9.0 x64(AVX2-5Pct)", 43.0, 100, 2764.0, -49.0, 43.0],
-            [9, "Stormphrax 7.0.0 x64(BMI2-5Pct)", 39.5, 100, 2750.0, -13.0, 39.5],
-            [10, "Komodo Dragon 3.3 x64(AVX2-5Pct)", 39.0, 100, 2731.0, -65.0, 39.0],
-            [11, "Viridithas 18.0.0 x64(AVX2-5Pct)", 39.0, 100, 2730.0, -70.0, 39.0],
-            [12, "Clover 8.2.1 x64(AVX2-5Pct)", 38.5, 100, 2735.0, -41.0, 38.5],
-            [13, "Integral 5.0 x64(AVX2-5Pct)", 35.0, 100, 2712.0, -32.0, 35.0],
-            [14, "Horsie 1.1 x64(AVX2-5Pct)", 33.5, 100, 2688.0, -81.0, 33.5],
-            [15, "Motor 0.9.0 x64(AVX2-5Pct)", 33.5, 100, 2684.0, -94.0, 33.5],
-            [16, "Pawnocchio 1.8 x64(AVX2-5Pct)", 33.0, 100, 2681.0, -91.0, 33.0],
-            [17, "Quanticade 2.0o x64(BMI2-5Pct)", 32.5, 100, 2685.0, -65.0, 32.5],
-            [18, "Cinder 0.3.1 x64(AVX2-5Pct)", 31.5, 100, 2675.0, -76.0, 31.5],
-            [19, "Horsie 1.0 x64(AVX2-5Pct)", 31.5, 100, 2674.0, -79.0, 31.5],
-            [20, "Cinder 0.4.1 x64(AVX2-5Pct)", 30.5, 100, 2668.0, -73.0, 30.5],
-            [21, "Lizard 11.1 x64(AVX2-5Pct)", 30.5, 100, 2674.0, -50.0, 30.5],
-            [22, "Viridithas 16.0.0 x64(AVX2-5Pct)", 30.5, 100, 2672.0, -59.0, 30.5],
-            [23, "Halogen 14.0 x64(BMI2-5Pct)", 29.5, 100, 2661.0, -72.0, 29.5],
-            [24, "Astra 6.1.1 x64(BMI2-5Pct)", 29.0, 100, 2649.0, -104.0, 29.0],
-            [25, "Motor 0.7.0 x64(AVX2-5Pct)", 28.5, 100, 2648.0, -93.0, 28.5],
-            [26, "Uralochka 3.42a x64(AVX2-5Pct)", 28.0, 100, 2646.0, -87.0, 28.0],
-            [27, "Renegade 1.2.0 x64(BMI2-5Pct)", 27.5, 100, 2640.0, -96.0, 27.5],
-            [28, "Halogen 15.0 x64(BMI2-5Pct)", 27.0, 100, 2636.0, -98.0, 27.0],
-            [29, "Koivisto 9.0 x64(5Pct)", 26.5, 100, 2637.0, -78.0, 26.5],
-            [30, "Velvet 8.1.0 x64(AVX2-5Pct)", 25.5, 100, 2621.0, -111.0, 25.5]
+            [1, "Caissa 1.18 x64(AVX2-5Pct)", 201.0, 224, 2764.8, -33.1, 89.7],
+            [2, "Caissa 1.19 x64(BMI2-5Pct)", 196.5, 224, 2764.6, -28.4, 87.7],
+            [3, "Caissa 1.19 x64(AVX2-5Pct)", 192.5, 224, 2765.6, -29.3, 85.9],
+            [4, "Motor 0.6.0 x64(AVX2-5Pct)", 184.5, 240, 2675.8, -15.1, 76.8],
+            [5, "Viridithas 13.0.0 x64(AVX2-5Pct)", 178.5, 248, 2617.8, -63.1, 71.9],
+            [6, "Velvet 7.2.0 x64(AVX2-5Pct)", 175.5, 248, 2619.6, -21.3, 70.7],
+            [7, "Lizard 10.2 x64(BMI2-5Pct)", 151.5, 248, 2530.8, -39.1, 61.8],
+            [8, "Arasan 24.2.2 x64(AVX2-5Pct)", 136.0, 232, 2502.3, -84.6, 58.6],
+            [9, "Clarity 5.1.0 x64(BMI2-5Pct)", 145.0, 248, 2555.5, 0.5, 58.4],
+            [10, "Arasan 24.2.1 x64(AVX2-5Pct)", 134.0, 232, 2515.5, -67.5, 57.7],
+            [11, "Fire 9.3 x64(AVX2-5Pct)", 134.5, 248, 2515.5, -43.5, 54.2],
+            [12, "SlowChess Classic 2.7 x64(5Pct)", 134.0, 248, 2465.8, -20.1, 54.2],
+            [13, "Arasan 24.1 x64(BMI2-5Pct)", 124.5, 232, 2501.1, -3.9, 53.6],
+            [14, "Tucano 11.19 x64(AVX2-5Pct)", 129.0, 248, 2469.8, 4.9, 52.6],
+            [15, "Devre 3.13 x64(5Pct)", 129.5, 248, 2471.3, 0.4, 52.2],
+            [16, "Pawn 2.0 x64(5Pct)", 117.5, 248, 2398.3, -28.6, 47.3],
+            [17, "Motor 0.3.0 x64(5Pct)", 113.5, 240, 2401.3, -47.7, 47.2],
+            [18, "Texel 1.11 x64(AVX2-5Pct)", 112.0, 240, 2468.6, 0.6, 46.6],
+            [19, "Texel 1.11 x64(5Pct)", 105.0, 240, 2448.8, 25.8, 43.7],
+            [20, "Cheng 4.46 x64(AVX2-5Pct)", 102.0, 248, 2395.6, -5.4, 41.1],
+            [21, "Smallbrain 6.0 x64(5Pct)", 100.5, 248, 2389.1, -43.9, 40.5],
+            [22, "Nalwald 19.0 x64(BMI2-5Pct)", 99.0, 248, 2377.8, -41.1, 39.9],
+            [23, "Sapling 1.1.0 x64(5Pct)", 93.5, 240, 2398.6, -50.3, 38.9],
+            [24, "Halogen 11.0 x64(5Pct)", 92.5, 248, 2376.3, -27.6, 37.2],
+            [25, "Caissa 1.2.0 x64(5Pct)", 80.0, 224, 2376.0, 4.0, 35.7],
+            [25, "Caissa 1.2.0 x64(5Pct)", 80.0, 224, 2376.0, 4.0, 35.7],
+            [26, "Stormphrax 1.0.0 x64(AVX2-5Pct)", 82.0, 248, 2365.1, -20.9, 33.4],
+            [27, "Sapling 1.0.1 x64(5Pct)", 79.5, 240, 2353.8, -16.1, 33.1],
+            [28, "Stash 35.0 x64(5Pct)", 78.5, 248, 2301.8, -19.1, 31.6],
+            [29, "Critter 1.6a x64(5Pct)", 75.5, 248, 2317.5, 36.5, 30.4],
+            [30, "WhiteCore 0.2 x64(BMI2-5Pct)ja", 74.0, 248, 2331.3, 4.4, 29.8],
+            [31, "Berserk 12.0 x64(BMI2-5Pct)", 70.0, 248, 2283.1, -95.8, 28.2],
+            [32, "Heimdall 1.0 x64(5Pct)", 50.5, 248, 2249.0, -55.0, 20.3]
         ];
 
-        // Automatically highlight teams with top 3 positive delta values
-        // This is calculated automatically - no manual configuration needed
-        let highlightedTeams = new Set();
-        
-        function calculateHighlightedTeams() {
-            // Get teams with positive deltas and sort by delta descending
-            const positiveDeltas = data
-                .filter(row => row[5] > 0)
-                .sort((a, b) => b[5] - a[5])
-                .slice(0, 30);
-            
-            const mainDeltaClass = mainTeam[5] > 0 ? 'positive' : mainTeam[5] < 0 ? 'negative' : '';
-            const mainDeltaSign = mainTeam[5] > 0 ? '+' : '';
-            
-            highlightedTeams = new Set(positiveDeltas.map(row => row[1]));
-        }
-        
-        // Calculate which teams to highlight on load
-        calculateHighlightedTeams();
-
         // Initial sort configuration
-        // column: which column to sort by initially (0=Rank, 1=Team, 2=Col-3, etc.)
+        // column: which column to sort by initially (0=Rank, 1=Engine, 2=Score, etc.)
         // ascending: true for ascending, false for descending
         const initialSort = { column: 4, ascending: false };
 
@@ -536,42 +509,35 @@
         // END CONFIGURATION SECTION
         // ============================================
 
+        // Automatically highlight teams with top 3 positive delta values
+        let highlightedTeams = new Set();
+        
+        function calculateHighlightedTeams() {
+            const positiveDeltas = data
+                .filter(row => row[5] > 0)
+                .sort((a, b) => b[5] - a[5])
+                .slice(0, 3);
+            
+            highlightedTeams = new Set(positiveDeltas.map(row => row[1]));
+        }
+        
+        calculateHighlightedTeams();
+
         let currentSort = { ...initialSort };
 
         function renderTable(sortedData) {
             const tbody = document.getElementById('tableBody');
             tbody.innerHTML = '';
 
-            // Always render main team first
-            const mainTr = document.createElement('tr');
-            mainTr.classList.add('main-team');
-            
-            const mainDeltaClass = mainTeam[5] > 0 ? 'positive' : mainTeam[5] < 0 ? 'negative' : '';
-            const mainDeltaSign = mainTeam[5] > 0 ? '+' : mainTeam[5] < 0 ? '' : '';
-            const mainDeltaFormatted = mainTeam[5] === 0 ? '0.0' : `${mainDeltaSign}${mainTeam[5].toFixed(1)}`;
-
-            mainTr.innerHTML = `
-                <td class="rank">${mainTeam[0]}</td>
-                <td class="team-name">${mainTeam[1]}</td>
-                <td>${mainTeam[2].toFixed(1)}</td>
-                <td>${mainTeam[3]}</td>
-                <td class="elo-rating">${mainTeam[4].toFixed(1)}</td>
-                <td><span class="delta ${mainDeltaClass}">${mainDeltaFormatted}</span></td>
-                <td>${mainTeam[6].toFixed(1)}</td>
-            `;
-            tbody.appendChild(mainTr);
-
-            // Render sorted opponent teams
+            // Render all teams (all sortable in round-robin)
             sortedData.forEach((row, index) => {
                 const tr = document.createElement('tr');
-                // Apply top-3 styling to specific teams regardless of position
                 if (highlightedTeams.has(row[1])) {
                     tr.classList.add('top-3');
                 }
 
                 const deltaClass = row[5] > 0 ? 'positive' : 'negative';
                 const deltaSign = row[5] > 0 ? '+' : '';
-                // const deltaFormatted = row[5] === 0 ? '0.0' : `${deltaSign}${Math.abs(row[5]).toFixed(1)}`;
                 const deltaFormatted = row[5] === 0 ? '0.0' : `${deltaSign}${row[5].toFixed(1)}`;
 
                 tr.innerHTML = `
@@ -596,14 +562,12 @@
                 let valA = a[column];
                 let valB = b[column];
 
-                // Check if it's a string (team names)
                 if (typeof valA === 'string' && typeof valB === 'string') {
                     return isAscending 
                         ? valA.localeCompare(valB)
                         : valB.localeCompare(valA);
                 }
 
-                // Convert to numbers for numeric comparison
                 const numA = parseFloat(valA);
                 const numB = parseFloat(valB);
 
@@ -635,7 +599,6 @@
             }
         }
 
-        // Load saved theme preference
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
             document.querySelector('.theme-toggle').textContent = '☀️ Light Mode';
@@ -648,8 +611,7 @@
             });
         });
 
-        // Initial render with configured sort
-        sortData(4);
+        sortData(initialSort.column);
     </script>
 </body>
 </html>

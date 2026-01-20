@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="TourneyInfo.css"> -->
-    <title>Alexandria 8.1.12 x64(BMI2-5Pct)</title>
+    <title>Reckless 0.5.0 x64(AVX2-5Pct)</title>
     <style>
         * {
             margin: 0;
@@ -408,16 +408,16 @@
 <body>
     <div class="container">
         <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
-        <h1>🏆 Alexandria 8.1.12 x64(BMI2-5Pct)</h1>
+        <h1>🏆 Reckless 0.5.0 x64(AVX2-5Pct)</h1>
 <!-- <a href="../index.html" class="nav-back" style="font-weight: bold">&larr;Back to Overview</a> -->
             <table class="info-table">
                 <tr>
                     <td>Name:</td>
-                    <td>Alexandria 8.1.12 x64(BMI2-5Pct)</td>
+                    <td>Reckless 0.5.0 x64(AVX2-5Pct)</td>
                 </tr>
                 <tr>
                     <td>Status:</td>
-                    <td class="status-finished">3.000 games played</td>
+                    <td class="status-finished">960 games played</td>
                 </tr>
                 <tr>
                     <td>Time Control:</td>
@@ -433,11 +433,11 @@
                 </tr>
                 <tr>
                     <td>Hardware:</td>
-                    <td>SFF-DELL: Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
+                    <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
                 </tr>
                 <tr>
                     <td>OS:</td>
-                    <td>Windows 11 Pro x64</td>
+                    <td>Windows 10 Pro x64</td>
                 </tr>
             <tr>
               <td>Environment:</td>
@@ -446,7 +446,7 @@
           </table>
         <!-- Rankings Section -->
         <div class="rankings-section">
-            <h1>Alexandria 8.1.12 x64(BMI2-5Pct) vs 30 Opponents</h1>
+            <h1 title="(5Pct) indicates the engine was tested using exactly 5% of the standard 3m + 2s Blitz time control.">Reckless 0.5.0 x64(AVX2-5Pct) vs 30 Opponents</h1>
         <div class="table-wrapper">
             <table id="rankingsTable">
                 <thead>
@@ -473,38 +473,68 @@
         // ============================================
         
         // Main gauntlet team (stays fixed at top)
-        const mainTeam = [0, "Alexandria 8.1.12 x64(BMI2-5Pct)", 1907.5, 3000, 2886.3, 58.3, 63.5];
+        const mainTeam = [0, "Reckless 0.5.0 x64(AVX2-5Pct)", 483.5, 960, 2363.6, 13.6, 50.3];
         const data = [
-            [1, "Stockfish 17.1 x64(AVX2-5Pct)", 61.0, 100, 2918.0, 44.0, 61.0],
-            [2, "Reckless 0.8.0 x64(AVX2-5Pct)", 57.5, 100, 2889.0, 30.0, 57.5],
-            [3, "Stockfish 16 x64(AVX2-5Pct)", 52.0, 100, 2841.0, -2.0, 52.0],
-            [4, "Caissa 1.23 x64(BMI2-5Pct)", 46.0, 100, 2790.0, -33.0, 46.0],
-            [5, "Obsidian 16.0 x64(BMI2-5Pct)", 45.5, 100, 2786.0, -33.0, 45.5],
-            [6, "Caissa 1.24 x64(BMI2-5Pct)", 44.0, 100, 2771.0, -48.0, 44.0],
-            [7, "PlentyChess 6.0.0 x64(BMI2-5Pct)", 44.0, 100, 2768.0, -59.0, 44.0],
-            [8, "Clover 9.0 x64(AVX2-5Pct)", 43.0, 100, 2764.0, -49.0, 43.0],
-            [9, "Stormphrax 7.0.0 x64(BMI2-5Pct)", 39.5, 100, 2750.0, -13.0, 39.5],
-            [10, "Komodo Dragon 3.3 x64(AVX2-5Pct)", 39.0, 100, 2731.0, -65.0, 39.0],
-            [11, "Viridithas 18.0.0 x64(AVX2-5Pct)", 39.0, 100, 2730.0, -70.0, 39.0],
-            [12, "Clover 8.2.1 x64(AVX2-5Pct)", 38.5, 100, 2735.0, -41.0, 38.5],
-            [13, "Integral 5.0 x64(AVX2-5Pct)", 35.0, 100, 2712.0, -32.0, 35.0],
-            [14, "Horsie 1.1 x64(AVX2-5Pct)", 33.5, 100, 2688.0, -81.0, 33.5],
-            [15, "Motor 0.9.0 x64(AVX2-5Pct)", 33.5, 100, 2684.0, -94.0, 33.5],
-            [16, "Pawnocchio 1.8 x64(AVX2-5Pct)", 33.0, 100, 2681.0, -91.0, 33.0],
-            [17, "Quanticade 2.0o x64(BMI2-5Pct)", 32.5, 100, 2685.0, -65.0, 32.5],
-            [18, "Cinder 0.3.1 x64(AVX2-5Pct)", 31.5, 100, 2675.0, -76.0, 31.5],
-            [19, "Horsie 1.0 x64(AVX2-5Pct)", 31.5, 100, 2674.0, -79.0, 31.5],
-            [20, "Cinder 0.4.1 x64(AVX2-5Pct)", 30.5, 100, 2668.0, -73.0, 30.5],
-            [21, "Lizard 11.1 x64(AVX2-5Pct)", 30.5, 100, 2674.0, -50.0, 30.5],
-            [22, "Viridithas 16.0.0 x64(AVX2-5Pct)", 30.5, 100, 2672.0, -59.0, 30.5],
-            [23, "Halogen 14.0 x64(BMI2-5Pct)", 29.5, 100, 2661.0, -72.0, 29.5],
-            [24, "Astra 6.1.1 x64(BMI2-5Pct)", 29.0, 100, 2649.0, -104.0, 29.0],
-            [25, "Motor 0.7.0 x64(AVX2-5Pct)", 28.5, 100, 2648.0, -93.0, 28.5],
-            [26, "Uralochka 3.42a x64(AVX2-5Pct)", 28.0, 100, 2646.0, -87.0, 28.0],
-            [27, "Renegade 1.2.0 x64(BMI2-5Pct)", 27.5, 100, 2640.0, -96.0, 27.5],
-            [28, "Halogen 15.0 x64(BMI2-5Pct)", 27.0, 100, 2636.0, -98.0, 27.0],
-            [29, "Koivisto 9.0 x64(5Pct)", 26.5, 100, 2637.0, -78.0, 26.5],
-            [30, "Velvet 8.1.0 x64(AVX2-5Pct)", 25.5, 100, 2621.0, -111.0, 25.5]
+            [1, "BlackCore 5.1 x64(BMI2-5Pct)", 12.0, 16, 2550.0, 140.0, 75.0],
+            [2, "Pawn 2.0 x64(5Pct)", 12.0, 16, 2550.0, 126.0, 75.0],
+            [3, "Igel 3.0.0 x64(5Pct)", 12.0, 16, 2550.0, 119.0, 75.0],
+            [4, "Booot 7.0 x64(AVX2-5Pct)", 11.5, 16, 2525.0, 97.0, 71.8],
+            [5, "Velvet 5.3.0 x64(5Pct)", 11.5, 16, 2525.0, 79.0, 71.8],
+            [6, "Smallbrain 6.0 x64(5Pct)", 11.5, 16, 2525.0, 73.0, 71.8],
+            [7, "Halogen 11.0 x64(5Pct)", 11.0, 16, 2500.0, 120.0, 68.7],
+            [8, "Xiphos 0.6 x64(5Pct)", 11.0, 16, 2500.0, 110.0, 68.7],
+            [9, "Arasan 23.4 x64(AVX2-5Pct)", 11.0, 16, 2500.0, 106.0, 68.7],
+            [10, "Stormphrax 1.0.0 x64(BMI2-5Pct)", 10.5, 16, 2475.0, 80.0, 65.6],
+            [11, "Velvet 4.1.0 x64(AVX2-5Pct)", 10.5, 16, 2475.0, 67.0, 65.6],
+            [12, "Caissa 1.4.0 x64(BMI2-5Pct)", 10.5, 16, 2475.0, 65.0, 65.6],
+            [13, "Viridithas 7.0.0 x64(AVX2-5Pct)", 10.5, 16, 2475.0, 64.0, 65.6],
+            [14, "Ethereal 13.07 x64(AVX2-5Pct)", 10.0, 16, 2450.0, 97.0, 62.5],
+            [15, "Caissa 1.3.0 x64(5Pct)", 10.0, 16, 2450.0, 93.0, 62.5],
+            [16, "RofChade 2.3 x64(5Pct)", 10.0, 16, 2450.0, 79.0, 62.5],
+            [17, "Peacekeeper 2.2.0 x64(AVX2-5Pct)", 10.0, 16, 2450.0, 12.0, 62.5],
+            [18, "Seer 2.5.0 x64(5Pct)", 10.0, 16, 2450.0, 10.0, 62.5],
+            [19, "Velvet 5.0.0 x64(AVX2-5Pct)", 10.0, 16, 2450.0, 8.0, 62.5],
+            [20, "Stockfish 8 x64(5Pct)", 10.0, 16, 2450.0, 3.0, 62.5],
+            [21, "Avalanche 2.1.0 x64(AVX2-5Pct)", 9.5, 16, 2425.0, 53.0, 59.3],
+            [22, "Ethereal 14.00 x64(BMI2-5Pct)", 9.0, 16, 2400.0, 31.0, 56.2],
+            [23, "Ethereal 14.00 x64(AVX2-5Pct)", 9.0, 16, 2400.0, 27.0, 56.2],
+            [24, "Avalanche 2.0.0 x64(AVX2-5Pct)", 9.0, 16, 2400.0, 7.0, 56.2],
+            [25, "Minic 3.40 x64(Skylake-5Pct)", 9.0, 16, 2400.0, -26.0, 56.2],
+            [26, "Lizard 10.0 x64(BMI2-5Pct)", 9.0, 16, 2400.0, -26.0, 56.2],
+            [27, "Caissa 1.2.0 x64(5Pct)", 8.5, 16, 2375.0, 12.0, 53.1],
+            [28, "Rice 6.0 x64(AVX2-5Pct)", 8.5, 16, 2375.0, -24.0, 53.1],
+            [29, "Houdini 5.01 x64(5Pct)", 8.5, 16, 2375.0, -31.0, 53.1],
+            [30, "Frozenight 6.0.0 x64(5Pct)", 8.5, 16, 2375.0, -67.0, 53.1],
+            [31, "SlowChess Classic 2.7 x64(5Pct)", 8.5, 16, 2375.0, -74.0, 53.1],
+            [32, "DanaSah 9.1 x64(AVX2-5Pct)", 7.5, 16, 2325.0, 41.0, 46.8],
+            [33, "Stormphrax 1.0.0 x64(AVX2-5Pct)", 7.5, 16, 2325.0, -94.0, 46.8],
+            [34, "Fritz 18(Ginkgo) x64(5Pct)", 7.0, 16, 2300.0, 16.0, 43.7],
+            [35, "Minic 3.30 x64(Skylake-5Pct)", 7.0, 16, 2300.0, 2.0, 43.7],
+            [36, "Black Marlin 7.0 x64(5Pct)", 7.0, 16, 2300.0, 0.0, 43.7],
+            [37, "Texel 1.09 x64(BMI2-5Pct)", 7.0, 16, 2300.0, -30.0, 43.7],
+            [38, "Counter 5.5 x64(5Pct)", 7.0, 16, 2300.0, -36.0, 43.7],
+            [39, "Stash 34.0 x64(BMI2-5Pct)", 7.0, 16, 2300.0, -46.0, 43.7],
+            [40, "Peacekeeper 2.1.0 x64(AVX2-5Pct)", 7.0, 16, 2300.0, -62.0, 43.7],
+            [41, "Caissa 1.4.0 x64(5Pct)", 7.0, 16, 2300.0, -93.0, 43.7],
+            [42, "Laser 1.7 x64(5Pct)", 6.5, 16, 2275.0, 8.0, 40.6],
+            [43, "Stash 34.0 x64(5Pct)", 6.5, 16, 2275.0, -76.0, 40.6],
+            [44, "Minic 3.40 x64(Skylake-5Pct)-10", 6.5, 16, 2275.0, -89.0, 40.6],
+            [45, "Alexandria 3.0.1 x64(5Pct)", 6.5, 16, 2275.0, -94.0, 40.6],
+            [46, "Minic 3.41 x64(ZnVer3-5Pct)-10", 6.5, 16, 2275.0, -154.0, 40.6],
+            [47, "Houdini 2.0c x64(5Pct)", 6.0, 16, 2250.0, -39.0, 37.5],
+            [48, "Komodo 11.2.2 x64(5Pct)", 6.0, 16, 2250.0, -156.0, 37.5],
+            [49, "Avalanche 2.0.0 x64(5Pct)", 5.5, 16, 2225.0, -83.0, 34.3],
+            [50, "Nalwald 17.1 x64(BMI2-5Pct)", 5.0, 16, 2200.0, -46.0, 31.2],
+            [51, "Critter 1.6a x64(5Pct)", 5.0, 16, 2200.0, -81.0, 31.2],
+            [52, "Peacekeeper 2.0.0 x64(AVX2-5Pct)", 5.0, 16, 2200.0, -85.0, 31.2],
+            [53, "Stash 35.0 x64(5Pct)", 5.0, 16, 2200.0, -135.0, 31.2],
+            [54, "Minic 3.41 x64(ZnVer3-5Pct)", 5.0, 16, 2200.0, -144.0, 31.2],
+            [55, "Weiss 2.0 x64(5Pct)", 4.0, 16, 2150.0, -133.0, 25.0],
+            [56, "Nemorino 6.0 x64(5Pct)", 4.0, 16, 2150.0, -211.0, 25.0],
+            [57, "Minic 3.41 x64(Skylake-5Pct)", 3.5, 16, 2125.0, -256.0, 21.8],
+            [58, "Willow 3.0 x64(5Pct)", 3.0, 16, 2100.0, -153.0, 18.7],
+            [59, "Minic 3.30 x64(5Pct)", 2.0, 16, 2050.0, -248.0, 12.5],
+            [60, "Houdini 3 x64(5Pct)", 1.5, 16, 2025.0, -306.0, 9.3]
         ];
 
         // Automatically highlight teams with top 3 positive delta values
