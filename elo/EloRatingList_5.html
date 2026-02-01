@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Engines Elo Rating(5% TC)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    <div class="container">
+        <div class="rankings-section">
+		  <h1 class="tooltip">&#128202; Chess Engines Elo Rating <span style="font-size: 0.5em; vertical-align: middle;">[?]</span>
+			<span class="tooltiptext">
+			  This Elo list uses <strong>Critter 1.6a x64</strong>(played +20.000 games) as the anchor engine. Baseline is adjusted from <strong>2280</strong> Elo for this <strong>5%</strong> Time Control environment.<br><br>
+			  <em>Time Control: 9s + 0.1s (Only 5% of the standard time) Hash=16Mb</em><br><br>
+			</span>
+		  </h1>
+            <div class="table-wrapper">
+                <table id="rankingsTable">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-column="0">Rank</th>
+                            <th class="sortable" data-column="1">Name</th>
+                            <th class="sortable sorted-desc" data-column="2">Elo</th>
+                            <th class="sortable" data-column="3">+</th>
+                            <th class="sortable" data-column="4">-</th>
+                            <th class="sortable" data-column="5">Games</th>
+                            <th class="sortable" data-column="6">Score</th>
+                            <th class="sortable" data-column="7">Oppo.</th>
+                            <th class="sortable" data-column="8">Draws</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+	<script src="EloRatingList_5.js"></script>
+	<script src="sort_elo.js"></script>
+
+</body>
+</html>

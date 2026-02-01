@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Engines Elo Rating</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+	<div class="tc-legend">
+		<div class="legend-title">Time Control & Naming Convention</div>
+		<div class="legend-grid">
+			<div class="legend-item">
+				<span class="legend-tag">Standard</span>
+				3m + 2s increment (Standard Blitz)
+			</div>
+			<div class="legend-item">
+				<span class="legend-tag">[5Pct] / [1Pct]</span>
+				Handicap: 5% or 1% of Standard Blitz
+			</div>
+			<div class="legend-item">
+				<span class="legend-tag">(Rapid)</span>
+				15m + 10s increment
+			</div>
+			<div class="legend-item">
+				<span class="legend-tag">(Classic)</span>
+				60m + 40s increment
+			</div>
+			<div class="legend-item">
+				<span class="legend-tag">AVX2 / BMI2</span>
+				CPU instruction set optimizations
+			</div>
+		</div>
+	<div class="baseline-info-box"><br>
+		<div class="baseline-header">
+			Technical Benchmark Baseline
+		</div>
+		<div class="baseline-text">
+			Technical Analysis: This Elo list uses Critter 1.6a(played +20.000 games) as the anchor engine. Baseline is adjusted from 2280 Elo for this 5% Time Control environment.
+		</div>
+	</div>
+	</div>    
+    <div class="container">
+        <div class="rankings-section">
+            <h1 title="Technical Analysis: This Elo list uses Critter 1.6a(played +20.000 games) as the anchor engine. Baseline is adjusted from 2280 Elo for this 5% Time Control environment.">
+&#128202; Chess Engines Elo Rating <span style="font-size: 0.5em; vertical-align: middle;">[?]</span></h1>
+            <div class="table-wrapper">
+                <table id="rankingsTable">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-column="0">Rank</th>
+                            <th class="sortable" data-column="1">Name</th>
+                            <th class="sortable sorted-desc" data-column="2">Elo</th>
+                            <th class="sortable" data-column="3">+</th>
+                            <th class="sortable" data-column="4">-</th>
+                            <th class="sortable" data-column="5">Games</th>
+                            <th class="sortable" data-column="6">Score</th>
+                            <th class="sortable" data-column="7">Oppo.</th>
+                            <th class="sortable" data-column="8">Draws</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+	<div class="tc-legend">
+		<div class="legend-title">Time Control & Naming Convention</div>
+		<div class="legend-grid">
+			<div class="legend-item">
+				<span class="legend-tag">Standard</span>
+				3m + 2s increment (Standard Blitz)
+			</div>
+			<div class="legend-item">
+				<span class="legend-tag">[5Pct] / [1Pct]</span>
+				Handicap: 5% or 1% of Standard Blitz
+			</div>
+			<div class="legend-item">
+				<span class="legend-tag">(Rapid)</span>
+				15m + 10s increment
+			</div>
+			<div class="legend-item">
+				<span class="legend-tag">(Classic)</span>
+				60m + 40s increment
+			</div>
+			<div class="legend-item">
+				<span class="legend-tag">AVX2 / BMI2</span>
+				CPU instruction set optimizations
+			</div>
+		</div>
+	</div>    
+
+	<script src="FullEloList.js"></script>
+	<script src="script.js"></script>
+
+</body>
+</html>
