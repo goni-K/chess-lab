@@ -1,4 +1,3 @@
-/* CSS BAZΛ PΛR PAMJEN */
 :root { --bg: #0d1117; --sidebar: #161b22; --accent: #58a6ff; --text: #c9d1d9; }
   body { 
   background: var(--bg); 
@@ -49,8 +48,8 @@
   color: white; 
   background: #21262d; 
 }
-	.file::before { content: "📄 "; }
-	.nested { 
+.file::before { content: "📄 "; }
+.nested { 
   margin-left: 15px; 
   border-left: 1px solid #30363d; 
   display: none
@@ -190,3 +189,4 @@
 .btn-icon {
 	margin-right: 8px;
 }
+
