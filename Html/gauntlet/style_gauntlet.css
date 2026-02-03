@@ -454,3 +454,12 @@ body.dark-mode .top-3 {
   visibility: visible;
   opacity: 1;
 }
+
+.btn-download {
+    padding: 4px 10px;
+    background: #fdb;
+    color: #fff; !important;
+    border-radius: 2px;
+    text-decoration: none;
+	margin-left: 100px;
+}
