@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="TourneyInfo.css"> -->
+    <title>Shredder 12 x64</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+        }
+
+        body.dark-mode .container {
+            background: #0f3460;
+            color: #e8e8e8;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        body.dark-mode .theme-toggle {
+            background: #e94560;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background: #ff6b6b;
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        body.dark-mode .info-section {
+            background: #0f3460;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        body.dark-mode h1 {
+            color: #e8e8e8;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .info-table tr {
+            border-bottom: 2px solid #e0e0e0;
+            transition: background 0.3s;
+        }
+
+        body.dark-mode .info-table tr {
+            border-bottom: 2px solid #1a1a2e;
+        }
+
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .info-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        body.dark-mode .info-table tr:hover {
+            background: #1a1a2e;
+        }
+
+        .info-table td {
+            padding: 16px;
+        }
+
+        .info-table td:first-child {
+            width: 240px;
+            font-weight: bold;
+            color: #667eea;
+            border-right: 2px solid #e0e0e0;
+        }
+
+        body.dark-mode .info-table td:first-child {
+            color: #e94560;
+            border-right: 2px solid #1a1a2e;
+        }
+
+        .info-table td:last-child {
+            color: #333;
+        }
+
+        body.dark-mode .info-table td:last-child {
+            color: #e8e8e8;
+        }
+
+        .info-table a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .info-table a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        body.dark-mode .info-table a {
+            color: #e94560;
+        }
+
+        body.dark-mode .info-table a:hover {
+            color: #ff6b6b;
+        }
+
+        .status-finished {
+            color: #27ae60 !important;
+            font-weight: bold;
+        }
+
+        body.dark-mode .status-finished {
+            color: #2ecc71 !important;
+        }
+
+        .rankings-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        body.dark-mode .rankings-section {
+            background: #0f3460;
+            color: #e8e8e8;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        body.dark-mode thead {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+        }
+
+        th {
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        th:first-child,
+        th:nth-child(3),
+        th:nth-child(4),
+        th:nth-child(5),
+        th:nth-child(6),
+        th:nth-child(7) {
+            text-align: right;
+        }
+
+        th:nth-child(2) {
+            text-align: center;
+        }
+
+        th:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        th.sortable::after {
+            content: ' ⇅';
+            opacity: 0.5;
+            font-size: 0.8em;
+        }
+
+        th.sorted-asc::after {
+            content: ' ▲';
+            opacity: 1;
+        }
+
+        th.sorted-desc::after {
+            content: ' ▼';
+            opacity: 1;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        body.dark-mode td {
+            border-bottom: 1px solid #333;
+        }
+
+        td:first-child,
+        td:nth-child(3),
+        td:nth-child(4),
+        td:nth-child(5),
+        td:nth-child(6),
+        td:nth-child(7) {
+            text-align: right;
+            padding-right: 15px;
+        }
+
+        tbody tr {
+            transition: all 0.3s;
+        }
+
+        tbody tr:hover {
+            background: #f5f5f5;
+            transform: scale(1.01);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode tbody tr:hover {
+            background: #1a1a2e;
+        }
+
+        .rank {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        body.dark-mode .rank {
+            color: #e94560;
+        }
+
+        .team-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        body.dark-mode .team-name {
+            color: #e8e8e8;
+        }
+
+        .elo-rating {
+            font-weight: bold;
+            color: #764ba2;
+            font-size: 1.1em;
+        }
+
+        body.dark-mode .elo-rating {
+            color: #ff6b6b;
+        }
+
+        .delta {
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .delta.positive {
+            color: #27ae60;
+            background: #d5f4e6;
+        }
+
+        .delta.negative {
+            color: #e74c3c;
+            background: #fadbd8;
+        }
+
+        body.dark-mode .delta.positive {
+            color: #2ecc71;
+            background: #1a4d2e;
+        }
+
+        body.dark-mode .delta.negative {
+            color: #ff6b6b;
+            background: #4d1f1f;
+        }
+
+        .main-team {
+            background: linear-gradient(90deg, #a8dadc 0%, #ffffff 100%);
+            border-bottom: 3px solid #457b9d !important;
+            font-weight: 600;
+        }
+
+        body.dark-mode .main-team {
+            background: linear-gradient(90deg, #1d35aa 0%, #0f34ff 100%);
+            border-bottom: 3px solid #a8dadc !important;
+        }
+
+        .main-team .team-name {
+            font-size: 1.1em;
+            color: #457b9d;
+        }
+
+        body.dark-mode .main-team .team-name {
+            color: #a8dadc;
+        }
+
+        .top-3 {
+            background: linear-gradient(90deg, #ffe4b3 0%, #ffffff 100%);
+        }
+
+        body.dark-mode .top-3 {
+            background: linear-gradient(90deg, #2d4059 0%, #0f3460 100%);
+        }
+
+        .top-3 .rank {
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+                margin-top: 30px;
+            }
+
+            th, td {
+                padding: 8px 5px;
+                font-size: 0.9em;
+            }
+
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+        }
+    .nav-back {
+        display: inline-block;
+        background-color: #111;
+        color: yellow;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 25px;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+    }
+
+    .nav-back:hover {
+        opacity: 1;
+        color: #fff;  <!-- var(--tag-bg); -->
+    }
+	/* Stilimi i Tooltip-it */
+	.tooltip {
+	  position: relative;
+	  display: inline-block;
+	  border-bottom: 2px dotted #ffff; /* Një vijë poshtë titullit që ta dinë që ka diçka */
+	  cursor: help;
+	  color: #2196F3; /* Ngjyra e titullit */
+	}
+
+	.tooltip .tooltiptext {
+	  visibility: hidden;
+	  width: 450px;
+	  background-color: #333;
+	  color: #fff;
+	  text-align: left;
+	  border-radius: 6px;
+	  padding: 15px;
+	  position: absolute;
+	  z-index: 1;
+	  top: 125%; /* Shfaqet poshtë titullit */
+	  left: 50%;
+	  margin-left: -225px;
+	  opacity: 0;
+	  transition: opacity 0.3s;
+	  font-size: 14px;
+	  line-height: 1.5;
+	  box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+	  font-family: sans-serif;
+	}
+
+	.tooltip:hover .tooltiptext {
+	  visibility: visible;
+	  opacity: 1;
+	}
+  </style>
+</head>
+<body>
+    <div class="container">
+		<!-- <a href="../index.html" class="nav-back" style="font-weight: bold">&larr;Back to Overview</a> -->
+        <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+        <h1>🏆 Shredder 12 x64</h1>
+            <table class="info-table">
+                <tr>
+                    <td>Name:</td>
+                    <td>Shredder 12 x64</td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td class="status-finished">1.500 games played</td>
+                </tr>
+                <tr>
+                    <td>Time Control:</td>
+                    <td>Blitz(3m + 2s inc), Hash: 128 MB</td>
+                </tr>
+                <tr>
+                    <td>Openings:</td>
+                    <td><a href="../Openings/Opening_4-5M.pgn" download="">Openings</a></td>
+                </tr>
+                <tr>
+                    <td>GUI:</td>
+                    <td><a href="http://www.playwitharena.de/" target="_blank">ArenaGUI 3.5.1</a></td>
+                </tr>
+                <tr>
+                    <td>Hardware:</td>
+                    <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
+                </tr>
+                <tr>
+                    <td>OS:</td>
+                    <td>Windows 11 Pro x64</td>
+                </tr>
+            <tr>
+              <td>Environment:</td>
+              <td>Local Testing Lab</td>
+            </tr>
+          </table>
+        <!-- Rankings Section -->
+        <div class="rankings-section">
+			<h1 class="tooltip">Shredder 12 x64 (Multi-Handicap) vs 30 Opponents
+				<span class="tooltiptext">
+					<strong>Gauntlet Format: Full Power vs. 5% vs. 1%</strong><br><br>
+					
+					<strong>Standard Group (Full Power):</strong> Shredder 12.<br>
+					<em>Time Control: 3m + 2s (Full Blitz) Hash=128Mb</em><br><br>
+					
+					<strong>Handicap Group (5% Time):</strong> Critter 1.6a & Andscacs 0.95.<br>
+					<em>Time Control: 9s + 0.1s (5% of Standard) Hash=16Mb</em><br><br>
+					
+					<strong>Survival Group (1%):</strong> Viridithas 18, Caissa 1.23, Obsidian 14 & 25 others.<br>
+					<em>Time Control: 2s + 0.1s (Extreme 1%) Hash=8Mb</em><br><br>
+				</span>
+			</h1>
+            <!-- <h1 title="PlentyChess 7.0.0 x64(BMI2), Alexandria 8.0.0 x64(BMI2), Berserk 13.0 x64(AVX2) and Koivisto 9.0 x64(AVX2) use same configuration as Stockfish 17.1(3m + 2s Blitz, Hash=128Mb), but others use 5% timecontrol(9s + 0.1s).">Shredder 12 x64 vs 30 Opponents</h1> -->
+        <div class="table-wrapper">
+            <table id="rankingsTable">
+                <thead>
+                    <tr>
+                        <th class="sortable" data-column="0">Rank</th>
+                        <th class="sortable" data-column="1">Team</th>
+                        <th class="sortable" data-column="2">Points</th>
+                        <th class="sortable" data-column="3">Games</th>
+                        <th class="sortable sorted-desc" data-column="4">Elo</th>
+                        <th class="sortable" data-column="5">Delta</th>
+                        <th class="sortable" data-column="6">Score</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CONFIGURATION SECTION - EDIT THIS FOR EACH FILE
+        // ============================================
+        
+        // Main gauntlet team (stays fixed at top)
+        const mainTeam = [0, "Shredder 12 x64", 1021.5, 1500, 2384.3, 2.4, 68.9];
+        const data = [
+            [1, "Viridithas 18.0.0 x64(AVX2-1Pct)", 35.5, 50, 2453.6, 181.6, 71.0],
+            [2, "Viridithas 17.0.0 x64(AVX2-1Pct)", 33.0, 50, 2410.0, 187.0, 66.0],
+            [3, "Caissa 1.22 x64(BMI2-1Pct)", 27.5, 50, 2374.6, 99.6, 55.0],
+            [4, "Caissa 1.23 x64(BMI2-1Pct)", 25.5, 50, 2350.3, 87.4, 51.0],
+            [5, "Obsidian 14.0 x64(BMI2-1Pct)", 25.5, 50, 2353.3, 82.3, 51.0],
+            [6, "Booot 7.4 x64(BMI2-1Pct)", 24.5, 50, 2316.8, 112.9, 49.0],
+            [7, "Alexandria 8.0.0 x64(BMI2-1Pct)", 21.5, 50, 2329.6, 7.7, 43.0],
+            [8, "Alexandria 8.1.2 x64(BMI2-1Pct)", 21.0, 50, 2323.8, 4.8, 42.0],
+            [9, "Obsidian 16.0 x64(BMI2-1Pct)", 20.0, 50, 2288.3, 44.4, 40.0],
+            [10, "Clarity 8.0.0 x64(BMI2-1Pct)", 18.5, 50, 2263.3, 44.4, 37.0],
+            [11, "Koivisto 9.0 x64(AVX2-1Pct)", 18.5, 50, 2261.6, 46.7, 37.0],
+            [12, "Critter 1.6a x64(5Pct)", 17.0, 50, 2271.3, -8.6, 34.0],
+            [13, "Reckless 0.8.0 x64(AVX2-1Pct)", 17.0, 50, 2288.0, -45.0, 34.0],
+            [14, "Renegade 1.2.0 x64(BMI2-1Pct)", 13.5, 50, 2215.8, -9.1, 27.0],
+            [15, "Andscacs 0.95 x64(5Pct)", 12.5, 50, 2230.6, -62.3, 25.0],
+            [16, "Revenge 4.0 x64(BMI2-1Pct)", 12.5, 50, 2192.8, -2.1, 25.0],
+            [17, "Stockfish 17.1 x64(AVX2-1Pct)", 12.5, 50, 2236.6, -75.3, 25.0],
+            [18, "Pawnocchio 1.8 x64(AVX2-1Pct)", 12.0, 50, 2205.6, -31.3, 24.0],
+            [19, "Motor 0.9.0 x64(AVX2-1Pct)", 11.0, 50, 2189.1, -31.8, 22.0],
+            [20, "Starzix 6.0 x64(AVX2-1Pct)", 11.0, 50, 2210.0, -66.0, 22.0],
+            [21, "Cinder 0.3.1 x64(AVX2-1Pct)", 10.5, 50, 2204.6, -70.4, 21.0],
+            [22, "PlentyChess 6.0.0 x64(BMI2-1Pct)", 10.5, 50, 2214.1, -89.8, 21.0],
+            [23, "Berserk 13.0 x64(BMI2-1Pct)", 10.0, 50, 2178.3, -40.6, 20.0],
+            [24, "RubiChess 20240817 x64(BMI2-1Pct)", 10.0, 50, 2205.0, -86.0, 20.0],
+            [25, "Stormphrax 7.0.0 x64(BMI2-1Pct)", 10.0, 50, 2182.8, -47.1, 20.0],
+            [26, "Clover 9.0 x64(AVX2-1Pct)", 9.0, 50, 2163.6, -44.3, 18.0],
+            [27, "Halogen 15.0 x64(BMI2-1Pct)", 8.0, 50, 2151.1, -50.9, 16.0],
+            [28, "Horsie 1.1 x64(AVX2-1Pct)", 7.5, 50, 2149.1, -59.9, 15.0],
+            [29, "Halogen 14.0 x64(BMI2-1Pct)", 6.5, 50, 2143.8, -76.2, 13.0],
+            [30, "Komodo Dragon 3.3 x64(AVX2-1Pct)", 6.5, 50, 2142.5, -74.5, 13.0]
+        ];
+
+        // Automatically highlight teams with top 3 positive delta values
+        // This is calculated automatically - no manual configuration needed
+        let highlightedTeams = new Set();
+        
+        function calculateHighlightedTeams() {
+            // Get teams with positive deltas and sort by delta descending
+            const positiveDeltas = data
+                .filter(row => row[5] > 0)
+                .sort((a, b) => b[5] - a[5])
+                .slice(0, 30);
+            
+            const mainDeltaClass = mainTeam[5] > 0 ? 'positive' : mainTeam[5] < 0 ? 'negative' : '';
+            const mainDeltaSign = mainTeam[5] > 0 ? '+' : '';
+            
+            highlightedTeams = new Set(positiveDeltas.map(row => row[1]));
+        }
+        
+        // Calculate which teams to highlight on load
+        calculateHighlightedTeams();
+
+        // Initial sort configuration
+        // column: which column to sort by initially (0=Rank, 1=Team, 2=Col-3, etc.)
+        // ascending: true for ascending, false for descending
+        const initialSort = { column: 4, ascending: false };
+
+        // ============================================
+        // END CONFIGURATION SECTION
+        // ============================================
+
+        let currentSort = { ...initialSort };
+
+        function renderTable(sortedData) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            // Always render main team first
+            const mainTr = document.createElement('tr');
+            mainTr.classList.add('main-team');
+            
+            const mainDeltaClass = mainTeam[5] > 0 ? 'positive' : mainTeam[5] < 0 ? 'negative' : '';
+            const mainDeltaSign = mainTeam[5] > 0 ? '+' : mainTeam[5] < 0 ? '' : '';
+            const mainDeltaFormatted = mainTeam[5] === 0 ? '0.0' : `${mainDeltaSign}${mainTeam[5].toFixed(1)}`;
+
+            mainTr.innerHTML = `
+                <td class="rank">${mainTeam[0]}</td>
+                <td class="team-name">${mainTeam[1]}</td>
+                <td>${mainTeam[2].toFixed(1)}</td>
+                <td>${mainTeam[3]}</td>
+                <td class="elo-rating">${mainTeam[4].toFixed(1)}</td>
+                <td><span class="delta ${mainDeltaClass}">${mainDeltaFormatted}</span></td>
+                <td>${mainTeam[6].toFixed(1)}</td>
+            `;
+            tbody.appendChild(mainTr);
+
+            // Render sorted opponent teams
+            sortedData.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                // Apply top-3 styling to specific teams regardless of position
+                if (highlightedTeams.has(row[1])) {
+                    tr.classList.add('top-3');
+                }
+
+                const deltaClass = row[5] > 0 ? 'positive' : 'negative';
+                const deltaSign = row[5] > 0 ? '+' : '';
+                // const deltaFormatted = row[5] === 0 ? '0.0' : `${deltaSign}${Math.abs(row[5]).toFixed(1)}`;
+                const deltaFormatted = row[5] === 0 ? '0.0' : `${deltaSign}${row[5].toFixed(1)}`;
+
+                tr.innerHTML = `
+                    <td class="rank">${row[0]}</td>
+                    <td class="team-name">${row[1]}</td>
+                    <td>${row[2].toFixed(1)}</td>
+                    <td>${row[3]}</td>
+                    <td class="elo-rating">${row[4].toFixed(1)}</td>
+                    <td><span class="delta ${deltaClass}">${deltaFormatted}</span></td>
+                    <td>${row[6].toFixed(1)}</td>
+                `;
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        function sortData(column) {
+            const isAscending = currentSort.column === column ? !currentSort.ascending : true;
+            currentSort = { column, ascending: isAscending };
+
+            const sorted = [...data].sort((a, b) => {
+                let valA = a[column];
+                let valB = b[column];
+
+                // Check if it's a string (team names)
+                if (typeof valA === 'string' && typeof valB === 'string') {
+                    return isAscending 
+                        ? valA.localeCompare(valB)
+                        : valB.localeCompare(valA);
+                }
+
+                // Convert to numbers for numeric comparison
+                const numA = parseFloat(valA);
+                const numB = parseFloat(valB);
+
+                return isAscending ? numA - numB : numB - numA;
+            });
+
+            updateSortIndicators(column, isAscending);
+            renderTable(sorted);
+        }
+
+        function updateSortIndicators(column, isAscending) {
+            document.querySelectorAll('th').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc');
+            });
+
+            const th = document.querySelector(`th[data-column="${column}"]`);
+            th.classList.add(isAscending ? 'sorted-asc' : 'sorted-desc');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.querySelector('.theme-toggle');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.textContent = '☀️ Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                btn.textContent = '🌙 Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.theme-toggle').textContent = '☀️ Light Mode';
+        }
+
+        document.querySelectorAll('th.sortable').forEach(th => {
+            th.addEventListener('click', () => {
+                const column = parseInt(th.dataset.column);
+                sortData(column);
+            });
+        });
+
+        // Initial render with configured sort
+        sortData(4);
+    </script>
+</body>
+</html>

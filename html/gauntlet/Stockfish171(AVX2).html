@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stockfish 17.1 x64(AVX2)</title>
+    <link rel="stylesheet" href="style_gauntlet.css">
+</head>
+<body>
+    <div class="container">
+         <a href="Stockfish171x64(AVX2).html" class="nav-back">Stockfish 17.1 (5% TIME/HASH ODDS View)</a>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+        <h1>🏆 Stockfish 17.1 x64(AVX2)</h1>
+            <table class="info-table">
+                <tr>
+                    <td>Name:</td>
+                    <td>Stockfish 17.1 x64(AVX2)</td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td class="status-finished">1.800 games played</td>
+                </tr>
+                <tr>
+                    <td>Time Control:</td>
+                    <td>Blitz(3m + 2s inc), Hash: 128 MB</td>
+                </tr>
+                <tr>
+                    <td>Openings:</td>
+                    <td><a href="../Openings/Opening_4-5M.pgn" download="">Openings</a></td>
+                </tr>
+                <tr>
+                    <td>GUI:</td>
+                    <td><a href="http://www.playwitharena.de/" target="_blank">ArenaGUI 3.5.1</a></td>
+                </tr>
+                <tr>
+                    <td>Hardware:</td>
+                    <td>Intel i5-4570 3.20GHz | 8GB RAM</td>
+                </tr>
+                <tr>
+                    <td>OS:</td>
+                    <td>Windows 11 Pro x64</td>
+                </tr>
+            <tr>
+              <td>Environment:</td>
+              <td>Local Testing Lab</td>
+            </tr>
+          </table>
+        <!-- Rankings Section -->
+        <div class="rankings-section">
+			<h1 class="tooltip">Stockfish 17.1 x64(AVX2) vs 30 Opponents
+			  <span class="tooltiptext">
+				<strong>Gauntlet Format: Standard vs. 5% Handicap</strong><br><br>
+				<strong>Standard Group (Full Power):</strong> PlentyChess 7.0, Alexandria 8.0, Berserk 13.0 & Koivisto 9.0.<br>
+				<em>Time Control: 3m + 2s (Standard Blitz) Hash=128</em><br><br>
+				<strong>Challenger Group (Handicap):</strong> Remaining 26 engines.<br>
+				<em>Time Control: 9s + 0.1s (Only 5% of the standard time) Hash=16Mb</em><br><br>
+			  </span>
+			</h1>
+        <div class="table-wrapper">
+            <table id="rankingsTable">
+                <thead>
+                    <tr>
+                        <th class="sortable" data-column="0">Rank</th>
+                        <th class="sortable" data-column="1">Team</th>
+                        <th class="sortable" data-column="2">Points</th>
+                        <th class="sortable" data-column="3">Games</th>
+                        <th class="sortable sorted-desc" data-column="4">Elo</th>
+                        <th class="sortable" data-column="5">Delta</th>
+                        <th class="sortable" data-column="6">Score</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+	<script src="../data/Stockfish171(AVX2).js"></script>
+	<script src="sort_gauntlet.js"></script>
+
+</body>
+</html>

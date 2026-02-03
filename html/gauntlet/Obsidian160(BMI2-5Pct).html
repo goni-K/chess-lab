@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="TourneyInfo.css"> -->
+    <title>Obsidian 16.0 x64(BMI2-5Pct)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+        }
+
+        body.dark-mode .container {
+            background: #0f3460;
+            color: #e8e8e8;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        body.dark-mode .theme-toggle {
+            background: #e94560;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background: #ff6b6b;
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        body.dark-mode .info-section {
+            background: #0f3460;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        body.dark-mode h1 {
+            color: #e8e8e8;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .info-table tr {
+            border-bottom: 2px solid #e0e0e0;
+            transition: background 0.3s;
+        }
+
+        body.dark-mode .info-table tr {
+            border-bottom: 2px solid #1a1a2e;
+        }
+
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .info-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        body.dark-mode .info-table tr:hover {
+            background: #1a1a2e;
+        }
+
+        .info-table td {
+            padding: 16px;
+        }
+
+        .info-table td:first-child {
+            width: 240px;
+            font-weight: bold;
+            color: #667eea;
+            border-right: 2px solid #e0e0e0;
+        }
+
+        body.dark-mode .info-table td:first-child {
+            color: #e94560;
+            border-right: 2px solid #1a1a2e;
+        }
+
+        .info-table td:last-child {
+            color: #333;
+        }
+
+        body.dark-mode .info-table td:last-child {
+            color: #e8e8e8;
+        }
+
+        .info-table a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .info-table a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        body.dark-mode .info-table a {
+            color: #e94560;
+        }
+
+        body.dark-mode .info-table a:hover {
+            color: #ff6b6b;
+        }
+
+        .status-finished {
+            color: #27ae60 !important;
+            font-weight: bold;
+        }
+
+        body.dark-mode .status-finished {
+            color: #2ecc71 !important;
+        }
+
+        .rankings-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        body.dark-mode .rankings-section {
+            background: #0f3460;
+            color: #e8e8e8;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        body.dark-mode thead {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+        }
+
+        th {
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        th:first-child,
+        th:nth-child(3),
+        th:nth-child(4),
+        th:nth-child(5),
+        th:nth-child(6),
+        th:nth-child(7) {
+            text-align: right;
+        }
+
+        th:nth-child(2) {
+            text-align: center;
+        }
+
+        th:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        th.sortable::after {
+            content: ' ⇅';
+            opacity: 0.5;
+            font-size: 0.8em;
+        }
+
+        th.sorted-asc::after {
+            content: ' ▲';
+            opacity: 1;
+        }
+
+        th.sorted-desc::after {
+            content: ' ▼';
+            opacity: 1;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        body.dark-mode td {
+            border-bottom: 1px solid #333;
+        }
+
+        td:first-child,
+        td:nth-child(3),
+        td:nth-child(4),
+        td:nth-child(5),
+        td:nth-child(6),
+        td:nth-child(7) {
+            text-align: right;
+            padding-right: 15px;
+        }
+
+        tbody tr {
+            transition: all 0.3s;
+        }
+
+        tbody tr:hover {
+            background: #f5f5f5;
+            transform: scale(1.01);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode tbody tr:hover {
+            background: #1a1a2e;
+        }
+
+        .rank {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        body.dark-mode .rank {
+            color: #e94560;
+        }
+
+        .team-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        body.dark-mode .team-name {
+            color: #e8e8e8;
+        }
+
+        .elo-rating {
+            font-weight: bold;
+            color: #764ba2;
+            font-size: 1.1em;
+        }
+
+        body.dark-mode .elo-rating {
+            color: #ff6b6b;
+        }
+
+        .delta {
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .delta.positive {
+            color: #27ae60;
+            background: #d5f4e6;
+        }
+
+        .delta.negative {
+            color: #e74c3c;
+            background: #fadbd8;
+        }
+
+        body.dark-mode .delta.positive {
+            color: #2ecc71;
+            background: #1a4d2e;
+        }
+
+        body.dark-mode .delta.negative {
+            color: #ff6b6b;
+            background: #4d1f1f;
+        }
+
+        .main-team {
+            background: linear-gradient(90deg, #a8dadc 0%, #ffffff 100%);
+            border-bottom: 3px solid #457b9d !important;
+            font-weight: 600;
+        }
+
+        body.dark-mode .main-team {
+            background: linear-gradient(90deg, #1d35aa 0%, #0f34ff 100%);
+            border-bottom: 3px solid #a8dadc !important;
+        }
+
+        .main-team .team-name {
+            font-size: 1.1em;
+            color: #457b9d;
+        }
+
+        body.dark-mode .main-team .team-name {
+            color: #a8dadc;
+        }
+
+        .top-3 {
+            background: linear-gradient(90deg, #ffe4b3 0%, #ffffff 100%);
+        }
+
+        body.dark-mode .top-3 {
+            background: linear-gradient(90deg, #2d4059 0%, #0f3460 100%);
+        }
+
+        .top-3 .rank {
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+                margin-top: 30px;
+            }
+
+            th, td {
+                padding: 8px 5px;
+                font-size: 0.9em;
+            }
+
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+        }
+    .nav-back {
+        display: inline-block;
+        background-color: #111;
+        color: yellow;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 25px;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+    }
+
+    .nav-back:hover {
+        opacity: 1;
+        color: #fff;  <!-- var(--tag-bg); -->
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+        <h1>🏆 Obsidian 16.0 x64(BMI2-5Pct)</h1>
+<!-- <a href="../index.html" class="nav-back" style="font-weight: bold">&larr;Back to Overview</a> -->
+            <table class="info-table">
+                <tr>
+                    <td>Name:</td>
+                    <td>Obsidian 16.0 x64(BMI2-5Pct)</td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td class="status-finished">2.500 games played</td>
+                </tr>
+                <tr>
+                    <td>Time Control:</td>
+                    <td>Ultra-Bullet(9s + 0.1s inc), Hash: 16MB</td>
+                </tr>
+                <tr>
+                    <td>Openings:</td>
+                    <td><a href="../Openings/Gauntlet_Openings.pgn" download="">Openings</a></td>
+                </tr>
+                <tr>
+                    <td>GUI:</td>
+                    <td><a href="http://www.playwitharena.de/" target="_blank">ArenaGUI 3.5.1</a></td>
+                </tr>
+                <tr>
+                    <td>Hardware:</td>
+                    <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
+                </tr>
+                <tr>
+                    <td>OS:</td>
+                    <td>Windows 11 Pro x64</td>
+                </tr>
+            <tr>
+              <td>Environment:</td>
+              <td>Local Testing Lab</td>
+            </tr>
+          </table>
+        <!-- Rankings Section -->
+        <div class="rankings-section">
+            <h1 title="(5Pct) indicates the engine was tested using exactly 5% of the standard 3m + 2s Blitz time control.">Obsidian 16.0 x64(BMI2-5Pct) vs 30 Opponents</h1>
+        <div class="table-wrapper">
+            <table id="rankingsTable">
+                <thead>
+                    <tr>
+                        <th class="sortable" data-column="0">Rank</th>
+                        <th class="sortable" data-column="1">Team</th>
+                        <th class="sortable" data-column="2">Points</th>
+                        <th class="sortable" data-column="3">Games</th>
+                        <th class="sortable sorted-desc" data-column="4">Elo</th>
+                        <th class="sortable" data-column="5">Delta</th>
+                        <th class="sortable" data-column="6">Score</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CONFIGURATION SECTION - EDIT THIS FOR EACH FILE
+        // ============================================
+        
+        // Main gauntlet team (stays fixed at top)
+        const mainTeam = [0, "Obsidian 16.0 x64(BMI2-5Pct)", 1455.0, 2500, 2837.3, 20.3, 58.2];
+        const data = [
+            [1, "Stockfish 15.1 x64 NN(BMI2-5Pct)", 57.5, 100, 2877.0, 58.0, 57.5],
+            [2, "Alexandria 8.0.0 x64(BMI2-5Pct)", 53.0, 100, 2841.0, -6.0, 53.0],
+            [3, "Berserk 13.0 x64(BMI2-5Pct)", 48.0, 100, 2801.0, -17.0, 48.0],
+            [4, "Alexandria 7.1.0 x64(BMI2-5Pct)", 47.5, 100, 2797.0, -19.0, 47.5],
+            [5, "PlentyChess 5.0.0 x64(BMI2-5Pct)", 45.5, 100, 2781.0, -30.0, 45.5],
+            [6, "Starzix 6.0 x64(AVX2-5Pct)", 45.0, 100, 2777.0, -16.0, 45.0],
+            [7, "Caissa 1.22 x64(BMI2-5Pct)", 45.0, 100, 2777.0, -54.0, 45.0],
+            [8, "Integral 5.0 x64(AVX2-5Pct)", 44.5, 100, 2773.0, 17.0, 44.5],
+            [9, "Horsie 1.1 x64(AVX2-5Pct)", 44.5, 100, 2773.0, 5.0, 44.5],
+            [10, "Horsie 1.0 x64(AVX2-5Pct)", 43.5, 100, 2765.0, -3.0, 43.5],
+            [11, "Komodo Dragon 3.0 x64 NN(5Pct)", 43.5, 100, 2765.0, -13.0, 43.5],
+            [12, "RubiChess 20230918 x64 NN(AVX2-5Pct)", 42.5, 100, 2757.0, -8.0, 42.5],
+            [13, "Stormphrax 6.0.0 x64(BMI2-5Pct)", 42.0, 100, 2753.0, 10.0, 42.0],
+            [14, "Stockfish 14 x64 NN(5Pct)", 42.0, 100, 2753.0, -29.0, 42.0],
+            [15, "Motor 0.8.0 x64(AVX2-5Pct)", 42.0, 100, 2753.0, -29.0, 42.0],
+            [16, "Integral 7.0 x64(BMI2-5Pct)", 41.5, 100, 2749.0, -10.0, 41.5],
+            [17, "Integral 6.0 x64(BMI2-5Pct)", 40.0, 100, 2737.0, -18.0, 40.0],
+            [18, "Revenge 4.0 x64(BMI2-5Pct)", 38.5, 100, 2725.0, 3.0, 38.5],
+            [19, "Velvet 8.1.0 x64(AVX2-5Pct)", 38.0, 100, 2721.0, -35.0, 38.0],
+            [20, "RubiChess 20240112 x64 NN(AVX2-5Pct)", 37.0, 100, 2713.0, -83.0, 37.0],
+            [21, "Clover 8.1 x64(AVX2-5Pct)", 36.0, 100, 2705.0, -52.0, 36.0],
+            [22, "Caissa 1.15 x64(BMI2-5Pct)", 36.0, 100, 2705.0, -56.0, 36.0],
+            [23, "Motor 0.7.0 x64(AVX2-5Pct)", 32.5, 100, 2677.0, -82.0, 32.5],
+            [24, "Renegade 1.2.0 x64(BMI2-5Pct)", 30.0, 100, 2657.0, 6.0, 30.0],
+            [25, "Quanticade 1.0f x64(BMI2-5Pct)", 29.5, 100, 2653.0, -47.0, 29.5]
+        ];
+
+        // Automatically highlight teams with top 3 positive delta values
+        // This is calculated automatically - no manual configuration needed
+        let highlightedTeams = new Set();
+        
+        function calculateHighlightedTeams() {
+            // Get teams with positive deltas and sort by delta descending
+            const positiveDeltas = data
+                .filter(row => row[5] > 0)
+                .sort((a, b) => b[5] - a[5])
+                .slice(0, 30);
+            
+            const mainDeltaClass = mainTeam[5] > 0 ? 'positive' : mainTeam[5] < 0 ? 'negative' : '';
+            const mainDeltaSign = mainTeam[5] > 0 ? '+' : '';
+            
+            highlightedTeams = new Set(positiveDeltas.map(row => row[1]));
+        }
+        
+        // Calculate which teams to highlight on load
+        calculateHighlightedTeams();
+
+        // Initial sort configuration
+        // column: which column to sort by initially (0=Rank, 1=Team, 2=Col-3, etc.)
+        // ascending: true for ascending, false for descending
+        const initialSort = { column: 4, ascending: false };
+
+        // ============================================
+        // END CONFIGURATION SECTION
+        // ============================================
+
+        let currentSort = { ...initialSort };
+
+        function renderTable(sortedData) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            // Always render main team first
+            const mainTr = document.createElement('tr');
+            mainTr.classList.add('main-team');
+            
+            const mainDeltaClass = mainTeam[5] > 0 ? 'positive' : mainTeam[5] < 0 ? 'negative' : '';
+            const mainDeltaSign = mainTeam[5] > 0 ? '+' : mainTeam[5] < 0 ? '' : '';
+            const mainDeltaFormatted = mainTeam[5] === 0 ? '0.0' : `${mainDeltaSign}${mainTeam[5].toFixed(1)}`;
+
+            mainTr.innerHTML = `
+                <td class="rank">${mainTeam[0]}</td>
+                <td class="team-name">${mainTeam[1]}</td>
+                <td>${mainTeam[2].toFixed(1)}</td>
+                <td>${mainTeam[3]}</td>
+                <td class="elo-rating">${mainTeam[4].toFixed(1)}</td>
+                <td><span class="delta ${mainDeltaClass}">${mainDeltaFormatted}</span></td>
+                <td>${mainTeam[6].toFixed(1)}</td>
+            `;
+            tbody.appendChild(mainTr);
+
+            // Render sorted opponent teams
+            sortedData.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                // Apply top-3 styling to specific teams regardless of position
+                if (highlightedTeams.has(row[1])) {
+                    tr.classList.add('top-3');
+                }
+
+                const deltaClass = row[5] > 0 ? 'positive' : 'negative';
+                const deltaSign = row[5] > 0 ? '+' : '';
+                // const deltaFormatted = row[5] === 0 ? '0.0' : `${deltaSign}${Math.abs(row[5]).toFixed(1)}`;
+                const deltaFormatted = row[5] === 0 ? '0.0' : `${deltaSign}${row[5].toFixed(1)}`;
+
+                tr.innerHTML = `
+                    <td class="rank">${row[0]}</td>
+                    <td class="team-name">${row[1]}</td>
+                    <td>${row[2].toFixed(1)}</td>
+                    <td>${row[3]}</td>
+                    <td class="elo-rating">${row[4].toFixed(1)}</td>
+                    <td><span class="delta ${deltaClass}">${deltaFormatted}</span></td>
+                    <td>${row[6].toFixed(1)}</td>
+                `;
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        function sortData(column) {
+            const isAscending = currentSort.column === column ? !currentSort.ascending : true;
+            currentSort = { column, ascending: isAscending };
+
+            const sorted = [...data].sort((a, b) => {
+                let valA = a[column];
+                let valB = b[column];
+
+                // Check if it's a string (team names)
+                if (typeof valA === 'string' && typeof valB === 'string') {
+                    return isAscending 
+                        ? valA.localeCompare(valB)
+                        : valB.localeCompare(valA);
+                }
+
+                // Convert to numbers for numeric comparison
+                const numA = parseFloat(valA);
+                const numB = parseFloat(valB);
+
+                return isAscending ? numA - numB : numB - numA;
+            });
+
+            updateSortIndicators(column, isAscending);
+            renderTable(sorted);
+        }
+
+        function updateSortIndicators(column, isAscending) {
+            document.querySelectorAll('th').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc');
+            });
+
+            const th = document.querySelector(`th[data-column="${column}"]`);
+            th.classList.add(isAscending ? 'sorted-asc' : 'sorted-desc');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.querySelector('.theme-toggle');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.textContent = '☀️ Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                btn.textContent = '🌙 Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.theme-toggle').textContent = '☀️ Light Mode';
+        }
+
+        document.querySelectorAll('th.sortable').forEach(th => {
+            th.addEventListener('click', () => {
+                const column = parseInt(th.dataset.column);
+                sortData(column);
+            });
+        });
+
+        // Initial render with configured sort
+        sortData(4);
+    </script>
+</body>
+</html>

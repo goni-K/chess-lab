@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="seasons.css">
+	<title>First Season Statistic Info [5%]</title>
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 20px; }
+        
+        /* Containeri 65% për simetri me laboratorin */
+        .container { width: 65%; margin: auto; }
+
+        /* Titulli kryesor i sezonit */
+        h1 { 
+            font-size: clamp(20px, 5vw, 36px); 
+            color: #f0ff00; 
+            text-align: center; 
+            text-transform: uppercase;
+            border-bottom: 3px solid blue;
+            padding-bottom: 10px;
+        }
+
+        .period { text-align: center; color: #58a6ff; font-style: italic; margin-bottom: 30px; }
+
+        /* Karta e të dhënave teknike */
+        .stats-card { 
+            background: #161b22; 
+            border: 1px solid #30363d; 
+            padding: 20px; 
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        pre { 
+            font-family: 'Cascadia Code', 'Courier New', monospace; 
+            font-size: 0.9rem; 
+            line-height: 1.6; 
+            color: #e6edf3;
+            overflow-x: auto;
+        }
+
+        /* Footer-i i rezultateve */
+        .results-summary { 
+            margin-top: 20px; 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 10px;
+            border-top: 1px solid #30363d;
+            padding-top: 15px;
+        }
+
+        .stat-box { text-align: center; padding: 10px; border-radius: 4px; background: #010409; }
+        .win-w { border-bottom: 3px solid #238636; } /* White */
+        .win-b { border-bottom: 3px solid #da3633; } /* Black */
+        .draw { border-bottom: 3px solid #8b949e; }  /* Draw */
+        .total { border-bottom: 3px solid #f0ff00; } /* Total */
+    </style>
+</head>
+<body>
+<!-- <a href="#final-stats" class="jump-to-bottom" title="Go to Totals">&#063;</a> -->
+<a href="Index_Seasons(5Pct).html" class="spider-link">🏠 DASHBOARD</a>
+
+<div class="container">
+    <h1>1st Season Statistic Information</h1>
+    <div class="period">Period: 13.10.2023 - 12.11.2023</div>
+
+    <div class="stats-card">
+        <pre>
+No  |  ECO   |       Opening        |         Variation              | Games |                   Moves                             |
+----|--------|----------------------|--------------------------------|-------|-----------------------------------------------------|
+ 1  | A07    | King's Indian Attack | General                        | 4.085 | 1. Nf3 d5 2. g3                                     |
+ 2  | A45    | Trompowsky Attack    | General                        | 4.084 | 1. d4 Nf6 2. Bg5                                    |
+ 3  | B22    | Sicilian Defense     | Alapin Variation, General      | 4.084 | 1. e4 c5 2. c3                                      |
+ 4  | B07    | Pirc Defense         | General                        | 4.085 | 1. e4 d6 2. d4 Nf6                                  |
+ 5  | B90-99 | Sicilian Defense     | Najdorf Variation              | 4.084 | 1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 |
+ 6  | B30    | Sicilian Defense     | Nyezhmetdinov-Rossolimo Attack | 4.085 | 1. e4 c5 2. Nf3 Nc6 3. Bb5                          |
+----|--------|----------------------|--------------------------------|-------|-----------------------------------------------------|
+</pre>
+
+		<div class="results-summary">
+				<div class="stat-box total">
+					<small>TOTAL GAMES</small><br><strong>25.080</strong>
+				</div>
+				<div class="stat-box win-w">
+					<small>WHITE WINS</small><br><strong>9.911/39,52%</strong>
+				</div>
+				<div class="stat-box win-b">
+					<small>BLACK WINS</small><br><strong>7.446/29,69%</strong>
+				</div>
+				<div class="stat-box draw">
+					<small>DRAWS</small><br><strong>7.723/30,79%</strong>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stockfish 17.1 Lab - Tactical Efficiency Test</title>
+    <style>
+	:root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --accent: #58a6ff;
+            --win: #3fb950;
+            --loss: #f85149;
+            --gold: #d29922;
+            
+            /* NGJYRAT E REJA ME KONTRAST TË LARTË */
+            --tag-bg: #f78166;       /* Portokalli e fortë për badge */
+            --tag-text: #ffffff;     /* Tekst i bardhë mbi portokalli */
+            --sf-highlight: #1f2937; /* Blu e errët për rreshtin e SF */
+            --sf-border: #58a6ff;    /* Anash rreshtit të SF */
+        }
+
+        /* STILI I RI PËR BADGE 5% */
+        .badge-5pct {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 4px; /* Më katror që të duket si etiketë paralajmëruese */
+            margin-left: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(247, 129, 102, 0.3);
+        }
+
+        /* STILI I RI PËR STOCKFISH (RRESHTI I PARË) */
+        .sf-row { 
+            background: var(--sf-highlight) !important;
+            border-left: 4px solid var(--sf-border);
+        }
+
+        .sf-row td {
+            color: #ffffff !important;
+            font-weight: bold;
+        }
+
+        /* NGJYRA E WIN % (Më e ndezur) */
+        .percentage { 
+            color: #4ade80 !important; 
+            font-weight: 900; 
+            text-shadow: 0 0 5px rgba(74, 222, 128, 0.2);
+        }
+ 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 25px;
+        }
+
+        h1 { color: var(--accent); margin: 0; font-size: 28px; letter-spacing: -0.5px; }
+        
+        /* Tournament Specs Styling */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            background: var(--spec-bg);
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px dashed var(--border);
+        }
+
+        .spec-item { font-size: 13px; color: #8b949e; }
+        .spec-item strong { color: var(--text); display: block; margin-bottom: 2px; }
+
+        .search-container { margin-bottom: 20px; }
+        #engineSearch {
+            width: 100%;
+            padding: 12px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: white;
+            border-radius: 6px;
+            outline: none;
+            transition: border 0.2s;
+        }
+        #engineSearch:focus { border-color: var(--accent); }
+
+        .table-wrapper {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            min-width: 600px;
+        }
+
+        th {
+            background: #21262d;
+            padding: 12px 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            font-family: "SFMono-Regular", Consolas, monospace;
+        }
+        .rank-gold { color: var(--gold); font-weight: bold; }
+	.nav-back {
+		display: inline-block;
+		background-color: #111;
+		color: yellow;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 600;
+		margin-bottom: 25px;
+		opacity: 0.8;
+		transition: opacity 0.2s;
+	}
+
+	.nav-back:hover {
+		opacity: 1;
+		color: var(--tag-bg);
+	}
+    </style>
+</head>
+<body>
+<!-- <a href="../index.html" class="nav-back">← Back to Overview</a> -->
+<div class="container">
+    <header>
+        <h1>Stockfish 17.1 Performance Lab</h1>
+        <p style="color: #8b949e; margin-bottom: 0;">Comparative analysis under asymmetric time and resource constraints.</p>
+        
+        <div class="specs-grid">
+            <div class="spec-item">
+                <strong>Time Control</strong>
+                Blitz 3m + 2s increment
+            </div>
+            <div class="spec-item">
+                <strong>Hardware Limit</strong>
+                1 CPU Core (Dedicated)
+            </div>
+            <div class="spec-item">
+                <strong>Hash Memory</strong>
+                128MB (Standard) / 16MB (5% Engines)
+            </div>
+            <div class="spec-item">
+                <strong>Endgame Support</strong>
+                Syzygy Tablebases (Up to 5-man)
+            </div>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="engineSearch" placeholder="Filter engine list...">
+    </div>
+
+    <div class="table-wrapper">
+        <table id="labTable">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Engine Name</th>
+                    <th>Points</th>
+                    <th>Games</th>
+                    <th>Elo</th>
+                    <th>Win %</th>
+                </tr>
+            </thead>
+            <tbody id="tableContent">
+                </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+/**
+ * Data Array from "Thertorja" Lab 
+ * Format: [Rank, Name, Points, Games, Elo, Win %]
+ */
+const rawData = [
+    [1, "Stockfish 17.1 x64(AVX2)", "1378.5", "1800", "3012.5", "76.5%"],
+    [2, "PlentyChess 7.0.0 x64(BMI2)", "28.0", "60", "2979.0", "46.6%"],
+    [3, "Alexandria 8.0.0 x64(BMI2)", "27.0", "60", "2964.0", "45.0%"],
+    [4, "Berserk 13.0 x64(AVX2)", "25.0", "60", "2943.0", "41.6%"],
+    [5, "Alexandria 8.1.12 x64(BMI2-5Pct)", "18.5", "60", "2860.0", "30.8%"],
+    [6, "Obsidian 16.0 x64(BMI2-5Pct)", "18.0", "60", "2842.0", "30.0%"],
+    [7, "Koivisto 9.0 x64(AVX2)", "17.0", "60", "2850.0", "28.3%"],
+    [8, "Caissa 1.23 x64(BMI2-5Pct)", "16.0", "60", "2822.0", "26.6%"],
+    [9, "Reckless 0.8.0 x64(AVX2-5Pct)", "16.0", "60", "2834.0", "26.6%"],
+    [10, "Caissa 1.24 x64(BMI2-5Pct)", "15.5", "60", "2817.0", "25.8%"],
+    [11, "PlentyChess 6.0.0 x64(BMI2-5Pct)", "15.5", "60", "2820.0", "25.8%"],
+    [12, "Alexandria 8.0.0 x64(BMI2-5Pct)", "15.0", "60", "2815.0", "25.0%"],
+    [13, "Komodo Dragon 3.3 x64(AVX2-5Pct)", "15.0", "60", "2803.0", "25.0%"],
+    [14, "PlentyChess 7.0.0 x64(BMI2-5Pct)", "14.5", "60", "2823.0", "24.1%"],
+    [15, "Clover 9.0 x64(AVX2-5Pct)", "13.5", "60", "2795.0", "22.5%"],
+    [16, "Motor 0.9.0 x64(AVX2-5Pct)", "13.5", "60", "2782.0", "22.5%"],
+    [17, "Quanticade 3.0c x64(BMI2-5Pct)", "13.5", "60", "2783.0", "22.5%"],
+    [18, "Viridithas 18.0.0 x64(AVX2-5Pct)", "13.0", "60", "2785.0", "21.6%"],
+    [19, "Horsie 1.1 x64(AVX2-5Pct)", "12.5", "60", "2768.0", "20.8%"],
+    [20, "Astra 6.1.1 x64(BMI2-5Pct)", "11.5", "60", "2749.0", "19.1%"],
+    [21, "Clover 8.2.1 x64(AVX2-5Pct)", "11.5", "60", "2761.0", "19.1%"],
+    [22, "Integral 7.0 x64(BMI2-5Pct)", "11.5", "60", "2752.0", "19.1%"],
+    [23, "Motor 0.7.0 x64(AVX2-5Pct)", "10.0", "60", "2730.0", "16.6%"],
+    [24, "Halogen 14.0 x64(BMI2-5Pct)", "9.5", "60", "2722.0", "15.8%"],
+    [25, "Horsie 1.0 x64(AVX2-5Pct)", "9.5", "60", "2731.0", "15.8%"],
+    [26, "Pawnocchio 1.8 x64(AVX2-5Pct)", "9.5", "60", "2740.0", "15.8%"],
+    [27, "Stormphrax 7.0.0 x64(BMI2-5Pct)", "9.5", "60", "2736.0", "15.8%"],
+    [28, "Cinder 0.4.1 x64(AVX2-5Pct)", "9.0", "60", "2720.0", "15.0%"],
+    [29, "Uralochka 3.42a x64(AVX2-5Pct)", "8.5", "60", "2713.0", "14.1%"],
+    [30, "Cinder 0.3.1 x64(AVX2-5Pct)", "7.5", "60", "2713.0", "12.5%"],
+    [31, "Renegade 1.2.0 x64(BMI2-5Pct)", "7.0", "60", "2698.0", "11.6%"]
+];
+
+function renderTable(data) {
+    const tableBody = document.getElementById('tableContent');
+    tableBody.innerHTML = "";
+    
+    data.forEach(row => {
+        const [rank, name, points, games, elo, winRate] = row;
+        const tr = document.createElement('tr');
+        
+        // Logical detection for 5Pct tag
+        const is5Pct = name.includes("5Pct");
+        const cleanName = name.replace("-5Pct", "").replace("5Pct", "").trim();
+        
+        // CSS classes for SF and first place
+        if(name.includes("Stockfish")) tr.className = "sf-row";
+        const rankDisplay = rank === 1 ? `<span class="rank-gold">${rank}</span>` : rank;
+
+        tr.innerHTML = `
+            <td>${rankDisplay}</td>
+            <td>
+                ${cleanName}
+                ${is5Pct ? '<span class="badge-5pct">5% TIME/HASH ODDS</span>' : ''}
+            </td>
+            <td>${points}</td>
+            <td>${games}</td>
+            <td>${elo}</td>
+            <td class="percentage">${winRate}</td>
+        `;
+        tableBody.appendChild(tr);
+    });
+}
+
+// Initialize
+renderTable(rawData);
+
+// Filter logic
+document.getElementById('engineSearch').addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    const filtered = rawData.filter(r => r[1].toLowerCase().includes(term));
+    renderTable(filtered);
+});
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,163 @@
+  /* Chess-Engines-Tournaments-Tables */
+.season-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+.back-to-top:hover {
+    text-decoration: underline;
+}
+
+.season-title .left {
+    flex: 1;
+    text-align: left;
+}
+
+.season-title .center-link {
+    flex: 1;
+    text-align: center;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: #0077cc;
+}
+
+.season-title .right {
+    flex: 1; /* empty spacer */
+}
+/* Main container for the text-based table */
+pre {
+    background-color: #0d1117; /* Deep dark background for high contrast */
+    color: #c9d1d9;            /* Soft white for readability */
+    padding: 20px;
+    border-radius: 6px;
+    font-family: "Cascadia Code", "Fira Code", monospace; /* Clean monospaced fonts */
+    line-height: 1.4;
+    border: 1px solid #30363d;
+    overflow-x: auto;          /* Prevents layout breaking on small screens */
+}
+
+/* Styling for the Season Champion */
+.champion {
+    font-family: "Courier New", "Segoe UI", Tahoma, sans-serif;
+    color: #58a6ff;            /* Bright blue for the winner */
+    border-left: 4px solid #ffff99;
+    padding-left: 2px;
+    font-weight: bold;
+    background: rgba(192, 166, 192, 0.1); /* Subtle highlight for the row */
+    display: inline-block;
+    width: 100%;
+}
+
+/* Styling for Promoted Engines */
+.promoted {
+    font-family: "Courier New", "Segoe UI", Tahoma, sans-serif;
+    color: #f0ff00;            /* Darker blue as per your requirement */
+    border-left: 4px solid #ffffff;
+    padding-left: 2px;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Styling for Relegated Engines */
+.relegated {
+    font-family: "Courier New", "Segoe UI", Tahoma, sans-serif;
+    color: #ff00ff;            /* Magenta/Purple for the danger zone */
+    border-left: 4px solid #238636; /* Green border as per your logic */
+    padding-left: 2px;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Styling for Neutral Engines and Header lines*/
+.neutral {
+    font-family: "Courier New", "Segoe UI", Tahoma, sans-serif;
+    padding-left: 8px;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Helper class for tabular alignment in plain text */
+.row-text {
+    white-space: pre;          /* Maintains the exact character spacing */
+}
+
+/* Container for Tournament Metadata */
+.info-section {
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    width: 65%; /* Width control: Set to 60-70% of the parent container */
+    max-width: 1200px; /* Safety limit for very large screens */
+}
+
+.info-header {
+    color: #f0ff00; /* Your favorite Neon Yellow */
+    font-size: 1.8em;
+    font-weight: bold;
+    border-bottom: 2px solid #f0ff00;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+/* Grid layout for technical specifications */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.info-item {
+    background: #161b22;
+    padding: 10px;
+    border-radius: 4px;
+    border-left: 3px solid #58a6ff; /* Blue accent */
+}
+
+.info-label {
+    color: #8b949e;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    display: block;
+}
+
+.info-value {
+    color: #c9d1d9;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Opening */
+.Opening {
+    color: #3333ee;
+    font-weight: bold;
+    background-color: #ffe6e6;
+  }
+
+.back-to-top {
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #0077cc;
+    margin-left: 20px;
+    opacity: 0.7;
+}
+
+.back-to-top:hover {
+    text-decoration: underline;
+}
+
+.Downloads {
+	background: linear-gradient(135deg, #fe7eea 0%, #ef4ba2 100%);
+    font-size: 1.2em;
+    text-decoration: none;
+    margin-left: 20px;
+    opacity: 0.7;
+}
+
+.Downloads:hover {
+    text-decoration: underline;
+}

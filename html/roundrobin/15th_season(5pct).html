@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<link rel="stylesheet" href="seasons.css">
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 20px; }
+        
+        /* Containeri 65% për simetri me laboratorin */
+        .container { width: 65%; margin: auto; }
+
+        /* Titulli kryesor i sezonit */
+        h1 { 
+            font-size: clamp(20px, 5vw, 36px); 
+            color: #f0ff00; 
+            text-align: center; 
+            text-transform: uppercase;
+            border-bottom: 3px solid blue;
+            padding-bottom: 10px;
+        }
+
+        .period { text-align: center; color: #58a6ff; font-style: italic; margin-bottom: 30px; }
+
+        /* Karta e të dhënave teknike */
+        .stats-card { 
+            background: #161b22; 
+            border: 1px solid #30363d; 
+            padding: 20px; 
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        pre { 
+            font-family: 'Cascadia Code', 'Courier New', monospace; 
+            font-size: 0.9rem; 
+            line-height: 1.6; 
+            color: #e6edf3;
+            overflow-x: auto;
+        }
+
+        /* Footer-i i rezultateve */
+        .results-summary { 
+            margin-top: 20px; 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 10px;
+            border-top: 1px solid #30363d;
+            padding-top: 15px;
+        }
+
+        .stat-box { text-align: center; padding: 10px; border-radius: 4px; background: #010409; }
+        .win-w { border-bottom: 3px solid #238636; } /* White */
+        .win-b { border-bottom: 3px solid #da3633; } /* Black */
+        .draw { border-bottom: 3px solid #8b949e; }  /* Draw */
+        .total { border-bottom: 3px solid #f0ff00; } /* Total */
+    </style>
+</head>
+<body>
+<a href="#final-stats" class="jump-to-bottom" title="Go to Totals">&#063;</a>
+<a href="Index_Seasons(5Pct).html" class="spider-link">🏠 DASHBOARD</a>
+
+<div class="container">
+    <h1>15th Season Statistic Information</h1>
+    <div class="period">Period: 01.06.2025 – 03.07.2025</div>
+
+    <div class="stats-card">
+        <pre>
+No  ECO     Opening             Variation                            Games   Key Moves
+-------------------------------------------------------------------------------------------------------
+ 1  B81     Sicilian Defense    Keres Attack                         5.596   1. e4 c5 2. Nf3 d6 3. d4... 6. g4
+ 3  D32     Tarrasch Defense    Symmetrical Var.                     5.595   1. d4 d5 2. c4 e6 3. Nc3 c5
+ 5  B14     Caro-Kann Defense   Panov Attack                         5.595   1. e4 c6 2. d4 d5 3. exd5... 4. c4
+ 7  D78     Neo-Gruenfeld       Classical Var.                       5.594   1. d4 Nf6 2. c4 g6 3. g3 d5
+        </pre>
+
+        <div class="results-summary">
+            <div class="stat-box total">
+                <small>TOTAL GAMES</small><br><strong>22.560</strong>
+            </div>
+            <div class="stat-box win-w">
+                <small>WHITE WINS</small><br><strong>7.965</strong>
+            </div>
+            <div class="stat-box win-b">
+                <small>BLACK WINS</small><br><strong>5.741</strong>
+            </div>
+            <div class="stat-box draw">
+                <small>DRAWS</small><br><strong>8.850</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
