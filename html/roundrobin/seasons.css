@@ -1,0 +1,404 @@
+/******************************************
+ * 1. RESET
+ ******************************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/******************************************
+ * 2. BASE STYLES (body, fonts, colors)
+ ******************************************/
+body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/******************************************
+ * 3. LAYOUT (container, sections, scroll)
+ ******************************************/
+.container {
+    display: block !important;
+    padding-top: 60px !important; /* Prevents title from being hidden */
+    width: 100%;
+    margin: auto;
+}
+
+section[id] {
+    scroll-margin-top: 60px !important; /* Offset for fixed menu */
+}
+
+/******************************************
+ * 4. NAVIGATION (fixed top menu)
+ ******************************************/
+.nav-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #111;
+    border-bottom: 3px solid #ffff00;
+    padding: 15px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.nav-header a {
+    color: #ffffff !important;
+    background: #0056b3;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #ffffff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.nav-header a:hover {
+    background: #ffff00;
+    color: #000000 !important;
+}
+
+.nav-header a[href="#top"] {
+    background: #cc0000;
+}
+
+/******************************************
+ * 5. HEADINGS (h1, h3, season-title)
+ ******************************************/
+.season-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+.season-title .left { flex: 1; text-align: left; }
+.season-title .center-link { flex: 1; text-align: center; font-size: 0.9em; color: #0077cc; text-decoration: none; }
+.season-title .right { flex: 1; }
+
+/* Division titles */
+h1.season-title,
+section h1,
+h3.season-title,
+section h3 {
+    background: #212529 !important;
+    color: #ffff00 !important;
+    padding: 15px;
+    border-left: 10px solid #ffff00;
+    font-size: 1.5em;
+}
+
+/* Main tournament title */
+h1 {
+    background: #543345 !important;
+    font-family: 'Segoe UI', Impact, sans-serif;
+    color: #ffffee;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: clamp(20px, 4vw, 36px);
+    border-left: 8px solid blue;
+    padding-left: 15px;
+    width: 65%;
+    display: block;
+}
+
+h1 span {
+    color: #58a6ff;
+    font-size: 0.6em;
+    display: block;
+}
+
+/******************************************
+ * 6. LINKS (Back to top, center-link)
+ ******************************************/
+.center-link,
+.right a,
+a[href="#top"] {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+    text-transform: uppercase;
+    border-bottom: 1px solid #00ffcc;
+    padding: 2px 5px;
+    transition: 0.3s;
+}
+
+.center-link:hover,
+.right a:hover {
+    background: #0056b3;
+    border-radius: 4px;
+}
+
+/******************************************
+ * 7. FLOATING BUTTONS (jump-to-bottom, spider-link)
+ ******************************************/
+.jump-to-bottom {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: rgba(240, 255, 0, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid #f0ff00;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f0ff00;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.jump-to-bottom:hover {
+    background: #f0ff00;
+    color: #000;
+    transform: scale(1.1);
+}
+
+.spider-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    display: inline-block !important;
+    background-color: #161b22;
+    color: #f0ff00 !important;
+    padding: 10px 18px;
+    border: 2px solid #58a6ff;
+    border-radius: 6px;
+    font-family: 'Segoe UI', Impact, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+    transition: 0.2s ease-in-out;
+}
+
+.spider-link:hover {
+    background-color: #58a6ff;
+    color: #ffffff !important;
+    border-color: #f0ff00;
+}
+
+/******************************************
+ * 8. CODE BLOCKS (pre, stats-data)
+ ******************************************/
+pre {
+    font-family: 'Courier New', 'Cascadia Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #e6edf3;
+    overflow-x: auto;
+}
+
+pre.stats-data {
+    background: #161b22;
+    padding: 20px;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/******************************************
+ * 9. STATS SECTIONS (date-grid, opening-table, results)
+ ******************************************/
+#final-stats {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 2px solid #30363d;
+    text-align: center;
+    color: #8b949e;
+}
+
+.date-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    background: #161b22;
+    padding: 15px;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    font-family: 'Cascadia Code', monospace;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.date-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 10px;
+    border-bottom: 1px solid #21262d;
+}
+
+.date-row span.count {
+    color: #f0ff00;
+    font-weight: bold;
+}
+
+.opening-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #161b22;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.opening-table th {
+    background: #21262d;
+    color: #58a6ff;
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid #30363d;
+}
+
+.opening-table td {
+    padding: 10px;
+    border-bottom: 1px solid #21262d;
+    font-size: 14px;
+}
+
+.system-entry { color: #8b949e; font-style: italic; }
+.win-count { color: #3fb950; font-weight: bold; }
+.loss-count { color: #f85149; font-weight: bold; }
+
+.stats-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.results-summary {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    border-top: 1px solid #30363d;
+    padding-top: 15px;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    background: #010409;
+}
+
+.win-w { border-bottom: 3px solid #238636; }
+.win-b { border-bottom: 3px solid #da3633; }
+.draw  { border-bottom: 3px solid #8b949e; }
+.total { border-bottom: 3px solid #f0ff00; }
+
+/******************************************
+ * 10. ARCHIVE LINK
+ ******************************************/
+.archive-link {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 15px 0;
+    background: linear-gradient(180deg, #2d333b 0%, #21262d 100%);
+    color: #58a6ff !important;
+    border: 1px solid #444c56;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.archive-link:hover {
+    border-color: #768390;
+    background: #313943;
+    box-shadow: 0 0 8px rgba(88, 166, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.archive-link span {
+    color: #8b949e;
+    margin-right: 8px;
+}
+
+/******************************************
+ * 11. PERIOD LABEL
+ ******************************************/
+.period {
+    text-align: center;
+    color: #58a6ff;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+/******************************************
+ * 12. TOOLTIP SYSTEM
+ ******************************************/
+.tip {
+    position: relative;
+    cursor: help;
+}
+
+.tip:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    width: 300px;
+    white-space: normal;
+    z-index: 9999;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 2px dotted #ffff;
+    cursor: help;
+    color: #2196F3;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 450px;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 15px;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -225px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="seasons.css">
+	<title>Fifth Season Statistic Info [5%]</title>
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 20px; }
+        
+        /* Containeri 65% për simetri me laboratorin */
+        .container { width: 65%; margin: auto; }
+
+        /* Titulli kryesor i sezonit */
+        h1 { 
+            font-size: clamp(20px, 5vw, 36px); 
+            color: #f0ff00; 
+            text-align: center; 
+            text-transform: uppercase;
+            border-bottom: 3px solid blue;
+            padding-bottom: 10px;
+        }
+
+        .period { text-align: center; color: #58a6ff; font-style: italic; margin-bottom: 30px; }
+
+        /* Karta e të dhënave teknike */
+        .stats-card { 
+            background: #161b22; 
+            border: 1px solid #30363d; 
+            padding: 20px; 
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        pre { 
+            font-family: 'Cascadia Code', 'Courier New', monospace; 
+            font-size: 0.9rem; 
+            line-height: 1.6; 
+            color: #e6edf3;
+            overflow-x: auto;
+        }
+
+        /* Footer-i i rezultateve */
+        .results-summary { 
+            margin-top: 20px; 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 10px;
+            border-top: 1px solid #30363d;
+            padding-top: 15px;
+        }
+
+        .stat-box { text-align: center; padding: 10px; border-radius: 4px; background: #010409; }
+        .win-w { border-bottom: 3px solid #238636; } /* White */
+        .win-b { border-bottom: 3px solid #da3633; } /* Black */
+        .draw { border-bottom: 3px solid #8b949e; }  /* Draw */
+        .total { border-bottom: 3px solid #f0ff00; } /* Total */
+    </style>
+</head>
+<body>
+<!-- <a href="#final-stats" class="jump-to-bottom" title="Go to Totals">&#063;</a> -->
+<a href="Index_Seasons(5Pct).html" class="spider-link">🏠 DASHBOARD</a>
+
+<div class="container">
+    <h1>5th Season Statistic Information</h1>
+    <div class="period">Period: 30.11.2023 – 22.12.2023</div>
+
+    <div class="stats-card">
+        <pre>
+No  | ECO   |      Opening                              |                Variation                 | Games |              Moves                          |
+----|-------|-------------------------------------------|------------------------------------------|-------|---------------------------------------------|
+ 1  |  B01  | Scandinavian Defense, Main Lines          | Mieses Variation                         | 4.613 | 1. e4 d5 2. exd5 Qxd5 3. Nc3 Qa5 4. d4 Nf6  |
+ 2  |  A41  | Rat Defense                               | English Rat                              | 4.676 | 1. d4 d6 2. c4 e5                           |
+ 3  |  A13  | English Opening, Agincourt Defense        | King's Knight                            | 4.611 | 1. c4 e6 2. Nf3 d5                          |
+ 4  |  C50  | Italian Game, Giuoco Pianissimo           | Normal                                   | 4.636 | 1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. d3 Nf6    |
+ 5  |  D31  | Queen's Gambit Declined                   | Charousek (Petrosian) Variation          | 4.673 | 1. d4 d5 2. c4 e6 3. Nc3 Be7                |
+ 6  |  A29  | English Opening, King's English Variation | Four Knights Variation, Fianchetto Lines | 4.611 | 1. c4 e5 2. Nc3 Nc6 3. Nf3 Nf6 4. g3        |
+</pre>
+
+        <div class="results-summary">
+            <div class="stat-box total">
+                <small>TOTAL GAMES</small><br><strong>28.980</strong>
+            </div>
+            <div class="stat-box win-w">
+                <small>WHITE WINS</small><br><strong>11.464/39,56%</strong>
+            </div>
+            <div class="stat-box win-b">
+                <small>BLACK WINS</small><br><strong>8.462/29,20%</strong>
+            </div>
+            <div class="stat-box draw">
+                <small>DRAWS</small><br><strong>9.054/31,24%</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
