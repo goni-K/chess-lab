@@ -436,10 +436,9 @@ th, td {
 
 .btn-download {
     padding: 4px 10px;
-    background: #fdb;
-    color: #fff; !important;
+    background: #f0f0b0;
+    color: #f0f0f0; !important;
     border-radius: 2px;
     text-decoration: none;
 	margin-left: 100px;
 }
-
