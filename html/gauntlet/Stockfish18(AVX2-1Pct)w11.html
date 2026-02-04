@@ -3,34 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stockfish 17.1 x64(AVX2)</title>
+    <title>Stockfish 18 x64(AVX2-1Pct)</title>
     <link rel="stylesheet" href="style_gauntlet.css">
 </head>
 <body>
     <div class="container">
-         <a href="Stockfish171x64(AVX2).html" class="nav-back">Stockfish 17.1 (5% TIME/HASH ODDS View)</a>
         <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
-        <h1>🏆 Stockfish 17.1 x64(AVX2)</h1>
+        <h1>🏆 Stockfish 18 x64(AVX2-1Pct)</h1>
             <table class="info-table">
                 <tr>
                     <td>Name:</td>
-                    <td>Stockfish 17.1 x64(AVX2)</td>
+                    <td>Stockfish 18 x64(AVX2-1Pct)</td>
                 </tr>
                 <tr>
                     <td>Status:</td>
-                    <td class="status-finished">1.800 games played 
-                        <a href="https://drive.google.com/uc?export=dounload&id=1gB6DZkuA-aXGktwzuw6QVQuHBBQY0xHm" class="btn-download" style="color: #0011ab">
-                            Download Pgn File(Zip)
-                        </a>
-                    </td>
+                    <td class="status-finished">Running: 2.100/3.000 games played 
+					  <a href="https://drive.google.com/uc?export=dounload&id=" class="btn-download" style="color: #1234bc">
+						not available Download Pgn File(Zip)
+					  </a>
+					</td>
                 </tr>
                 <tr>
                     <td>Time Control:</td>
-                    <td>Blitz(3m + 2s inc), Hash: 128 MB</td>
+                    <td>Ultra-Bullet(2s + 0.1s inc) | Hash: 8MB | CPU: [1]</td>
                 </tr>
                 <tr>
                     <td>Openings:</td>
-                    <td><a href="../Openings/Opening_4-5M.pgn" download="">Openings</a></td>
+                    <td><a href="../../Openings/Opening_4-5M.pgn" download="">Openings</a></td>
                 </tr>
                 <tr>
                     <td>GUI:</td>
@@ -51,15 +50,7 @@
           </table>
         <!-- Rankings Section -->
         <div class="rankings-section">
-			<h1 class="tooltip">Stockfish 17.1 x64(AVX2) vs 30 Opponents
-			  <span class="tooltiptext">
-				<strong>Gauntlet Format: Standard vs. 5% Handicap</strong><br><br>
-				<strong>Standard Group (Full Power):</strong> PlentyChess 7.0, Alexandria 8.0, Berserk 13.0 & Koivisto 9.0.<br>
-				<em>Time Control: 3m + 2s (Standard Blitz) Hash=128</em><br><br>
-				<strong>Challenger Group (Handicap):</strong> Remaining 26 engines.<br>
-				<em>Time Control: 9s + 0.1s (Only 5% of the standard time) Hash=16Mb</em><br><br>
-			  </span>
-			</h1>
+            <h1 title="(1Pct) indicates the engine was tested using exactly 1% of the standard 3m + 2s Blitz time control.">Stockfish 18 x64(AVX2-1Pct) vs 30 Opponents</h1>
         <div class="table-wrapper">
             <table id="rankingsTable">
                 <thead>
@@ -80,7 +71,7 @@
         </div>
     </div>
 
-	<script src="../data/Stockfish171(AVX2).js"></script>
+	<script src="../data/Stockfish18(AVX2-1Pct)w11.js"></script>
 	<script src="sort_gauntlet.js"></script>
 
 </body>
