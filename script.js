@@ -1,4 +1,3 @@
-// script
 document.addEventListener('click', function(e) {
     const folder = e.target.closest('.folder');
     if (!folder) return;
@@ -76,15 +75,13 @@ function openFile(url, element) {
 document.getElementById('search').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         let keyword = this.value.toLowerCase().trim();
-        // Marrim të gjithë linket që thërrasin openFile
         let allLinks = document.querySelectorAll('a[onclick*="openFile"]');
         let found = false;
 
         for (let link of allLinks) {
             let linkText = link.innerText.toLowerCase();
-            // Nëse teksti i linkut përmban fjalën që kërkove
             if (linkText.includes(keyword)) {
-                link.click(); // E hap direkt faqen
+                link.click(); 
                 found = true;
                 break;
             }
@@ -100,9 +97,9 @@ const resultsDiv = document.getElementById('search-results');
 
 searchInput.addEventListener('input', function() {
     let keyword = this.value.toLowerCase().trim();
-    resultsDiv.innerHTML = ''; // Pastrojmë listën e vjetër
+    resultsDiv.innerHTML = ''; 
     
-    if (keyword.length < 1) return; // Mos nxirr gjë nëse s'ka shkronja
+    if (keyword.length < 1) return; 
 
     let allLinks = document.querySelectorAll('a[onclick*="openFile"]');
     
@@ -122,11 +119,9 @@ searchInput.addEventListener('input', function() {
     });
 });
 
-// script.js - Versioni i Thjeshtuar i Debugging-ut
 function viewEloList() {
     console.log("Butoni u shtyp! Funksioni u gjet!");
     
-    // Më pas, fillojmë kodin e kërkesës (fetch)
     fetch("ELO-UltraBullet.txt") 
         .then(response => response.text())
         .then(data => {
