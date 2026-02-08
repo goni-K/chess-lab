@@ -53,7 +53,7 @@ section[id] {
     color: #ffffff !important;
     background: #0056b3;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     border: 2px solid #ffffff;
     padding: 8px 15px;
@@ -93,7 +93,7 @@ section h3 {
     color: #ffff00 !important;
     padding: 15px;
     border-left: 10px solid #ffff00;
-    font-size: 1.5em;
+    font-size: clamp(16px, 3vw, 20px);
 }
 
 /* Main tournament title */
@@ -105,7 +105,7 @@ h1 {
     letter-spacing: 2px;
     margin-bottom: 5px;
     text-align: center;
-    font-size: clamp(20px, 4vw, 36px);
+    font-size: clamp(20px, 3vw, 28px);
     border-left: 8px solid blue;
     padding-left: 15px;
     width: 65%;

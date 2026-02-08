@@ -151,11 +151,14 @@ pre {
 }
 
 .Downloads {
-	background: linear-gradient(135deg, #fe7eea 0%, #ef4ba2 100%);
-    font-size: 1.2em;
-    text-decoration: none;
-    margin-left: 20px;
-    opacity: 0.7;
+	background: linear-gradient(135deg, #147bae 0%, #eab741 100%);
+  font-size: 1.2em;
+  text-decoration: none;
+  margin-left: 20px;
+  opacity: 0.99;
+}
+.Downloads a { 
+	color: #ffffff; 
 }
 
 .Downloads:hover {
