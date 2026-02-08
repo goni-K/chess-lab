@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Series: The 30-Point Gap</title>
+    <link rel="stylesheet" href="style_roundrobin.css">
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    
+    <div class="container">
+        <!-- Tournament Info Section -->
+        <div class="info-section">
+            <h1>🏆 Precision Series: The Breath Gap</h1>
+            <table class="info-table">
+                <tr>
+                    <td>Name:</td>
+                    <td>Precision Series: The 30-Point Gap</td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td class="status-finished">1.400 games played
+						<a href="https://drive.google.com/uc?export=dounload&id=" class="btn-download" style="color: #1234ab">
+							Download Pgn File(Zip)
+						</a>
+					</td>
+                </tr>
+                <tr>
+                    <td>Time Control:</td>
+                    <td title="(5Pct) indicates the engine was tested using exactly 5% of the standard 3m + 2s Blitz time control.">Ultra-Bullet(9s + 0.1s inc), Hash: 16MB</td>
+                </tr>
+                <tr>
+                    <td>Openings:</td>
+                    <td><a href="../Openings/Gauntlet_Openings.pgn" download="">Openings</a></td>
+                </tr>
+                <tr>
+                    <td>GUI:</td>
+                    <td><a href="http://www.playwitharena.de/" target="_blank">ArenaGUI 3.5.1</a></td>
+                </tr>
+                <tr>
+                    <td>Hardware:</td>
+                    <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
+                </tr>
+                <tr>
+                    <td>OS:</td>
+                    <td>Windows 11 Pro x64</td>
+                </tr>
+            <tr>
+              <td>Environment:</td>
+              <td>Local Testing Lab</td>
+            </tr>
+            </table>
+        </div>
+
+        <!-- Rankings Section -->
+        <div class="rankings-section">
+            <h1>📊 Crosstable - NewVersions-PrecisionSeries</h1>
+            <div class="table-wrapper">
+                <table id="rankingsTable">
+                    <thead>
+                        <tr>
+							<th class="sortable" data-column="0">Rank</th>
+							<th class="sortable" data-column="1" title="(5Pct) indicates the engine was tested using exactly 5% of the standard 3m + 2s Blitz time control.">Team</th>
+							<th class="sortable" data-column="2">Points</th>
+							<th class="sortable" data-column="3">Games</th>
+							<th class="sortable sorted-desc" data-column="4">Elo</th>
+							<th class="sortable" data-column="5">Delta</th>
+							<th class="sortable" data-column="6">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../data/NewVersions-PrecisionSeries.js"></script>
+    <script src="sort_roundrobin.js"></script>
+
+</body>
+</html>

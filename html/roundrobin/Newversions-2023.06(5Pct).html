@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Versions-2023.06(5Pct)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        body.dark-mode .theme-toggle {
+            background: #e94560;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background: #ff6b6b;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        body.dark-mode .info-section {
+            background: #0f3460;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        body.dark-mode h1 {
+            color: #e8e8e8;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .info-table tr {
+            border-bottom: 2px solid #e0e0e0;
+            transition: background 0.3s;
+        }
+
+        body.dark-mode .info-table tr {
+            border-bottom: 2px solid #1a1a2e;
+        }
+
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .info-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        body.dark-mode .info-table tr:hover {
+            background: #1a1a2e;
+        }
+
+        .info-table td {
+            padding: 16px;
+        }
+
+        .info-table td:first-child {
+            width: 150px;
+            font-weight: bold;
+            color: #667eea;
+            border-right: 2px solid #e0e0e0;
+        }
+
+        body.dark-mode .info-table td:first-child {
+            color: #e94560;
+            border-right: 2px solid #1a1a2e;
+        }
+
+        .info-table td:last-child {
+            color: #333;
+        }
+
+        body.dark-mode .info-table td:last-child {
+            color: #e8e8e8;
+        }
+
+        .info-table a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .info-table a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        body.dark-mode .info-table a {
+            color: #e94560;
+        }
+
+        body.dark-mode .info-table a:hover {
+            color: #ff6b6b;
+        }
+
+        .status-finished {
+            color: #27ae60 !important;
+            font-weight: bold;
+        }
+
+        body.dark-mode .status-finished {
+            color: #2ecc71 !important;
+        }
+
+        .status-ongoing {
+            color: #f39c12 !important;
+            font-weight: bold;
+        }
+
+        body.dark-mode .status-ongoing {
+            color: #f1c40f !important;
+        }
+
+        .rankings-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        body.dark-mode .rankings-section {
+            background: #0f3460;
+            color: #e8e8e8;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        body.dark-mode thead {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+        }
+
+        th {
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        th:first-child,
+        th:nth-child(3),
+        th:nth-child(4),
+        th:nth-child(5),
+        th:nth-child(6),
+        th:nth-child(7) {
+            text-align: right;
+        }
+
+        th:nth-child(2) {
+            text-align: center;
+        }
+
+        th:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        th.sortable::after {
+            content: ' ⇅';
+            opacity: 0.5;
+            font-size: 0.8em;
+        }
+
+        th.sorted-asc::after {
+            content: ' ▲';
+            opacity: 1;
+        }
+
+        th.sorted-desc::after {
+            content: ' ▼';
+            opacity: 1;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        body.dark-mode td {
+            border-bottom: 1px solid #333;
+        }
+
+        td:first-child,
+        td:nth-child(3),
+        td:nth-child(4),
+        td:nth-child(5),
+        td:nth-child(6),
+        td:nth-child(7) {
+            text-align: right;
+            padding-right: 15px;
+        }
+
+        tbody tr {
+            transition: all 0.3s;
+        }
+
+        tbody tr:hover {
+            background: #f5f5f5;
+            transform: scale(1.01);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode tbody tr:hover {
+            background: #1a1a2e;
+        }
+
+        .rank {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        body.dark-mode .rank {
+            color: #e94560;
+        }
+
+        .team-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        body.dark-mode .team-name {
+            color: #e8e8e8;
+        }
+
+        .elo-rating {
+            font-weight: bold;
+            color: #764ba2;
+            font-size: 1.1em;
+        }
+
+        body.dark-mode .elo-rating {
+            color: #ff6b6b;
+        }
+
+        .delta {
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .delta.positive {
+            color: #27ae60;
+            background: #d5f4e6;
+        }
+
+        .delta.negative {
+            color: #e74c3c;
+            background: #fadbd8;
+        }
+
+        body.dark-mode .delta.positive {
+            color: #2ecc71;
+            background: #1a4d2e;
+        }
+
+        body.dark-mode .delta.negative {
+            color: #ff6b6b;
+            background: #4d1f1f;
+        }
+
+        .top-3 {
+            background: linear-gradient(90deg, #ffe4b3 0%, #ffffff 100%);
+        }
+
+        body.dark-mode .top-3 {
+            background: linear-gradient(90deg, #2d4059 0%, #0f3460 100%);
+        }
+
+        .top-3 .rank {
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .info-section,
+            .rankings-section {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .info-table td {
+                padding: 12px;
+                font-size: 0.9em;
+            }
+
+            .info-table td:first-child {
+                width: 120px;
+            }
+
+            th, td {
+                padding: 8px 5px;
+                font-size: 0.9em;
+            }
+
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+        }
+    .nav-back {
+        display: inline-block;
+        background-color: #111;
+        color: yellow;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 25px;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+    }
+
+    .nav-back:hover {
+        opacity: 1;
+        color: #fff;  <!-- var(--tag-bg); -->
+    }
+  </style>
+</head>
+<body>
+	<!-- <a href="../index.html" class="nav-back" style="font-weight: bold">&larr;Back to Overview</a> -->
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    
+    <div class="container">
+        <!-- Tournament Info Section -->
+        <div class="info-section">
+            <h1>🏆 New Versions-2023.06</h1>
+            <table class="info-table">
+                <tr>
+                    <td>Name:</td>
+                    <td>New Versions-2023.06</td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td class="status-finished">1.520 games played</td>
+                </tr>
+                <tr>
+                    <td>Time Control:</td>
+                    <td>Ultra-Bullet(9s + 0.1s inc), Hash: 16MB</td>
+                </tr>
+                <tr>
+                    <td>Openings:</td>
+                    <td><a href="../Openings/Gauntlet_Openings.pgn" download="">Openings</a></td>
+                </tr>
+                <tr>
+                    <td>GUI:</td>
+                    <td><a href="http://www.playwitharena.de/" target="_blank">ArenaGUI 3.5.1</a></td>
+                </tr>
+                <tr>
+                    <td>Hardware:</td>
+                    <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
+                </tr>
+                <tr>
+                    <td>OS:</td>
+                    <td>Windows 10 Pro x64</td>
+                </tr>
+            <tr>
+              <td>Environment:</td>
+              <td>Local Testing Lab</td>
+            </tr>
+            </table>
+        </div>
+
+        <!-- Rankings Section -->
+        <div class="rankings-section">
+            <h1>📊 Crosstable - New Versions-2023.06</h1>
+            <div class="table-wrapper">
+                <table id="rankingsTable">
+                    <thead>
+                        <tr>
+							<th class="sortable" data-column="0">Rank</th>
+							<th class="sortable" data-column="1" title="(5Pct) indicates the engine was tested using exactly 5% of the standard 3m + 2s Blitz time control.">Team</th>
+							<th class="sortable" data-column="2">Points</th>
+							<th class="sortable" data-column="3">Games</th>
+							<th class="sortable sorted-desc" data-column="4">Elo</th>
+							<th class="sortable" data-column="5">Delta</th>
+							<th class="sortable" data-column="6">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CONFIGURATION SECTION - EDIT THIS FOR EACH FILE
+        // ============================================
+        
+        // All tournament participants (no fixed team in round-robin)
+        const data = [
+            [1, "RubiChess 20221203 x64(AVX2-5Pct)", 120.5, 144, 2710.1, 4.2, 83.6],
+            [2, "Stockfish 14 x64(5Pct)", 118.0, 144, 2763.0, -5.0, 81.9],
+            [3, "Stockfish 15 x64(5Pct)", 117.5, 144, 2777.0, -6.0, 81.5],
+            [4, "RubiChess 20230410 x64(AVX2-5Pct)", 117.0, 144, 2714.6, 0.6, 81.2],
+            [5, "Berserk 11.0 x64(BMI2-5Pct)", 115.5, 152, 2648.0, 3.0, 75.9],
+            [6, "Clover 4.1 x64(AVX2-5Pct)", 109.0, 152, 2628.1, 0.2, 71.7],
+            [7, "Igel 3.5.0 x64(BMI2-5Pct)", 109.0, 152, 2633.3, 0.4, 71.7],
+            [8, "Booot 7.1 x64(AVX2-5Pct)", 102.0, 152, 2569.5, 1.5, 67.1],
+            [9, "Viridithas 10.0.0 x64(AVX2-5Pct)", 99.5, 152, 2590.5, -3.5, 65.4],
+            [10, "Caissa 1.9.0 x64(BMI2-5Pct)", 95.5, 152, 2542.8, -0.2, 62.8],
+            [11, "Critter 1.6a x64(5Pct)", 62.0, 152, 2283.1, 3.1, 40.7],
+            [12, "Svart 5.0 x64(AVX2-5Pct)", 53.0, 152, 2284.6, -2.3, 34.8],
+            [13, "Nalwald 17.1 x64(BMI2-5Pct)", 49.0, 144, 2239.0, 2.0, 34.7],
+            [14, "Atlas 4.35 x64(AVX2-5Pct)", 43.5, 144, 2186.5, 4.5, 30.2],
+            [15, "Nalwald 17.0 x64(BMI2-5Pct)", 39.5, 144, 2216.5, -2.5, 27.4],
+            [16, "Carp 2.0.0 x64(5Pct)", 36.5, 152, 2182.3, -3.6, 24.0],
+            [17, "Peacekeeper 1.60 x64(5Pct)", 30.0, 152, 2074.0, 2.0, 19.7],
+            [18, "Midnight 6.0 x64(5Pct)", 29.5, 152, 2055.1, 3.1, 19.4],
+            [19, "Atlas 4.25 x64(AVX2-5Pct)", 24.5, 144, 2116.3, -4.7, 17.3],
+            [20, "Altair 3.0.0 x64(5Pct)", 17.0, 152, 1969.5, -0.5, 11.1]
+        ];
+
+        // Initial sort configuration
+        // column: which column to sort by initially (0=Rank, 1=Engine, 2=Score, etc.)
+        // ascending: true for ascending, false for descending
+        const initialSort = { column: 4, ascending: false };
+
+        // ============================================
+        // END CONFIGURATION SECTION
+        // ============================================
+
+        // Automatically highlight teams with top 3 positive delta values
+        let highlightedTeams = new Set();
+        
+        function calculateHighlightedTeams() {
+            const positiveDeltas = data
+                .filter(row => row[5] > 0)
+                .sort((a, b) => b[5] - a[5])
+                .slice(0, 3);
+            
+            highlightedTeams = new Set(positiveDeltas.map(row => row[1]));
+        }
+        
+        calculateHighlightedTeams();
+
+        let currentSort = { ...initialSort };
+
+        function renderTable(sortedData) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            // Render all teams (all sortable in round-robin)
+            sortedData.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                if (highlightedTeams.has(row[1])) {
+                    tr.classList.add('top-3');
+                }
+
+                const deltaClass = row[5] > 0 ? 'positive' : 'negative';
+                const deltaSign = row[5] > 0 ? '+' : '';
+                const deltaFormatted = row[5] === 0 ? '0.0' : `${deltaSign}${row[5].toFixed(1)}`;
+
+                tr.innerHTML = `
+                    <td class="rank">${row[0]}</td>
+                    <td class="team-name">${row[1]}</td>
+                    <td>${row[2].toFixed(1)}</td>
+                    <td>${row[3]}</td>
+                    <td class="elo-rating">${row[4].toFixed(1)}</td>
+                    <td><span class="delta ${deltaClass}">${deltaFormatted}</span></td>
+                    <td>${row[6].toFixed(1)}</td>
+                `;
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        function sortData(column) {
+            const isAscending = currentSort.column === column ? !currentSort.ascending : true;
+            currentSort = { column, ascending: isAscending };
+
+            const sorted = [...data].sort((a, b) => {
+                let valA = a[column];
+                let valB = b[column];
+
+                if (typeof valA === 'string' && typeof valB === 'string') {
+                    return isAscending 
+                        ? valA.localeCompare(valB)
+                        : valB.localeCompare(valA);
+                }
+
+                const numA = parseFloat(valA);
+                const numB = parseFloat(valB);
+
+                return isAscending ? numA - numB : numB - numA;
+            });
+
+            updateSortIndicators(column, isAscending);
+            renderTable(sorted);
+        }
+
+        function updateSortIndicators(column, isAscending) {
+            document.querySelectorAll('th').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc');
+            });
+
+            const th = document.querySelector(`th[data-column="${column}"]`);
+            th.classList.add(isAscending ? 'sorted-asc' : 'sorted-desc');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.querySelector('.theme-toggle');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.textContent = '☀️ Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                btn.textContent = '🌙 Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.theme-toggle').textContent = '☀️ Light Mode';
+        }
+
+        document.querySelectorAll('th.sortable').forEach(th => {
+            th.addEventListener('click', () => {
+                const column = parseInt(th.dataset.column);
+                sortData(column);
+            });
+        });
+
+        sortData(initialSort.column);
+    </script>
+</body>
+</html>
