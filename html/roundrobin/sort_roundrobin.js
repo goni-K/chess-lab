@@ -48,7 +48,7 @@ function renderTable(sortedData) {
 			<td>${row[3]}</td>
 			<td class="elo-rating">${row[4].toFixed(1)}</td>
 			<td><span class="delta ${deltaClass}">${deltaFormatted}</span></td>
-			<td>${row[6].toFixed(1)}</td>
+			<td>${row[6].toFixed(1)}%</td>
 		`;
 
 		tbody.appendChild(tr);
