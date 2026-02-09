@@ -10,7 +10,6 @@
   <sub>View the engine in action via GitHub Pages</sub>
   <br>
   </div>
----
 
  # ⏱️ Time-Control Hierarchy: 
 The "5% & 1% Philosophy"
