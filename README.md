@@ -7,7 +7,6 @@
     <img src="https://img.shields.io/badge/LIVE%20DEMO-ENTER%20THE%20LAB-orange?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
     <a href="https://kovaci.netlify.app/">
       <img src="https://img.shields.io/badge/Enter-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Enter">
-      <img src="https://img.shields.io/website?url=https://domain.com/home.html&style=for-the-badge&logo=googlechrome&logoColor=white&label=%20%20Enter%20%20" alt="Website">
     </a>
   </a>
   <br>
