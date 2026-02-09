@@ -1,3 +1,5 @@
+# 🏆 The Real Chess Engine Handicap Championship (RChessEHC)
+
 # 🏛️ Precision Series: The Architecture of Time
 <div align="center">
   <br>
