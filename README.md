@@ -1,19 +1,23 @@
 # 🏆 The Real Chess Engine Handicap Championship (RChessEHC)
-
-# 🏛️ Precision Series: The Architecture of Time
 <div align="center">
   <br>
-   <p><i>"In chess, as in time, stillness is an illusion. Every centipawn is a heartbeat in motion."</i></p>
     <a href="https://goni-k.github.io/chess-lab/">
-    <img src="https://img.shields.io/badge/LIVE%20DEMO-ENTER%20THE%20LAB-orange?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo"></a>
+    <img src="https://img.shields.io/badge/LIVE%20DEMO-ENTER%20THE%20LAB-orange?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
+    </a>
     <a href="https://kovaci.netlify.app/">
-    <img src="https://img.shields.io/badge/WEBSITE-VISIT%20MY%20SITE-007acc?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Visit My Website"></a>
+    <img src="https://img.shields.io/badge/WEBSITE-VISIT%20MY%20SITE-007acc?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Visit My Website">
+    </a>
     <br>
   <sub>View the engine in action via GitHub Pages</sub>
   <br>
   </div>
+ 
+## 🏛️ Precision Series: The Architecture of Time
+   <p>
+   <i>"In chess, as in time, stillness is an illusion. Every centipawn is a heartbeat in motion."</i>
+   </p>
 
- # ⏱️ Time-Control Hierarchy: 
+ ## ⏱️ Time-Control Hierarchy: 
 The "5% & 1% Philosophy"
  In this ecosystem, time is the ultimate filter. Using surgical scaling, I challenge engine efficiency by compressing standard Blitz controls into raw "Breath Gaps."
 
