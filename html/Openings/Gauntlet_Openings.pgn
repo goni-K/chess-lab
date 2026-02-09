@@ -1,0 +1,936 @@
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "E60"]
+[Opening "King's Indian Defense"]
+[Variation "Normal Variation, King's Knight Variation"]
+[PlyCount "5"]
+
+1. d4 Nf6 2. c4 g6 3. Nf3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "D10"]
+[Opening "Slav Defense"]
+[Variation "General"]
+[PlyCount "4"]
+
+1. d4 d5 2. c4 c6
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "E10"]
+[Opening "Indian Game"]
+[Variation "Anti-Nimzo-indian"]
+[PlyCount "5"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "D30"]
+[Opening "Queen's Gambit Declined"]
+[Variation "General"]
+[PlyCount "4"]
+
+1. d4 d5 2. c4 e6
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "C41"]
+[Opening "Philidor Defense"]
+[Variation "Lion Variation"]
+[PlyCount "8"]
+
+1. e4 e5 2. Nf3 d6 3. d4 Nd7 4. Nc3 Ngf6
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "D11"]
+[Opening "Slav Defense"]
+[Variation "Modern Line"]
+[PlyCount "5"]
+
+1. d4 d5 2. c4 c6 3. Nf3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "C55"]
+[Opening "Italian Game"]
+[Variation "Two Knights Defense, Modern Bishop's Opening"]
+[PlyCount "7"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. d3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "B50"]
+[Opening "Sicilian Defense"]
+[Variation "Delayed Alapin"]
+[PlyCount "5"]
+
+1. e4 c5 2. Nf3 d6 3. c3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "B50"]
+[Opening "Sicilian Defense"]
+[Variation "Modern Variations"]
+[PlyCount "4"]
+
+1. e4 c5 2. Nf3 d6
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "B25"]
+[Opening "Sicilian Defense"]
+[Variation "Closed Variation, Traditional"]
+[PlyCount "4"]
+
+1. e4 c5 2. Nc3 Nc6
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "E00"]
+[Opening "Catalan Opening"]
+[Variation "General"]
+[PlyCount "5"]
+
+1. d4 Nf6 2. c4 e6 3. g3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "D02"]
+[Opening "Queen Pawn Game"]
+[Variation "Symmetrical Variation"]
+[PlyCount "4"]
+
+1. d4 d5 2. Nf3 Nf6
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "B13"]
+[Opening "Caro-Kann Defense"]
+[Variation "Exchange Variation"]
+[PlyCount "5"]
+
+1. e4 c6 2. d4 d5 3. exd5
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "E32"]
+[Opening "Nimzo-Indian Defense"]
+[Variation "Classical Variation"]
+[PlyCount "7"]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Qc2
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "B40"]
+[Opening "Sicilian Defense"]
+[Variation "Delayed Alapin Variation"]
+[PlyCount "5"]
+
+1. e4 c5 2. Nf3 e6 3. c3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "A48"]
+[Opening "Indian Game"]
+[Variation "London System"]
+[PlyCount "5"]
+
+1. d4 Nf6 2. Nf3 g6 3. Bf4
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "B23"]
+[Opening "Sicilian Defense"]
+[Variation "Grand Prix Attack"]
+[PlyCount "5"]
+
+1. e4 c5 2. Nc3 Nc6 3. f4
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "B53"]
+[Opening "Sicilian Defense"]
+[Variation "Chekhover Variation"]
+[PlyCount "7"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Qxd4
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "B12"]
+[Opening "Caro-Kann Defense"]
+[Variation "Advance Variation, Short Variation"]
+[PlyCount "7"]
+
+1. e4 c6 2. d4 d5 3. e5 Bf5 4. Nf3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "B24"]
+[Opening "Sicilian Defense"]
+[Variation "Closed Variation, Fianchetto Variation"]
+[PlyCount "5"]
+
+1. e4 c5 2. Nc3 Nc6 3. g3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "A49"]
+[Opening "Indian Game"]
+[Variation "Pseudo-King's Indian Variation"]
+[PlyCount "4"]
+
+1. d4 Nf6 2. Nf3 g6
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "D85"]
+[Opening "Gruenfeld Defense"]
+[Variation "Exchange Variation"]
+[PlyCount "8"]
+
+1. d4 Nf6 2. c4 g6 3. Nc3 d5 4. cxd5 Nxd5
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "D10"]
+[Opening "Slav Defense"]
+[Variation "Exchange Variation"]
+[PlyCount "5"]
+
+1. d4 d5 2. c4 c6 3. cxd5
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "A46"]
+[Opening "Indian Game"]
+[Variation "London System"]
+[PlyCount "5"]
+
+1. d4 Nf6 2. Nf3 e6 3. Bf4
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "C60"]
+[Opening "Spanish Game"]
+[Variation "General"]
+[PlyCount "5"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "D12"]
+[Opening "Slav Defense"]
+[Variation "Quiet Variation, Schallopp Defense"]
+[PlyCount "8"]
+
+1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. e3 Bf5
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "E11"]
+[Opening "Bogo-Indian Defense"]
+[Variation "GrA?nfeld Variation"]
+[PlyCount "7"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 Bb4+ 4. Nbd2
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "D37"]
+[Opening "Queen's Gambit Declined"]
+[Variation "Three Knights Variation, General"]
+[PlyCount "7"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "A49"]
+[Opening "Indian Game"]
+[Variation "Przepiorka Variation"]
+[PlyCount "5"]
+
+1. d4 Nf6 2. Nf3 g6 3. g3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "D11"]
+[Opening "Slav Defense"]
+[Variation "Quiet Variation"]
+[PlyCount "7"]
+
+1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. e3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "A46"]
+[Opening "Indian Game"]
+[Variation "Yusupov-Rubinstein System"]
+[PlyCount "5"]
+
+1. d4 Nf6 2. Nf3 e6 3. e3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "E11"]
+[Opening "Bogo-Indian Defense"]
+[Variation "GrA?nfeld Variation"]
+[PlyCount "7"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 Bb4+ 4. Nbd2
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "D37"]
+[Opening "Queen's Gambit Declined"]
+[Variation "Three Knights Variation, General"]
+[PlyCount "7"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "A49"]
+[Opening "Indian Game"]
+[Variation "Przepiorka Variation"]
+[PlyCount "5"]
+
+1. d4 Nf6 2. Nf3 g6 3. g3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "D11"]
+[Opening "Slav Defense"]
+[Variation "Quiet Variation"]
+[PlyCount "7"]
+
+1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. e3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[ECO "A46"]
+[Opening "Indian Game"]
+[Variation "Yusupov-Rubinstein System"]
+[PlyCount "5"]
+
+1. d4 Nf6 2. Nf3 e6 3. e3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "C53"]
+[Opening "Italian Game, Classical Variation"]
+[Variation "Giuoco Pianissimo"]
+[PlyCount "9"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. c3 Nf6 5. d3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "E04"]
+[Opening "Catalan Opening"]
+[Variation "Open Defense"]
+[PlyCount "9"]
+
+1. d4 Nf6 2. c4 e6 3. g3 d5 4. Bg2 dxc4 5. Nf3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "C77"]
+[Opening "Spanish Game, Morphy Defense"]
+[Variation "Anderssen Variation"]
+[PlyCount "9"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. d3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "E90"]
+[Opening "King's Indian Defense, Normal Variation"]
+[Variation "Rare Defenses"]
+[PlyCount "9"]
+
+1. d4 Nf6 2. c4 g6 3. Nc3 Bg7 4. e4 d6 5. Nf3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "C42"]
+[Opening "Russian Game"]
+[Variation "Nimzowitsch Attack"]
+[PlyCount "9"]
+
+1. e4 e5 2. Nf3 Nf6 3. Nxe5 d6 4. Nf3 Nxe4 5. Nc3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "C02"]
+[Opening "French Defense, Advance Variation"]
+[Variation "Paulsen Attack"]
+[PlyCount "9"]
+
+1. e4 e6 2. d4 d5 3. e5 c5 4. c3 Nc6 5. Nf3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "B36"]
+[Opening "Sicilian Defense, Accelerated Dragon"]
+[Variation "Maroczy Bind, General"]
+[PlyCount "9"]
+
+1. e4 c5 2. Nf3 Nc6 3. d4 cxd4 4. Nxd4 g6 5. c4
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "A58"]
+[Opening "Benko Gambit, Accepted"]
+[Variation "Fully Accepted Variation"]
+[PlyCount "9"]
+
+1. d4 Nf6 2. c4 c5 3. d5 b5 4. cxb5 a6 5. bxa6
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "E46"]
+[Opening "Nimzo-Indian Defense"]
+[Variation "Reshevsky Variation"]
+[PlyCount "9"]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. e3 O-O 5. Ne2
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "D91"]
+[Opening "Gruenfeld Defense, Three Knights Variation"]
+[Variation "Petrosian System"]
+[PlyCount "9"]
+
+1. d4 Nf6 2. c4 g6 3. Nc3 d5 4. Nf3 Bg7 5. Bg5
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "C45"]
+[Opening "Scotch Game, Scotch Gambit"]
+[Variation "Advance Variation"]
+[PlyCount "9"]
+
+1. e4 e5 2. Nf3 Nc6 3. d4 exd4 4. Bc4 Nf6 5. e5
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "B54"]
+[Opening "Sicilian Defense"]
+[Variation "Prins Variation"]
+[PlyCount "9"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. f3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "B22"]
+[Opening "Sicilian Defense, Alapin Variation"]
+[Variation "Smith-Morra Declined"]
+[PlyCount "8"]
+
+1. e4 c5 2. c3 Nf6 3. e5 Nd5 4. d4 cxd4
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????. ??. ??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "D43"]
+[Opening "Semi-Slav Defense"]
+[Variation "General"]
+[PlyCount "8"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c6
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????. ??. ??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "B43"]
+[Opening "Sicilian Defense, Kan Variation"]
+[Variation "Knight Variation"]
+[PlyCount "9"]
+
+1. e4 c5 2. Nf3 e6 3. d4 cxd4 4. Nxd4 a6 5. Nc3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????. ??. ??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "E06"]
+[Opening "Catalan Opening"]
+[Variation "Closed Variation"]
+[PlyCount "9"]
+
+1. d4 Nf6 2. c4 e6 3. g3 d5 4. Bg2 Be7 5. Nf3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????. ??. ??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "D35"]
+[Opening "Queen's Gambit Declined, Exchange Variation"]
+[Variation "Positional Variation"]
+[PlyCount "9"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. cxd5 exd5 5. Bg5
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????. ??. ??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "B42"]
+[Opening "Sicilian Defense, Kan Variation"]
+[Variation "Modern Variation"]
+[PlyCount "9"]
+
+1. e4 c5 2. Nf3 e6 3. d4 cxd4 4. Nxd4 a6 5. Bd3
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????. ??. ??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "A14"]
+[Opening "English Opening, Agincourt Defense"]
+[Variation "Neo Catalan Declined"]
+[PlyCount "9"]
+
+1. c4 e6 2. Nf3 d5 3. g3 Nf6 4. Bg2 Be7 5. O-O
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????. ??. ??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "C10"]
+[Opening "French Defense, Rubinstein Variation"]
+[Variation "Blackburne Defense"]
+[PlyCount "8"]
+
+1. e4 e6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Nd7
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????. ??. ??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "E11"]
+[Opening "Bogo-Indian Defense"]
+[Variation "Nimzowitsch Variation"]
+[PlyCount "8"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 Bb4+ 4. Bd2 Qe7
+1/2-1/2
+
