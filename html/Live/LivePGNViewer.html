@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live PGN Viewer - Houdini vs Stockfish</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        h1 {
+            text-align: center;
+            color: #1e3c72;
+            margin-bottom: 30px;
+        }
+        .viewer-layout {
+            display: grid;
+            grid-template-columns: 640px 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        @media (max-width: 1200px) {
+            .viewer-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        .board-section {
+            position: relative;
+        }
+        
+        /* Chess Board Styling - FIXED SIZE */
+        .chess-board {
+            border: 2px solid #333;
+            display: grid;
+            grid-template-columns: repeat(8, 75px);
+            grid-template-rows: repeat(8, 75px);
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .square {
+            width: 75px;
+            height: 75px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+        }
+        .square.light {
+            background: #f0d9b5;
+        }
+        .square.dark {
+            background: #b58863;
+        }
+        .square.highlight {
+            background: #baca44 !important;
+        }
+        .piece {
+            user-select: none;
+            -webkit-user-select: none;
+            font-size: 56px;
+            line-height: 1;
+            display: block;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        button {
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #2a5298;
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .info-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .game-info {
+            margin-bottom: 20px;
+        }
+        .game-info h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+        .game-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .moves-list {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+        }
+        .move {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 2px;
+            background: #e9ecef;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .move:hover {
+            background: #667eea;
+            color: white;
+        }
+        .move.active {
+            background: #1e3c72;
+            color: white;
+            font-weight: bold;
+        }
+        .pgn-input {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            resize: vertical;
+        }
+        .game-selector {
+            margin-bottom: 20px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .status {
+            text-align: center;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+        input[type="file"] {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .btn-load {
+            background: #28a745;
+        }
+        .btn-load:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>♟️ Live PGN Viewer</h1>
+        
+        <div class="pgn-input">
+            <h3>Load PGN File</h3>
+            <input type="file" id="pgn-file" accept=".pgn">
+            <p style="margin-top: 10px; color: #666;">Or paste PGN below:</p>
+            <textarea id="pgn-text" placeholder="Paste PGN here..."></textarea>
+            <button class="btn-load" onclick="loadPGN()">📂 Load Games</button>
+        </div>
+
+        <div class="game-selector" id="game-selector-div" style="display: none;">
+            <h3>Select Game</h3>
+            <select id="game-select" onchange="loadSelectedGame()">
+                <!-- Options populated by JS -->
+            </select>
+        </div>
+
+        <div class="viewer-layout">
+            <div class="board-section">
+                <div id="board" class="chess-board">
+                    <!-- Board squares will be generated by JS -->
+                </div>
+                <div class="controls">
+                    <button onclick="goToStart()" title="Go to start (Home)">⏮️ Start</button>
+                    <button onclick="previousMove()" title="Previous move (←)">◀️ Prev</button>
+                    <button onclick="nextMove()" title="Next move (→)">▶️ Next</button>
+                    <button onclick="goToEnd()" title="Go to end (End)">⏭️ End</button>
+                    <button onclick="flipBoard()" title="Flip board">🔄 Flip</button>
+                </div>
+                <div class="status" id="status">Load a PGN file to begin</div>
+            </div>
+
+            <div class="info-section">
+                <div class="game-info" id="game-info">
+                    <h3>Game Information</h3>
+                    <p>No game loaded</p>
+                </div>
+                <h3>Moves</h3>
+                <div class="moves-list" id="moves-list">
+                    <p style="color: #999;">Load a game to see moves...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chess.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+    <script>
+        let game = new Chess();
+        let games = [];
+        let currentGame = 0;
+        let moveHistory = [];
+        let currentMoveIndex = 0;
+        let boardFlipped = false;
+
+        // Unicode chess pieces
+        const pieces = {
+            'K': '♔', 'Q': '♕', 'R': '♖', 'B': '♗', 'N': '♘', 'P': '♙',
+            'k': '♚', 'q': '♛', 'r': '♜', 'b': '♝', 'n': '♞', 'p': '♟'
+        };
+
+        // Initialize board
+        function createBoard() {
+            const boardDiv = document.getElementById('board');
+            boardDiv.innerHTML = '';
+            
+            const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+            const ranks = ['8', '7', '6', '5', '4', '3', '2', '1'];
+            
+            if (boardFlipped) {
+                files.reverse();
+                ranks.reverse();
+            }
+            
+            ranks.forEach((rank, rankIndex) => {
+                files.forEach((file, fileIndex) => {
+                    const square = document.createElement('div');
+                    const isLight = (rankIndex + fileIndex) % 2 === 0;
+                    square.className = 'square ' + (isLight ? 'light' : 'dark');
+                    square.id = file + rank;
+                    boardDiv.appendChild(square);
+                });
+            });
+            
+            updateBoard();
+        }
+
+        function updateBoard() {
+            const board = game.board();
+            
+            // Clear all squares
+            document.querySelectorAll('.square').forEach(sq => {
+                sq.innerHTML = '';
+                sq.classList.remove('highlight');
+            });
+            
+            // Place pieces
+            const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+            
+            board.forEach((row, rowIndex) => {
+                row.forEach((piece, colIndex) => {
+                    if (piece) {
+                        const file = files[colIndex];
+                        const rank = 8 - rowIndex;
+                        const squareId = file + rank;
+                        const squareEl = document.getElementById(squareId);
+                        
+                        if (squareEl) {
+                            const pieceEl = document.createElement('span');
+                            pieceEl.className = 'piece';
+                            pieceEl.textContent = pieces[piece.type.toUpperCase()] || pieces[piece.type];
+                            pieceEl.style.color = piece.color === 'w' ? '#fff' : '#000';
+                            pieceEl.style.textShadow = piece.color === 'w' ? 
+                                '0 0 3px #000, 0 0 5px #000' : 
+                                '0 0 3px #fff, 0 0 5px #fff';
+                            squareEl.appendChild(pieceEl);
+                        }
+                    }
+                });
+            });
+        }
+
+        // Load PGN file
+        document.getElementById('pgn-file').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('pgn-text').value = event.target.result;
+                    loadPGN();
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        function loadPGN() {
+            const pgnText = document.getElementById('pgn-text').value;
+            if (!pgnText.trim()) {
+                alert('Please provide PGN data');
+                return;
+            }
+
+            games = parsePGNGames(pgnText);
+            
+            if (games.length === 0) {
+                alert('No valid games found in PGN');
+                return;
+            }
+
+            const selector = document.getElementById('game-select');
+            selector.innerHTML = '';
+            games.forEach((g, i) => {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `Game ${i + 1}: ${g.white} vs ${g.black} (${g.result})`;
+                selector.appendChild(option);
+            });
+
+            document.getElementById('game-selector-div').style.display = 'block';
+            currentGame = 0;
+            loadSelectedGame();
+        }
+
+        function parsePGNGames(pgnText) {
+            const gameBlocks = pgnText.split(/\n\n(?=\[Event)/);
+            return gameBlocks.map(block => {
+                const lines = block.split('\n');
+                const headers = {};
+                let moves = '';
+
+                lines.forEach(line => {
+                    const headerMatch = line.match(/\[(\w+)\s+"(.+)"\]/);
+                    if (headerMatch) {
+                        headers[headerMatch[1]] = headerMatch[2];
+                    } else if (!line.startsWith('[') && line.trim()) {
+                        moves += line + ' ';
+                    }
+                });
+
+                return {
+                    white: headers.White || 'Unknown',
+                    black: headers.Black || 'Unknown',
+                    result: headers.Result || '*',
+                    date: headers.Date || '????.??.??',
+                    event: headers.Event || 'Unknown Event',
+                    pgn: block,
+                    moves: moves.trim()
+                };
+            }).filter(g => g.moves);
+        }
+
+        function loadSelectedGame() {
+            currentGame = parseInt(document.getElementById('game-select').value);
+            const gameData = games[currentGame];
+            
+            game = new Chess();
+            
+            try {
+                game.load_pgn(gameData.pgn);
+                moveHistory = game.history({ verbose: true });
+                game.reset();
+            } catch (e) {
+                console.error('Error loading PGN:', e);
+                alert('Error loading game. Please check PGN format.');
+                return;
+            }
+            
+            currentMoveIndex = 0;
+            createBoard();
+            updateGameInfo(gameData);
+            updateMovesList();
+            updateStatus();
+        }
+
+        function updateGameInfo(gameData) {
+            document.getElementById('game-info').innerHTML = `
+                <h3>Game Information</h3>
+                <p><strong>Event:</strong> ${gameData.event}</p>
+                <p><strong>Date:</strong> ${gameData.date}</p>
+                <p><strong>White:</strong> ${gameData.white}</p>
+                <p><strong>Black:</strong> ${gameData.black}</p>
+                <p><strong>Result:</strong> ${gameData.result}</p>
+            `;
+        }
+
+        function updateMovesList() {
+            const movesDiv = document.getElementById('moves-list');
+            movesDiv.innerHTML = '';
+            
+            for (let i = 0; i < moveHistory.length; i += 2) {
+                const moveNum = Math.floor(i / 2) + 1;
+                const whiteMove = moveHistory[i].san;
+                const blackMove = moveHistory[i + 1] ? moveHistory[i + 1].san : '';
+                
+                const moveDiv = document.createElement('div');
+                moveDiv.style.marginBottom = '5px';
+                
+                const numSpan = document.createElement('span');
+                numSpan.textContent = `${moveNum}. `;
+                numSpan.style.fontWeight = 'bold';
+                
+                const whiteSpan = document.createElement('span');
+                whiteSpan.textContent = whiteMove + ' ';
+                whiteSpan.className = 'move' + (i === currentMoveIndex ? ' active' : '');
+                whiteSpan.onclick = () => goToMove(i);
+                
+                moveDiv.appendChild(numSpan);
+                moveDiv.appendChild(whiteSpan);
+                
+                if (blackMove) {
+                    const blackSpan = document.createElement('span');
+                    blackSpan.textContent = blackMove + ' ';
+                    blackSpan.className = 'move' + (i + 1 === currentMoveIndex ? ' active' : '');
+                    blackSpan.onclick = () => goToMove(i + 1);
+                    moveDiv.appendChild(blackSpan);
+                }
+                
+                movesDiv.appendChild(moveDiv);
+            }
+        }
+
+        function goToMove(index) {
+            game.reset();
+            for (let i = 0; i < index; i++) {
+                game.move(moveHistory[i]);
+            }
+            currentMoveIndex = index;
+            updateBoard();
+            updateMovesList();
+            updateStatus();
+        }
+
+        function nextMove() {
+            if (currentMoveIndex < moveHistory.length) {
+                game.move(moveHistory[currentMoveIndex]);
+                currentMoveIndex++;
+                updateBoard();
+                updateMovesList();
+                updateStatus();
+            }
+        }
+
+        function previousMove() {
+            if (currentMoveIndex > 0) {
+                game.undo();
+                currentMoveIndex--;
+                updateBoard();
+                updateMovesList();
+                updateStatus();
+            }
+        }
+
+        function goToStart() {
+            game.reset();
+            currentMoveIndex = 0;
+            updateBoard();
+            updateMovesList();
+            updateStatus();
+        }
+
+        function goToEnd() {
+            goToMove(moveHistory.length);
+        }
+
+        function flipBoard() {
+            boardFlipped = !boardFlipped;
+            createBoard();
+        }
+
+        function updateStatus() {
+            const status = document.getElementById('status');
+            if (moveHistory.length === 0) {
+                status.textContent = 'No moves to display';
+                return;
+            }
+            
+            const turn = game.turn() === 'w' ? 'White' : 'Black';
+            status.textContent = `Move ${currentMoveIndex} of ${moveHistory.length} • ${turn} to move`;
+            
+            if (game.in_checkmate()) {
+                status.textContent += ' • Checkmate!';
+                status.style.background = '#d4edda';
+            } else if (game.in_check()) {
+                status.textContent += ' • Check!';
+                status.style.background = '#fff3cd';
+            } else if (game.in_draw() || game.in_stalemate() || game.in_threefold_repetition()) {
+                status.textContent += ' • Draw';
+                status.style.background = '#e9ecef';
+            } else {
+                status.style.background = '#e9ecef';
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight') nextMove();
+            if (e.key === 'ArrowLeft') previousMove();
+            if (e.key === 'Home') goToStart();
+            if (e.key === 'End') goToEnd();
+        });
+
+        // Initialize
+        createBoard();
+    </script>
+</body>
+</html>

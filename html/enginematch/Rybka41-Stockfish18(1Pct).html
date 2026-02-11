@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Engine Match | Rybka 4.1 vs Stockfish 18</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        .match-summary {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+        .score-display {
+            text-align: center;
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 6px 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background: #f5f5f5;
+        }
+        .winner {
+            background: #d4edda;
+            font-weight: bold;
+        }
+        .loser {
+            background: #f8d7da;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .stat-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        .stat-card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        .game-sequence {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+            line-height: 1.8;
+            margin: 20px 0;
+        }
+        .rybka-win {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .stockfish-win {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .draw {
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏆 Chess Engine Match: Rybka 4.1 vs Stockfish 18</h1>
+  <!-- Tournament Info Section -->
+  <div class="match-summary">
+    <h2>Match Configuration</h2>
+    <table>
+      <tr>
+        <td>Name:</td>
+        <td>Rybka 4.1 vs Stockfish 18</td>
+      </tr>
+      <tr>
+        <td>Status:</td>
+        <td class="status-finished">100 games played 
+		  <a href="https://drive.google.com/uc?export=dounload&id=1XNu6t44EI4_QQtjPvUPscpc6At-OqmxD" class="btn-download" style="color: #1234bc">
+			Download Pgn File(Zip)
+		  </a>
+		</td>
+      </tr>
+      <tr>
+        <td>Time Control:</td>
+        <td>
+		  Blitz (3m + 2s inc), Hash: 128MB, CPU: [1]
+		</td>
+      </tr>
+      <tr>
+        <td>Openings:</td>
+        <td><a href="../Openings/RybkaStockfish_OpeningsTable.html" target="_blank">Openings</a></td>
+      </tr>
+      <tr>
+        <td>GUI:</td>
+        <td><a href="http://www.playwitharena.de/" target="_blank">ArenaGUI 3.5.1</a></td>
+      </tr>
+      <tr>
+        <td>Hardware || OS:</td>
+        <td>Intel i5-4570 3.20GHz | 8GB RAM | Single Thread || Windows 10 Pro x64</td>
+      </tr>
+    </table>
+  </div>
+        <div class="score-display">
+            62 - 38
+        </div>
+        <p style="text-align: center; color: #666; font-size: 1.2em; margin-top: -10px;">
+            Rybka 4.1 Victory
+        </p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>TOTAL GAMES</h3>
+                <div class="value">100</div>
+            </div>
+            <div class="stat-card">
+                <h3>RYBKA WINS</h3>
+                <div class="value">49</div>
+            </div>
+            <div class="stat-card">
+                <h3>STOCKFISH WINS</h3>
+                <div class="value">25</div>
+            </div>
+            <div class="stat-card">
+                <h3>DRAWS</h3>
+                <div class="value">26</div>
+            </div>
+        </div>
+
+        <h2>📊 Detailed Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Engine</th>
+                    <th>Time Control</th>
+                    <th>Hash</th>
+                    <th>Score</th>
+                    <th>W-L-D</th>
+                    <th>Performance Elo</th>
+                    <th>Elo Change</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="winner">
+                    <td>1</td>
+                    <td>Rybka 4.1 x64</td>
+                    <td>3m + 2s</td>
+                    <td>128 MB</td>
+                    <td><strong>62.0</strong></td>
+                    <td>49-25-26</td>
+                    <td>2429</td>
+                    <td style="color: #dc3545;">-31</td>
+                </tr>
+                <tr class="loser">
+                    <td>2</td>
+                    <td>Stockfish 18 x64 (AVX2)</td>
+                    <td>2s + 0.1s</td>
+                    <td>8 MB</td>
+                    <td>38.0</td>
+                    <td>25-49-26</td>
+                    <td>2383</td>
+                    <td style="color: #28a745;">+31</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🎮 Game Sequence (100 games)</h2>
+        <p style="color: #666; font-size: 0.9em;">
+            <span class="rybka-win">1</span> = Rybka win | 
+            <span class="stockfish-win">0</span> = Stockfish win | 
+            <span class="draw">=</span> = Draw
+        </p>
+        
+        <div class="game-sequence">
+            <strong>Rybka as White:</strong><br>
+            <span class="rybka-win">1</span><span class="draw">=</span><span class="rybka-win">11</span><span class="stockfish-win">00</span><span class="rybka-win">11</span><span class="rybka-win">1</span><span class="stockfish-win">00</span><span class="draw">=</span><span class="rybka-win">1</span><span class="draw">=</span><span class="rybka-win">1</span><span class="draw">=</span><span class="rybka-win">1</span><span class="draw">=</span><span class="rybka-win">1</span><span class="draw">==</span><span class="stockfish-win">0</span><span class="rybka-win">1</span><span class="draw">=</span><span class="stockfish-win">0</span><span class="draw">=</span><span class="rybka-win">111</span><span class="stockfish-win">0</span><span class="rybka-win">1</span><span class="stockfish-win">0</span><span class="rybka-win">111</span><span class="draw">=</span><span class="stockfish-win">0</span><span class="rybka-win">11</span><span class="stockfish-win">0</span><span class="rybka-win">1</span><span class="draw">=</span><span class="rybka-win">1</span><span class="draw">=</span><span class="rybka-win">111</span><span class="draw">=</span><span class="stockfish-win">0</span><span class="draw">=</span><span class="stockfish-win">00</span><span class="draw">=</span><span class="stockfish-win">0</span><span class="draw">=</span><span class="stockfish-win">00</span><span class="rybka-win">1</span><span class="stockfish-win">0</span><span class="rybka-win">1</span><span class="draw">=</span><span class="rybka-win">1</span><span class="draw">==</span><span class="rybka-win">1</span><span class="stockfish-win">00</span><span class="draw">==</span><span class="stockfish-win">0</span><span class="draw">=</span><span class="rybka-win">11</span><span class="stockfish-win">0</span><span class="rybka-win">1</span><span class="stockfish-win">0</span><span class="rybka-win">11</span><span class="draw">==</span><span class="rybka-win">11</span><span class="stockfish-win">0</span><span class="rybka-win">1</span><span class="draw">=</span><span class="rybka-win">1111</span><span class="stockfish-win">0</span><span class="rybka-win">11</span><span class="draw">=</span><span class="stockfish-win">0</span><span class="rybka-win">111111</span>
+        </div>
+
+        <h2>📈 Key Insights</h2>
+        <ul style="line-height: 1.8; font-size: 1.05em;">
+            <li><strong>Time handicap effectiveness:</strong> Despite a ~600 Elo strength gap, the 90x time advantage allowed Rybka to win 62% of games</li>
+            <li><strong>Stockfish's resilience:</strong> Even with only 2 seconds starting time, SF18 still won 25% of games</li>
+            <li><strong>Draw rate:</strong> 26% draw rate shows competitive balance despite vastly different time controls</li>
+            <li><strong>Elo performance:</strong> Rybka performed at 2429 Elo (below baseline), Stockfish at 2383 (above baseline given time handicap)</li>
+            <li><strong>GUI impact:</strong> Chess Arena's time management likely contributed to Stockfish timeouts</li>
+        </ul>
+
+        <p style="text-align: center; color: #999; margin-top: 40px; font-size: 0.9em;">
+            Experiment demonstrates that extreme time handicaps can partially compensate for substantial strength differences in chess engines
+        </p>
+    </div>
+</body>
+</html>
