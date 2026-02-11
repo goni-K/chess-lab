@@ -1,7 +1,7 @@
 # 🏆 The Real Chess Engine Handicap Championship (RChessEHC)
 <div align="center">
   <br>
-    <a href="https://goni-k.github.io/chess-lab/">
+    <a href="https://goni-k.github.io/RChessEHC/">
     <img src="https://img.shields.io/badge/LIVE%20DEMO-ENTER%20THE%20LAB-orange?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
     </a>
     <a href="https://kovaci.netlify.app/">
