@@ -49,6 +49,16 @@
             margin-left: 10px;
             animation: pulse 2s infinite;
         }
+        .live-badge2 {
+            display: inline-block;
+            background: #44ff44;
+            color: blue;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-left: 10px;
+            animation: pulse 3s infinite;
+        }
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
@@ -173,8 +183,12 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>⚔️ Chess Engine Battle <span class="live-badge">● LIVE</span></h1>
-            <div class="match-info">Houdini 6.03(Rapid) vs Stockfish 18(Bullet) • 100 Games • Arena Chess GUI</div>
+            <h1>⚔️ Chess Engine Battle</h1>
+            <div class="match-info">
+				<a href="PGN-Viewer.html"><span class="live-badge2">PGN-Viewer</span></a>
+				Houdini 6.03(Rapid) vs Stockfish 18(Bullet) • 100 Games • Arena Chess GUI
+				<a href="Houdini-Stockfish-Statistic-Info.html" class="live-badge">View Statistic-Info</a>
+			</div>
         </div>
 
         <div class="score-board">
@@ -268,12 +282,12 @@
     <script>
         // DATA - UPDATE THIS SECTION EVERY 20 GAMES
         const matchData = {
-            gamesPlayed: 70,
-            houdiniWins: 9,
-            stockfishWins: 25,
-            draws: 36,
-            sequence: "==S==H=S=S==SSS=========H==S===SSS===SS====HSS=SHSHSHS=SSS==SHHS==SSH=", // H=Houdini, S=Stockfish, ==Draw
-            lastUpdate: "2026-02-11 14:35:00"
+            gamesPlayed: 100,
+            houdiniWins: 10,
+            stockfishWins: 41,
+            draws: 49,
+            sequence: "==S==H=S=S==SSS=========HS=S===SSS===SS====HSS=SHSHSHS=SSS==SHHS==SSH==S=S=S===S=S=S=H=SS==SSS=S=SSS", // H=Houdini, S=Stockfish, ==Draw
+            lastUpdate: "2026-02-12 12:00:00"
         };
 
         // AUTO-UPDATE DISPLAY
