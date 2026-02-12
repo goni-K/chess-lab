@@ -5,196 +5,200 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live PGN Viewer - Houdini vs Stockfish</title>
     
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            padding: 20px;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-        }
-        h1 {
-            text-align: center;
-            color: #1e3c72;
-            margin-bottom: 30px;
-        }
-        .viewer-layout {
-            display: grid;
-            grid-template-columns: 640px 1fr;
-            gap: 30px;
-            margin-top: 20px;
-        }
-        @media (max-width: 1200px) {
-            .viewer-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-        .board-section {
-            position: relative;
-        }
-        
-        /* Chess Board Styling - FIXED SIZE */
-        .chess-board {
-            border: 2px solid #333;
-            display: grid;
-            grid-template-columns: repeat(8, 75px);
-            grid-template-rows: repeat(8, 75px);
-            width: 600px;
-            height: 600px;
-            margin: 0 auto;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-        .square {
-            width: 75px;
-            height: 75px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: default;
-        }
-        .square.light {
-            background: #f0d9b5;
-        }
-        .square.dark {
-            background: #b58863;
-        }
-        .square.highlight {
-            background: #baca44 !important;
-        }
-        .piece {
-            user-select: none;
-            -webkit-user-select: none;
-            font-size: 56px;
-            line-height: 1;
-            display: block;
-        }
-        
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        button {
-            background: #1e3c72;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: all 0.3s;
-        }
-        button:hover {
-            background: #2a5298;
-            transform: translateY(-2px);
-        }
-        button:active {
-            transform: translateY(0);
-        }
-        button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .info-section {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .game-info {
-            margin-bottom: 20px;
-        }
-        .game-info h3 {
-            color: #1e3c72;
-            margin-bottom: 10px;
-        }
-        .game-info p {
-            margin: 5px 0;
-            color: #666;
-        }
-        .moves-list {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            max-height: 400px;
-            overflow-y: auto;
-            font-family: 'Courier New', monospace;
-        }
-        .move {
-            display: inline-block;
-            padding: 5px 10px;
-            margin: 2px;
-            background: #e9ecef;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .move:hover {
-            background: #667eea;
-            color: white;
-        }
-        .move.active {
-            background: #1e3c72;
-            color: white;
-            font-weight: bold;
-        }
-        .pgn-input {
-            margin-bottom: 20px;
-        }
-        textarea {
-            width: 100%;
-            min-height: 150px;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-            resize: vertical;
-        }
-        .game-selector {
-            margin-bottom: 20px;
-        }
-        select {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-        }
-        .status {
-            text-align: center;
-            padding: 10px;
-            background: #e9ecef;
-            border-radius: 8px;
-            margin-top: 10px;
-            font-weight: 500;
-        }
-        input[type="file"] {
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        .btn-load {
-            background: #28a745;
-        }
-        .btn-load:hover {
-            background: #218838;
-        }
-    </style>
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+      body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+          padding: 20px;
+          min-height: 100vh;
+      }
+      .container {
+          max-width: 1400px;
+          margin: 0 auto;
+          background: white;
+          border-radius: 15px;
+          padding: 30px;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      }
+      h1 {
+          text-align: center;
+          color: #1e3c72;
+          margin-bottom: 30px;
+      }
+      .viewer-layout {
+          display: grid;
+          grid-template-columns: 640px 1fr;
+          gap: 30px;
+          margin-top: 20px;
+      }
+      @media (max-width: 1200px) {
+          .viewer-layout {
+              grid-template-columns: 1fr;
+          }
+      }
+      .board-section {
+          position: relative;
+      }
+      
+      /* Chess Board Styling - FIXED SIZE */
+      .chess-board {
+          border: 2px solid #333;
+          display: grid;
+          grid-template-columns: repeat(8, 75px);
+          grid-template-rows: repeat(8, 75px);
+          width: 600px;
+          height: 600px;
+          margin: 0 auto;
+          box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      }
+      .square {
+          width: 75px;
+          height: 75px;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: default;
+      }
+      .square.light {
+          background: #f0d9b5;
+      }
+      .square.dark {
+          background: #b58863;
+      }
+      .square.highlight {
+          background: #baca44 !important;
+      }
+			.piece {
+			    display: block;
+			    width: 90%;
+			    height: 90%;
+			    user-select: none;
+			    -webkit-user-select: none;
+			    pointer-events: none;
+			    transition: transform 0.3s ease; /* animacion 0.3s për lëvizje */
+			    filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.4));
+			    position: absolute; /* e nevojshme për transform */
+			}
+      
+      .controls {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          margin-top: 20px;
+          flex-wrap: wrap;
+      }
+      button {
+          background: #1e3c72;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 1em;
+          transition: all 0.3s;
+      }
+      button:hover {
+          background: #2a5298;
+          transform: translateY(-2px);
+      }
+      button:active {
+          transform: translateY(0);
+      }
+      button:disabled {
+          background: #ccc;
+          cursor: not-allowed;
+          transform: none;
+      }
+      .info-section {
+          background: #f8f9fa;
+          padding: 20px;
+          border-radius: 10px;
+      }
+      .game-info {
+          margin-bottom: 20px;
+      }
+      .game-info h3 {
+          color: #1e3c72;
+          margin-bottom: 10px;
+      }
+      .game-info p {
+          margin: 5px 0;
+          color: #666;
+      }
+      .moves-list {
+          background: white;
+          padding: 15px;
+          border-radius: 8px;
+          max-height: 400px;
+          overflow-y: auto;
+          font-family: 'Courier New', monospace;
+      }
+      .move {
+          display: inline-block;
+          padding: 5px 10px;
+          margin: 2px;
+          background: #e9ecef;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: all 0.2s;
+      }
+      .move:hover {
+          background: #667eea;
+          color: white;
+      }
+      .move.active {
+          background: #1e3c72;
+          color: white;
+          font-weight: bold;
+      }
+      .pgn-input {
+          margin-bottom: 20px;
+      }
+      textarea {
+          width: 100%;
+          min-height: 150px;
+          padding: 15px;
+          border: 2px solid #ddd;
+          border-radius: 8px;
+          font-family: 'Courier New', monospace;
+          font-size: 0.9em;
+          resize: vertical;
+      }
+      .game-selector {
+          margin-bottom: 20px;
+      }
+      select {
+          width: 100%;
+          padding: 10px;
+          border: 2px solid #ddd;
+          border-radius: 8px;
+          font-size: 1em;
+      }
+      .status {
+          text-align: center;
+          padding: 10px;
+          background: #e9ecef;
+          border-radius: 8px;
+          margin-top: 10px;
+          font-weight: 500;
+      }
+      input[type="file"] {
+          padding: 10px;
+          margin-bottom: 10px;
+      }
+      .btn-load {
+          background: #28a745;
+      }
+      .btn-load:hover {
+          background: #218838;
+      }
+  </style>
 </head>
 <body>
     <div class="container">
@@ -259,10 +263,20 @@
         let boardFlipped = false;
 
         // Unicode chess pieces
-        const pieces = {
-            'K': '♔', 'Q': '♕', 'R': '♖', 'B': '♗', 'N': '♘', 'P': '♙',
-            'k': '♚', 'q': '♛', 'r': '♜', 'b': '♝', 'n': '♞', 'p': '♟'
-        };
+const pieces = {
+  'K': 'https://upload.wikimedia.org/wikipedia/commons/4/42/Chess_klt45.svg',
+  'Q': 'https://upload.wikimedia.org/wikipedia/commons/1/15/Chess_qlt45.svg',
+  'R': 'https://upload.wikimedia.org/wikipedia/commons/7/72/Chess_rlt45.svg',
+  'B': 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Chess_blt45.svg',
+  'N': 'https://upload.wikimedia.org/wikipedia/commons/7/70/Chess_nlt45.svg',
+  'P': 'https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg',
+  'k': 'https://upload.wikimedia.org/wikipedia/commons/f/f0/Chess_kdt45.svg',
+  'q': 'https://upload.wikimedia.org/wikipedia/commons/4/47/Chess_qdt45.svg',
+  'r': 'https://upload.wikimedia.org/wikipedia/commons/f/ff/Chess_rdt45.svg',
+  'b': 'https://upload.wikimedia.org/wikipedia/commons/9/98/Chess_bdt45.svg',
+  'n': 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Chess_ndt45.svg',
+  'p': 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg'
+};
 
         // Initialize board
         function createBoard() {
@@ -311,15 +325,15 @@
                         const squareEl = document.getElementById(squareId);
                         
                         if (squareEl) {
-                            const pieceEl = document.createElement('span');
-                            pieceEl.className = 'piece';
-                            pieceEl.textContent = pieces[piece.type.toUpperCase()] || pieces[piece.type];
-                            pieceEl.style.color = piece.color === 'w' ? '#fff' : '#000';
-                            pieceEl.style.textShadow = piece.color === 'w' ? 
-                                '0 0 3px #000, 0 0 5px #000' : 
-                                '0 0 3px #fff, 0 0 5px #fff';
-                            squareEl.appendChild(pieceEl);
-                        }
+													const pieceEl = document.createElement('img');
+													pieceEl.className = 'piece';
+													pieceEl.src = pieces[piece.color === 'w' 
+													    ? piece.type.toUpperCase() 
+													    : piece.type];
+													pieceEl.style.width = '90%';
+													pieceEl.style.height = '90%';
+													pieceEl.style.pointerEvents = 'none'; // mos blloko klikimet
+													squareEl.appendChild(pieceEl);                        }
                     }
                 });
             });
@@ -575,6 +589,70 @@
 			alert('Error loading PGN from URL. Make sure the link is publicly accessible.');
 		}
 	}
+		function movePiece(fromId, toId) {
+			const fromSquare = document.getElementById(fromId);
+			const toSquare = document.getElementById(toId);
+
+			const piece = fromSquare.querySelector('.piece');
+			if (!piece) return;
+
+			// gjej pozicionet absolute
+			const fromRect = fromSquare.getBoundingClientRect();
+			const toRect = toSquare.getBoundingClientRect();
+
+			const dx = toRect.left - fromRect.left;
+			const dy = toRect.top - fromRect.top;
+
+			// vendos piece në body për animacion
+			piece.style.position = 'fixed';
+			piece.style.left = fromRect.left + 'px';
+			piece.style.top = fromRect.top + 'px';
+			document.body.appendChild(piece);
+
+			// animacion
+			requestAnimationFrame(() => {
+				piece.style.transform = `translate(${dx}px, ${dy}px)`;
+			});
+
+			piece.addEventListener('transitionend', () => {
+				// heq transform dhe vendos në square final
+				piece.style.transform = '';
+				piece.style.position = '';
+				piece.style.left = '';
+				piece.style.top = '';
+				toSquare.appendChild(piece);
+			}, { once: true });
+		}
+		
+function loadDefaultPGNFile() {
+    const defaultFiles = ['default.pgn', 'test.pgn'];
+
+    function tryFile(index) {
+        if (index >= defaultFiles.length) return;
+
+        fetch(defaultFiles[index])
+            .then(resp => {
+                if (!resp.ok) throw new Error('File not found');
+                return resp.text();
+            })
+            .then(text => {
+                document.getElementById('pgn-text').value = text;
+                loadPGN(); // përdor funksionin ekzistues për të parse dhe ngarkuar lojën
+            })
+            .catch(err => {
+                // provon tjetrin nëse nuk ekziston
+                tryFile(index + 1);
+            });
+    }
+
+    tryFile(0);
+}
+
+// thirret automatikisht kur faqja ngarkohet
+window.addEventListener('load', loadDefaultPGNFile);
+		
+		// Thirrja automatikisht kur ngarkohet faqja
+		window.addEventListener('load', loadDefaultPGN);
   </script>
 </body>
 </html>
