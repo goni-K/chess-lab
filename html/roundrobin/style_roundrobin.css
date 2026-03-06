@@ -68,6 +68,20 @@ h1 {
     font-size: 1.25em;
 }
 
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.0em;
+}
+
+h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 0.8em;
+}
+
 body.dark-mode h1 {
     color: #e8e8e8; /* Light text in dark mode */
 }
@@ -343,20 +357,16 @@ body.dark-mode .top-3 {
         padding: 15px; /* Smaller padding on mobile */
     }
 
-h1 {
-    font-size: 1.5em; /* Smaller title */
-}
-
-th, td {
-    padding: 5px 6px;
-    font-size: 0.9em;
-}
-
-.theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 15px;
-    font-size: 12px;
+   th, td {
+       padding: 5px 6px;
+       font-size: 0.9em;
+   }
+   
+   .theme-toggle {
+       top: 10px;
+       right: 10px;
+       padding: 8px 15px;
+       font-size: 12px;
     }
 }
 

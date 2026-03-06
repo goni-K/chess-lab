@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houdini 6(Rapid) vs Stockfish 18(5Pct)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { color: #333; margin-bottom: 20px; }
+        .score-board {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            margin: 30px 0;
+            align-items: center;
+        }
+        .player-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .player-card h2 { font-size: 1.2em; margin-bottom: 10px; }
+        .score { 
+            text-align: center;
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .vs { font-size: 1.5em; color: #999; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+        .stat-box h3 { color: #666; font-size: 0.85em; margin-bottom: 8px; }
+        .stat-box .value { font-size: 1.8em; font-weight: bold; color: #667eea; }
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .btn-download { background: #4CAF50; color: white; }
+        .btn-download:hover { background: #45a049; transform: translateY(-2px); }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px 8px;
+            text-align: left;
+            font-size: 0.9em;
+            position: sticky;
+            top: 0;
+        }
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.9em;
+        }
+        tr:hover { background: #f5f5f5; }
+        .result-1-0 { color: #28a745; font-weight: bold; }
+        .result-0-1 { color: #dc3545; font-weight: bold; }
+        .result-draw { color: #6c757d; font-weight: bold; }
+        .narrow { width: 50px; text-align: center; }
+        .date-col { width: 140px; }
+        .elo-col { color: #999; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚔️ Houdini 6(Rapid) vs Stockfish 18(5Pct)</h1>
+        
+        <div class="score-board">
+            <div class="player-card">
+                <h2>Houdini 6.03 x64(BMI2-Rapid)</h2>
+                <p>Elo: 2820</p>
+            </div>
+            <div class="score">
+                <span>34.5</span>
+                <div class="vs">-</div>
+                <span>65.5</span>
+            </div>
+            <div class="player-card">
+                <h2>Stockfish 18 x64(AVX2-5Pct)</h2>
+                <p>Elo: 2890</p>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <h3>Games Played</h3>
+                <div class="value">100</div>
+            </div>
+            <div class="stat-box">
+                <h3>Houdini Wins</h3>
+                <div class="value">10</div>
+            </div>
+            <div class="stat-box">
+                <h3>Draws</h3>
+                <div class="value">49</div>
+            </div>
+            <div class="stat-box">
+                <h3>Stockfish Wins</h3>
+                <div class="value">41</div>
+            </div>
+            <div class="stat-box">
+                <h3>Win Rate</h3>
+                <div class="value">34.5%</div>
+            </div>
+        </div>
+ 
+        <div class="buttons">
+            <a href="Houdini6-Stockfish18.pgn" download class="btn btn-download">
+                📥 Download PGN (100 games)
+            </a>
+            <a href="https://drive.google.com/uc?export=download&id=1DEHIItSdg1rQe2w-epvVoRgpkM_F-Gh0" download class="btn btn-download">
+                📥 Download PGN(Zip)
+            </a>
+        </div>
+        
+        <h2>📊 Games List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th class="narrow">#</th>
+                    <th class="date-col">Date</th>
+                    <th>White</th>
+                    <th>Black</th>
+                    <th class="narrow">Result</th>
+                    <th>Opening</th>
+                    <th class="narrow">Moves</th>
+                    <th>Termination</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td class="narrow">1</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>E60 King's Indian Defense<br><small style="color:#999">Normal Variation, King's Knight Variation</small></td>
+                    <td class="narrow">121</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">2</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>E60 King's Indian Defense<br><small style="color:#999">Normal Variation, King's Knight Variation</small></td>
+                    <td class="narrow">132</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">3</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>D10 Slav Defense<br><small style="color:#999">General</small></td>
+                    <td class="narrow">113</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">4</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D10 Slav Defense<br><small style="color:#999">General</small></td>
+                    <td class="narrow">141</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">5</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>E10 Indian Game<br><small style="color:#999">Anti-Nimzo-indian</small></td>
+                    <td class="narrow">156</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">6</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>E10 Indian Game<br><small style="color:#999">Anti-Nimzo-indian</small></td>
+                    <td class="narrow">154</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">7</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D30 Queen's Gambit Declined<br><small style="color:#999">General</small></td>
+                    <td class="narrow">119</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">8</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>D30 Queen's Gambit Declined<br><small style="color:#999">General</small></td>
+                    <td class="narrow">152</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">9</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>C41 Philidor Defense<br><small style="color:#999">Lion Variation</small></td>
+                    <td class="narrow">217</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">10</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>C41 Philidor Defense<br><small style="color:#999">Lion Variation</small></td>
+                    <td class="narrow">196</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">11</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D11 Slav Defense<br><small style="color:#999">Modern Line</small></td>
+                    <td class="narrow">244</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">12</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D11 Slav Defense<br><small style="color:#999">Modern Line</small></td>
+                    <td class="narrow">133</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">13</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>C55 Italian Game<br><small style="color:#999">Two Knights Defense, Modern Bishop's Opening</small></td>
+                    <td class="narrow">191</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">14</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>C55 Italian Game<br><small style="color:#999">Two Knights Defense, Modern Bishop's Opening</small></td>
+                    <td class="narrow">142</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">15</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>B50 Sicilian Defense<br><small style="color:#999">Delayed Alapin</small></td>
+                    <td class="narrow">111</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">16</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>B50 Sicilian Defense<br><small style="color:#999">Delayed Alapin</small></td>
+                    <td class="narrow">248</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">17</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>B50 Sicilian Defense<br><small style="color:#999">Modern Variations</small></td>
+                    <td class="narrow">134</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">18</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>B50 Sicilian Defense<br><small style="color:#999">Modern Variations</small></td>
+                    <td class="narrow">147</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">19</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>B25 Sicilian Defense<br><small style="color:#999">Closed Variation, Traditional</small></td>
+                    <td class="narrow">187</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">20</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>B25 Sicilian Defense<br><small style="color:#999">Closed Variation, Traditional</small></td>
+                    <td class="narrow">79</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">21</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>E00 Catalan Opening<br><small style="color:#999">General</small></td>
+                    <td class="narrow">97</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">22</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>E00 Catalan Opening<br><small style="color:#999">General</small></td>
+                    <td class="narrow">145</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">23</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D02 Queen Pawn Game<br><small style="color:#999">Symmetrical Variation</small></td>
+                    <td class="narrow">268</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">24</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D02 Queen Pawn Game<br><small style="color:#999">Symmetrical Variation</small></td>
+                    <td class="narrow">163</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">25</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>B13 Caro-Kann Defense<br><small style="color:#999">Exchange Variation</small></td>
+                    <td class="narrow">114</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">26</td>
+                    <td class="date-col">2026.02.12</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>B13 Caro-Kann Defense<br><small style="color:#999">Exchange Variation</small></td>
+                    <td class="narrow">154</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">27</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>E32 Nimzo-Indian Defense<br><small style="color:#999">Classical Variation</small></td>
+                    <td class="narrow">249</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">28</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>E32 Nimzo-Indian Defense<br><small style="color:#999">Classical Variation</small></td>
+                    <td class="narrow">112</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">29</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>B40 Sicilian Defense<br><small style="color:#999">Delayed Alapin Variation</small></td>
+                    <td class="narrow">88</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">30</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>B40 Sicilian Defense<br><small style="color:#999">Delayed Alapin Variation</small></td>
+                    <td class="narrow">61</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">31</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>A48 Indian Game<br><small style="color:#999">London System</small></td>
+                    <td class="narrow">123</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">32</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>A48 Indian Game<br><small style="color:#999">London System</small></td>
+                    <td class="narrow">148</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">33</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>B23 Sicilian Defense<br><small style="color:#999">Grand Prix Attack</small></td>
+                    <td class="narrow">149</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">34</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>B23 Sicilian Defense<br><small style="color:#999">Grand Prix Attack</small></td>
+                    <td class="narrow">114</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">35</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>B53 Sicilian Defense<br><small style="color:#999">Chekhover Variation</small></td>
+                    <td class="narrow">135</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">36</td>
+                    <td class="date-col">2026.02.10</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>B53 Sicilian Defense<br><small style="color:#999">Chekhover Variation</small></td>
+                    <td class="narrow">91</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">37</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>B12 Caro-Kann Defense<br><small style="color:#999">Advance Variation, Short Variation</small></td>
+                    <td class="narrow">159</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">38</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>B12 Caro-Kann Defense<br><small style="color:#999">Advance Variation, Short Variation</small></td>
+                    <td class="narrow">120</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">39</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>B24 Sicilian Defense<br><small style="color:#999">Closed Variation, Fianchetto Variation</small></td>
+                    <td class="narrow">145</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">40</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>B24 Sicilian Defense<br><small style="color:#999">Closed Variation, Fianchetto Variation</small></td>
+                    <td class="narrow">109</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">41</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>A49 Indian Game<br><small style="color:#999">Pseudo-King's Indian Variation</small></td>
+                    <td class="narrow">180</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">42</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>A49 Indian Game<br><small style="color:#999">Pseudo-King's Indian Variation</small></td>
+                    <td class="narrow">86</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">43</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D85 Gruenfeld Defense<br><small style="color:#999">Exchange Variation</small></td>
+                    <td class="narrow">126</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">44</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>D85 Gruenfeld Defense<br><small style="color:#999">Exchange Variation</small></td>
+                    <td class="narrow">99</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">45</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>D10 Slav Defense<br><small style="color:#999">Exchange Variation</small></td>
+                    <td class="narrow">193</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">46</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>D10 Slav Defense<br><small style="color:#999">Exchange Variation</small></td>
+                    <td class="narrow">132</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">47</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>A46 Indian Game<br><small style="color:#999">London System</small></td>
+                    <td class="narrow">101</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">48</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>A46 Indian Game<br><small style="color:#999">London System</small></td>
+                    <td class="narrow">152</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">49</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>C60 Spanish Game<br><small style="color:#999">General</small></td>
+                    <td class="narrow">94</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">50</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>C60 Spanish Game<br><small style="color:#999">General</small></td>
+                    <td class="narrow">216</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">51</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>D12 Slav Defense<br><small style="color:#999">Quiet Variation, Schallopp Defense</small></td>
+                    <td class="narrow">184</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">52</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>D12 Slav Defense<br><small style="color:#999">Quiet Variation, Schallopp Defense</small></td>
+                    <td class="narrow">164</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">53</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>E11 Bogo-Indian Defense<br><small style="color:#999">GrA?nfeld Variation</small></td>
+                    <td class="narrow">100</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">54</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>E11 Bogo-Indian Defense<br><small style="color:#999">GrA?nfeld Variation</small></td>
+                    <td class="narrow">138</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">55</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D37 Queen's Gambit Declined<br><small style="color:#999">Three Knights Variation, General</small></td>
+                    <td class="narrow">110</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">56</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>D37 Queen's Gambit Declined<br><small style="color:#999">Three Knights Variation, General</small></td>
+                    <td class="narrow">206</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">57</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>A49 Indian Game<br><small style="color:#999">Przepiorka Variation</small></td>
+                    <td class="narrow">101</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">58</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>A49 Indian Game<br><small style="color:#999">Przepiorka Variation</small></td>
+                    <td class="narrow">196</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">59</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D11 Slav Defense<br><small style="color:#999">Quiet Variation</small></td>
+                    <td class="narrow">138</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">60</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D11 Slav Defense<br><small style="color:#999">Quiet Variation</small></td>
+                    <td class="narrow">67</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">61</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>A46 Indian Game<br><small style="color:#999">Yusupov-Rubinstein System</small></td>
+                    <td class="narrow">149</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">62</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>A46 Indian Game<br><small style="color:#999">Yusupov-Rubinstein System</small></td>
+                    <td class="narrow">95</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">63</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>E11 Bogo-Indian Defense<br><small style="color:#999">GrA?nfeld Variation</small></td>
+                    <td class="narrow">114</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">64</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>E11 Bogo-Indian Defense<br><small style="color:#999">GrA?nfeld Variation</small></td>
+                    <td class="narrow">116</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">65</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D37 Queen's Gambit Declined<br><small style="color:#999">Three Knights Variation, General</small></td>
+                    <td class="narrow">90</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">66</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D37 Queen's Gambit Declined<br><small style="color:#999">Three Knights Variation, General</small></td>
+                    <td class="narrow">132</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">67</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>A49 Indian Game<br><small style="color:#999">Przepiorka Variation</small></td>
+                    <td class="narrow">163</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">68</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>A49 Indian Game<br><small style="color:#999">Przepiorka Variation</small></td>
+                    <td class="narrow">130</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">69</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>D11 Slav Defense<br><small style="color:#999">Quiet Variation</small></td>
+                    <td class="narrow">106</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">70</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>D11 Slav Defense<br><small style="color:#999">Quiet Variation</small></td>
+                    <td class="narrow">103</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">71</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>A46 Indian Game<br><small style="color:#999">Yusupov-Rubinstein System</small></td>
+                    <td class="narrow">124</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">72</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>A46 Indian Game<br><small style="color:#999">Yusupov-Rubinstein System</small></td>
+                    <td class="narrow">166</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">73</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>? ?<br><small style="color:#999"></small></td>
+                    <td class="narrow">86</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">74</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>? ?<br><small style="color:#999"></small></td>
+                    <td class="narrow">192</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">75</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>? ?<br><small style="color:#999"></small></td>
+                    <td class="narrow">120</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">76</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>? ?<br><small style="color:#999"></small></td>
+                    <td class="narrow">128</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">77</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>? ?<br><small style="color:#999"></small></td>
+                    <td class="narrow">165</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">78</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>? ?<br><small style="color:#999"></small></td>
+                    <td class="narrow">141</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">79</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>? ?<br><small style="color:#999"></small></td>
+                    <td class="narrow">146</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">80</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>? ?<br><small style="color:#999"></small></td>
+                    <td class="narrow">198</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">81</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>? ?<br><small style="color:#999"></small></td>
+                    <td class="narrow">83</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">82</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>? ?<br><small style="color:#999"></small></td>
+                    <td class="narrow">186</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">83</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>C53 Italian Game, Classical Variation<br><small style="color:#999">Giuoco Pianissimo</small></td>
+                    <td class="narrow">136</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">84</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>C53 Italian Game, Classical Variation<br><small style="color:#999">Giuoco Pianissimo</small></td>
+                    <td class="narrow">140</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">85</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>E04 Catalan Opening<br><small style="color:#999">Open Defense</small></td>
+                    <td class="narrow">232</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">86</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>E04 Catalan Opening<br><small style="color:#999">Open Defense</small></td>
+                    <td class="narrow">71</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">87</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>C77 Spanish Game, Morphy Defense<br><small style="color:#999">Anderssen Variation</small></td>
+                    <td class="narrow">126</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">88</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>C77 Spanish Game, Morphy Defense<br><small style="color:#999">Anderssen Variation</small></td>
+                    <td class="narrow">170</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">89</td>
+                    <td class="date-col">2026.02.11</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>E90 King's Indian Defense, Normal Variation<br><small style="color:#999">Rare Defenses</small></td>
+                    <td class="narrow">119</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">90</td>
+                    <td class="date-col">2026.02.12</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>E90 King's Indian Defense, Normal Variation<br><small style="color:#999">Rare Defenses</small></td>
+                    <td class="narrow">200</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">91</td>
+                    <td class="date-col">2026.02.12</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>C42 Russian Game<br><small style="color:#999">Nimzowitsch Attack</small></td>
+                    <td class="narrow">88</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">92</td>
+                    <td class="date-col">2026.02.12</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>C42 Russian Game<br><small style="color:#999">Nimzowitsch Attack</small></td>
+                    <td class="narrow">186</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">93</td>
+                    <td class="date-col">2026.02.12</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>C02 French Defense, Advance Variation<br><small style="color:#999">Paulsen Attack</small></td>
+                    <td class="narrow">173</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">94</td>
+                    <td class="date-col">2026.02.12</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>C02 French Defense, Advance Variation<br><small style="color:#999">Paulsen Attack</small></td>
+                    <td class="narrow">148</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">95</td>
+                    <td class="date-col">2026.02.12</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>B36 Sicilian Defense, Accelerated Dragon<br><small style="color:#999">Maroczy Bind, General</small></td>
+                    <td class="narrow">192</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">96</td>
+                    <td class="date-col">2026.02.12</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>B36 Sicilian Defense, Accelerated Dragon<br><small style="color:#999">Maroczy Bind, General</small></td>
+                    <td class="narrow">188</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">97</td>
+                    <td class="date-col">2026.02.12</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-draw">1/2-1/2</td>
+                    <td>A58 Benko Gambit, Accepted<br><small style="color:#999">Fully Accepted Variation</small></td>
+                    <td class="narrow">111</td>
+                    <td>adjudication</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">98</td>
+                    <td class="date-col">2026.02.12</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>A58 Benko Gambit, Accepted<br><small style="color:#999">Fully Accepted Variation</small></td>
+                    <td class="narrow">168</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">99</td>
+                    <td class="date-col">2026.02.12</td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td class="narrow result-0-1">0-1</td>
+                    <td>E46 Nimzo-Indian Defense<br><small style="color:#999">Reshevsky Variation</small></td>
+                    <td class="narrow">109</td>
+                    <td>normal</td>
+                </tr>
+
+                <tr>
+                    <td class="narrow">100</td>
+                    <td class="date-col">2026.02.12</td>
+                    <td>Stockfish 18 x64(AVX2-5Pct)<br><span class="elo-col">(2890)</span></td>
+                    <td>Houdini 6.03 x64(BMI2-Rapid)<br><span class="elo-col">(2820)</span></td>
+                    <td class="narrow result-1-0">1-0</td>
+                    <td>E46 Nimzo-Indian Defense<br><small style="color:#999">Reshevsky Variation</small></td>
+                    <td class="narrow">182</td>
+                    <td>normal</td>
+                </tr>
+
+            </tbody>
+        </table>
+        
+        <div style="text-align: center; margin-top: 40px; color: #999;">
+            <p>Time Control: 900+10 • Total Games: 100</p>
+        </div>
+    </div>
+</body>
+</html>
