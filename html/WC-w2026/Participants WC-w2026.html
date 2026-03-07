@@ -1,0 +1,422 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Cup Winter 2026 | Dashboard</title>
+ </head>
+<style>
+
+/* ── TEAM COLORS ── */
+.usa      { background: #1A1A2E; border-bottom: 3px solid #00D4FF; }
+.italy    { background: #003F87; border-bottom: 3px solid #EF2B2D; }
+.germany  { background: #003300; border-bottom: 3px solid #DD0000; }
+.uk       { background: #012169; border-bottom: 3px solid #C8102E; }
+.russia   { background: #aa89bb; border-bottom: 3px solid #D52B1E; }
+.asia     { background: #396012; border-bottom: 3px solid #FFDE00; }
+.europe   { background: #003399; border-bottom: 3px solid #FFCC00; }
+.easteurope   { background: #1A5276; border-bottom: 3px solid #F4D03F; }
+.turkey   { background: #830077; border-bottom: 3px solid #FFFFFF; }
+.czechoslovakia { background: #97141A; border-bottom: 3px solid #11457E; }
+.brazil   { background: #003DA5; border-bottom: 3px solid #FFD700; }
+.balkan   { background: #009C3B; border-bottom: 3px solid #FEDF00; }
+.centraleurope { background: #CE2939; border-bottom: 3px solid #477050; }
+.sweden   { background: #006AA7; border-bottom: 3px solid #FECC02; }
+.netherlands { background: #AE1C28; border-bottom: 3px solid #21468B; }
+.iberian  { background: #0066aa; border-bottom: 3px solid #FF0000; }
+.canada   { background: #870078; border-bottom: 3px solid #FFFFFF; }
+.world    { background: #002868; border-bottom: 3px solid #BF0A30; }
+.northerneurope { background: #008CA5; border-bottom: 3px solid #CD212A; }
+.america  { background: #B22234; border-bottom: 3px solid #3C3B6E; }
+.france   { background: #002395; border-bottom: 3px solid #ED2939; }
+.wildcard { background: #4A235A; border-bottom: 3px solid #D4AC0D; }
+
+/* ── GRID ── */
+.teams-grid {
+	background: linear-gradient(90deg, #a8dadc 0%, #ffffff 100%);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 12px;
+    padding: 16px;
+}
+
+/* ── CARD ── */
+.n-card {
+    border-radius: 6px;
+    padding: 10px 12px;
+    color: #fff;
+}
+
+.n-card { 
+/*    background: #161b22; */
+    border-radius: 8px; 
+    border: 1px solid #30363d; 
+    overflow: hidden; 
+    transition: 0.2s; 
+}
+.n-card:hover { 
+   border-color: #58a6ff; 
+   transform: translateY(-2px); 
+}
+
+.n-link {
+    display: block;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffa;
+    text-decoration: none;
+    margin-bottom: 6px;
+}
+.b-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    padding: 2px 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+.elo-val { 
+   font-weight: 800; 
+   color: yellow
+}
+h1 { 
+   background: linear-gradient(90deg, #a8da00 0%, #00da8a 100%);
+   text-align: center; 
+   color: blue
+ }
+
+.spider-link {
+    position: fixed;
+    top: 20px;
+/*    left: 100px;*/
+    z-index: 9999;
+    display: inline-block !important;
+    background-color: #161b22;
+    color: #f0ff00 !important;
+    padding: 10px 18px;
+    border: 2px solid #58a6ff;
+    border-radius: 6px;
+    font-family: 'Segoe UI', Impact, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+    transition: 0.2s ease-in-out;
+}
+ </style>
+ <body>
+
+<h1>Chess Engines World Cup - Winter 2026</h1>
+<a href="../../index.html" target="_top" class="spider-link">🏠 Back HOME</a>
+
+<div class="teams-grid">
+
+<!-- ══ BATCH 1 ══ -->
+<div class="n-card usa">
+    <a href="Qualify/USA-Q.html" class="n-link usa">USA [2780]</a>
+    <div class="b-item"><span>B1: Berserk</span><span class="elo-val">2795</span></div>
+    <div class="b-item"><span>B2: Komodo</span><span class="elo-val">2794</span></div>
+    <div class="b-item"><span>B3: Horsie</span><span class="elo-val">2767</span></div>
+    <div class="b-item"><span>B4: Tarnished</span><span class="elo-val">2764</span></div>
+</div>
+
+<div class="n-card italy">
+    <a href="Qualify/Italy-Q.html" class="n-link italy">Italy [2745]</a>
+    <div class="b-item"><span>B1: Alexandria</span><span class="elo-val">2848</span></div>
+    <div class="b-item"><span>B2: Obsidian</span><span class="elo-val">2816</span></div>
+    <div class="b-item"><span>B3: Revenge</span><span class="elo-val">2712</span></div>
+    <div class="b-item"><span>B4: Heimdall</span><span class="elo-val">2605</span></div>
+</div>
+
+<div class="n-card germany">
+    <a href="Qualify/Germany-Q.html" class="n-link germany">Germany [2718]</a>
+    <div class="b-item"><span>B1: PlentyChess</span><span class="elo-val">2861</span></div>
+    <div class="b-item"><span>B2: RubiChess</span><span class="elo-val">2806</span></div>
+    <div class="b-item"><span>B3: Velvet</span><span class="elo-val">2729</span></div>
+    <div class="b-item"><span>B4: Leorik</span><span class="elo-val">2476</span></div>
+</div>
+
+<div class="n-card uk">
+    <a href="Qualify/United-Kingdom-Q.html" class="n-link uk">United Kingdom [2715]</a>
+    <div class="b-item"><span>B1: Viridithas</span><span class="elo-val">2782</span></div>
+    <div class="b-item"><span>B2: Stormphrax</span><span class="elo-val">2761</span></div>
+    <div class="b-item"><span>B3: Tcheran</span><span class="elo-val">2694</span></div>
+    <div class="b-item"><span>B4: Calvin</span><span class="elo-val">2623</span></div>
+</div>
+
+<div class="n-card usa">
+    <a href="Qualify/USA-Q.html" class="n-link usa">USA[2] [2689]</a>
+    <div class="b-item"><span>B1: Clarity</span><span class="elo-val">2720</span></div>
+    <div class="b-item"><span>B2: Titan</span><span class="elo-val">2706</span></div>
+    <div class="b-item"><span>B3: Spaghet</span><span class="elo-val">2703</span></div>
+    <div class="b-item"><span>B4: Seer</span><span class="elo-val">2627</span></div>
+</div>
+
+<div class="n-card russia">
+    <a href="Qualify/Russia-Q.html" class="n-link russia">Russia [2647]</a>
+    <div class="b-item"><span>B1: Reckless</span><span class="elo-val">2852</span></div>
+    <div class="b-item"><span>B2: Uralochka</span><span class="elo-val">2734</span></div>
+    <div class="b-item"><span>B3: Equisetum</span><span class="elo-val">2583</span></div>
+    <div class="b-item"><span>B4: Petrel</span><span class="elo-val">2419</span></div>
+</div>
+
+<div class="n-card asia">
+    <a href="Qualify/Asia-Q.html" class="n-link asia">Asia [2619]</a>
+    <div class="b-item"><span>B1: Altair</span><span class="elo-val">2658</span></div>
+    <div class="b-item"><span>B2: Turbulence</span><span class="elo-val">2627</span></div>
+    <div class="b-item"><span>B3: Elixir</span><span class="elo-val">2602</span></div>
+    <div class="b-item"><span>B4: Rice</span><span class="elo-val">2590</span></div>
+</div>
+
+<div class="n-card usa">
+    <a href="Qualify/USA-Q.html" class="n-link usa">USA[3] [2612]</a>
+    <div class="b-item"><span>B1: Arasan</span><span class="elo-val">2668</span></div>
+    <div class="b-item"><span>B2: Peacekeeper</span><span class="elo-val">2598</span></div>
+    <div class="b-item"><span>B3: Wasp</span><span class="elo-val">2600</span></div>
+    <div class="b-item"><span>B4: SlowChess</span><span class="elo-val">2585</span></div>
+</div>
+
+<!-- ══ BATCH 2 ══ -->
+<div class="n-card easteurope">
+    <a href="Qualify/East-Europe-Q.html" class="n-link easteurope">East Europe [2610]</a>
+    <div class="b-item"><span>B1: Booot</span><span class="elo-val">2690</span></div>
+    <div class="b-item"><span>B2: Igel</span><span class="elo-val">2657</span></div>
+    <div class="b-item"><span>B3: ChessCpp</span><span class="elo-val">2580</span></div>
+    <div class="b-item"><span>B4: Saturn</span><span class="elo-val">2516</span></div>
+</div>
+
+<div class="n-card europe">
+    <a href="Qualify/Europe-Q.html" class="n-link europe">Europe [2595]</a>
+    <div class="b-item"><span>B1: Caissa</span><span class="elo-val">2793</span></div>
+    <div class="b-item"><span>B2: Koivisto</span><span class="elo-val">2729</span></div>
+    <div class="b-item"><span>B3: Houdini</span><span class="elo-val">2475</span></div>
+    <div class="b-item"><span>B4: Quirky</span><span class="elo-val">2383</span></div>
+</div>
+
+<div class="n-card turkey">
+    <a href="Qualify/Turkey-Q.html" class="n-link turkey">Turkey [2585]</a>
+    <div class="b-item"><span>B1: Astra</span><span class="elo-val">2765</span></div>
+    <div class="b-item"><span>B2: Black</span><span class="elo-val">2610</span></div>
+    <div class="b-item"><span>B3: Devre</span><span class="elo-val">2664</span></div>
+    <div class="b-item"><span>B4: Defenchess</span><span class="elo-val">2302</span></div>
+</div>
+
+<div class="n-card czechoslovakia">
+    <a href="Qualify/Czechoslovakia-Q.html" class="n-link czechoslovakia">Czechoslovakia [2583]</a>
+    <div class="b-item"><span>B1: Quanticade</span><span class="elo-val">2781</span></div>
+    <div class="b-item"><span>B2: Motor</span><span class="elo-val">2774</span></div>
+    <div class="b-item"><span>B3: Cheng</span><span class="elo-val">2499</span></div>
+    <div class="b-item"><span>B4: Critter</span><span class="elo-val">2280</span></div>
+</div>
+    
+
+<div class="n-card balkan">
+    <a href="Qualify/Balkan-Q.html" class="n-link balkan">Balkan [2578]</a>
+    <div class="b-item"><span>B1: Clover</span><span class="elo-val">2793</span></div>
+    <div class="b-item"><span>B2: Integral</span><span class="elo-val">2757</span></div>
+    <div class="b-item"><span>B3: Lambergar</span><span class="elo-val">2383</span></div>
+    <div class="b-item"><span>B4: Xiphos</span><span class="elo-val">2380</span></div>
+</div>
+
+<div class="n-card brazil">
+    <a href="Qualify/Brazil-Q.html" class="n-link brazil">Brazil [2546]</a>
+    <div class="b-item"><span>B1: Cinder</span><span class="elo-val">2757</span></div>
+    <div class="b-item"><span>B2: Minke</span><span class="elo-val">2554</span></div>
+    <div class="b-item"><span>B3: Tucano</span><span class="elo-val">2539</span></div>
+    <div class="b-item"><span>B4: Illumina</span><span class="elo-val">2334</span></div>
+</div>
+
+<div class="n-card centraleurope">
+    <a href="Qualify/Central-Europe-Q.html" class="n-link centraleurope">Central Europe [2538]</a>
+    <div class="b-item"><span>B1: Renegade</span><span class="elo-val">2731</span></div>
+    <div class="b-item"><span>B2: Winter</span><span class="elo-val">2494</span></div>
+    <div class="b-item"><span>B3: Eleanor</span><span class="elo-val">2476</span></div>
+    <div class="b-item"><span>B4: BlackCore</span><span class="elo-val">2453</span></div>
+</div>
+
+<div class="n-card sweden">
+    <a href="Qualify/Sweden-Q.html" class="n-link sweden">Sweden [2535]</a>
+    <div class="b-item"><span>B1: Pawnocchio</span><span class="elo-val">2795</span></div>
+    <div class="b-item"><span>B2: Texel</span><span class="elo-val">2486</span></div>
+    <div class="b-item"><span>B3: Marvin</span><span class="elo-val">2465</span></div>
+    <div class="b-item"><span>B4: BitBit</span><span class="elo-val">2397</span></div>
+</div>
+
+<div class="n-card uk">
+    <a href="Qualify/United-Kingdom-Q.html" class="n-link uk">United Kingdom[2] [2522]</a>
+    <div class="b-item"><span>B1: Akimbo</span><span class="elo-val">2639</span></div>
+    <div class="b-item"><span>B2: Celeris</span><span class="elo-val">2524</span></div>
+    <div class="b-item"><span>B3: Sapling</span><span class="elo-val">2523</span></div>
+    <div class="b-item"><span>B4: Yukari</span><span class="elo-val">2405</span></div>
+</div>
+
+<div class="n-card netherlands">
+    <a href="Qualify/Netherlands-Q.html" class="n-link netherlands">Netherlands [2516]</a>
+    <div class="b-item"><span>B1: Rebel</span><span class="elo-val">2673</span></div>
+    <div class="b-item"><span>B2: RofChade</span><span class="elo-val">2698</span></div>
+    <div class="b-item"><span>B3: Lunar</span><span class="elo-val">2390</span></div>
+    <div class="b-item"><span>B4: Dog</span><span class="elo-val">2303</span></div>
+</div>
+
+<div class="n-card iberian">
+    <a href="Qualify/Iberian-Q.html" class="n-link iberian">Iberian [2504]</a>
+    <div class="b-item"><span>B1: Starzix</span><span class="elo-val">2778</span></div>
+    <div class="b-item"><span>B2: Pawn</span><span class="elo-val">2627</span></div>
+    <div class="b-item"><span>B3: Oxide</span><span class="elo-val">2339</span></div>
+    <div class="b-item"><span>B4: DanaSah</span><span class="elo-val">2274</span></div>
+</div>
+
+<div class="n-card usa">
+    <a href="Qualify/USA-Q.html" class="n-link usa">USA[4] [2501]</a>
+    <div class="b-item"><span>B1: Superultra</span><span class="elo-val">2560</span></div>
+    <div class="b-item"><span>B2: Midnight</span><span class="elo-val">2523</span></div>
+    <div class="b-item"><span>B3: Weiawaga</span><span class="elo-val">2465</span></div>
+    <div class="b-item"><span>B4: Starfish</span><span class="elo-val">2457</span></div>
+</div>
+
+<div class="n-card canada">
+    <a href="Qualify/Canada-Q.html" class="n-link canada">Canada [2497]</a>
+    <div class="b-item"><span>B1: PZChessBot</span><span class="elo-val">2668</span></div>
+    <div class="b-item"><span>B2: Patricia</span><span class="elo-val">2603</span></div>
+    <div class="b-item"><span>B3: MrBob</span><span class="elo-val">2387</span></div>
+    <div class="b-item"><span>B4: Schooner</span><span class="elo-val">2330</span></div>
+</div>
+
+<div class="n-card world">
+    <a href="Qualify/World-Q.html" class="n-link world">World [2496]</a>
+    <div class="b-item"><span>B1: Stockfish</span><span class="elo-val">2883</span></div>
+    <div class="b-item"><span>B2: Sirius</span><span class="elo-val">2505</span></div>
+    <div class="b-item"><span>B3: Clockwork</span><span class="elo-val">2366</span></div>
+    <div class="b-item"><span>B4: Mantissa</span><span class="elo-val">2232</span></div>
+</div>
+
+<div class="n-card germany">
+    <a href="Qualify/Germany-Q.html" class="n-link germany">Germany[2] [2480]</a>
+    <div class="b-item"><span>B1: Smallbrain</span><span class="elo-val">2519</span></div>
+    <div class="b-item"><span>B2: Nemorino</span><span class="elo-val">2493</span></div>
+    <div class="b-item"><span>B3: Schoenemann</span><span class="elo-val">2443</span></div>
+    <div class="b-item"><span>B4: Molybdenum</span><span class="elo-val">2466</span></div>
+</div>
+
+<div class="n-card usa">
+    <a href="Qualify/USA-Q.html" class="n-link usa">USA[5] [2381]</a>
+    <div class="b-item"><span>B1: Ethereal</span><span class="elo-val">2402</span></div>
+    <div class="b-item"><span>B2: Expositor</span><span class="elo-val">2419</span></div>
+    <div class="b-item"><span>B3: Pedantic</span><span class="elo-val">2416</span></div>
+    <div class="b-item"><span>B4: Cadie</span><span class="elo-val">2289</span></div>
+</div>
+
+
+<div class="n-card germany">
+    <a href="Qualify/Germany-Q.html" class="n-link germany">Germany[3] [2367]</a>
+    <div class="b-item"><span>B1: Schneckbert</span><span class="elo-val">2458</span></div>
+    <div class="b-item"><span>B2: Lynx</span><span class="elo-val">2333</span></div>
+    <div class="b-item"><span>B3: Nalwald</span><span class="elo-val">2387</span></div>
+    <div class="b-item"><span>B4: Fritz</span><span class="elo-val">2290</span></div>
+</div>
+
+<div class="n-card france">
+    <a href="Qualify/France-Q.html" class="n-link france">France [2364]</a>
+    <div class="b-item"><span>B1: Prune</span><span class="elo-val">2599</span></div>
+    <div class="b-item"><span>B2: Stash</span><span class="elo-val">2364</span></div>
+    <div class="b-item"><span>B3: Demolito</span><span class="elo-val">2240</span></div>
+    <div class="b-item"><span>B4: Isa</span><span class="elo-val">2253</span></div>
+</div>
+
+<div class="n-card wildcard">
+    <a href="Qualify/Wildcard-Q.html" class="n-link wildcard">Wildcard(1Pct) [2329]</a>
+    <div class="b-item"><span>B1: Stockfish</span><span class="elo-val">2355</span></div>
+    <div class="b-item"><span>B2: Reckless</span><span class="elo-val">2333</span></div>
+    <div class="b-item"><span>B3: PlentyChess</span><span class="elo-val">2323</span></div>
+    <div class="b-item"><span>B4: Alexandria</span><span class="elo-val">2305</span></div>
+</div>
+
+<div class="n-card italy">
+    <a href="Qualify/Italy-Q.html" class="n-link italy">Italy[2] [2328]</a>
+    <div class="b-item"><span>B1: Carp</span><span class="elo-val">2524</span></div>
+    <div class="b-item"><span>B2: Perseus</span><span class="elo-val">2357</span></div>
+    <div class="b-item"><span>B3: Protej</span><span class="elo-val">2247</span></div>
+    <div class="b-item"><span>B4: Vajolet2</span><span class="elo-val">2187</span></div>
+</div>
+
+<div class="n-card northerneurope">
+    <a href="Qualify/Northern-Europe-Q.html" class="n-link northerneurope">Northern Europe [2310]</a>
+    <div class="b-item"><span>B1: Arcanum</span><span class="elo-val">2417</span></div>
+    <div class="b-item"><span>B2: Svart</span><span class="elo-val">2289</span></div>
+    <div class="b-item"><span>B3: Weiss</span><span class="elo-val">2294</span></div>
+    <div class="b-item"><span>B4: Grail</span><span class="elo-val">2243</span></div>
+</div>
+
+<div class="n-card america">
+    <a href="Qualify/America-Q.html" class="n-link america">America [2304]</a>
+    <div class="b-item"><span>B1: Zahak</span><span class="elo-val">2375</span></div>
+    <div class="b-item"><span>B2: Laser</span><span class="elo-val">2273</span></div>
+    <div class="b-item"><span>B3: Raphael</span><span class="elo-val">2309</span></div>
+    <div class="b-item"><span>B4: Fizbo</span><span class="elo-val">2262</span></div>
+</div>
+
+<div class="n-card wildcard">
+    <a href="Qualify/Wildcard-Q.html" class="n-link wildcard">Wildcard(1Pct)[2] [2259]</a>
+    <div class="b-item"><span>B1: RubiChess</span><span class="elo-val">2806</span></div>
+    <div class="b-item"><span>B2: Cinder</span><span class="elo-val">2757</span></div>
+    <div class="b-item"><span>B3: Stormphrax</span><span class="elo-val">2761</span></div>
+    <div class="b-item"><span>B4: Viridithas</span><span class="elo-val">2782</span></div>
+</div>
+
+<div class="n-card america">
+    <a href="Qualify/America-Q.html" class="n-link america">America[2] [2250]</a>
+    <div class="b-item"><span>B1: Maelstrom</span><span class="elo-val">2295</span></div>
+    <div class="b-item"><span>B2: Princhess</span><span class="elo-val">2321</span></div>
+    <div class="b-item"><span>B3: Myrddin</span><span class="elo-val">2175</span></div>
+    <div class="b-item"><span>B4: Kobra</span><span class="elo-val">2211</span></div>
+</div>
+
+<div class="n-card wildcard">
+    <a href="Qualify/Wildcard-Q.html" class="n-link wildcard">Wildcard(1Pct)[3] [2250]</a>
+    <div class="b-item"><span>B1: Starzix</span><span class="elo-val">2778</span></div>
+    <div class="b-item"><span>B2: Pawnocchio</span><span class="elo-val">2795</span></div>
+    <div class="b-item"><span>B3: Komodo</span><span class="elo-val">2794</span></div>
+    <div class="b-item"><span>B4: Caissa</span><span class="elo-val">2793</span></div>
+</div>
+
+<div class="n-card uk">
+    <a href="Qualify/United-Kingdom-Q.html" class="n-link uk">United Kingdom 3] [2290]</a>
+    <div class="b-item"><span>B1: Odonata</span><span class="elo-val">2376</span></div>
+    <div class="b-item"><span>B2: Lozza</span><span class="elo-val">2336</span></div>
+    <div class="b-item"><span>B3: Panda</span><span class="elo-val">2247</span></div>
+    <div class="b-item"><span>B4: Pingu</span><span class="elo-val">2204</span></div>
+</div>
+
+<div class="n-card europe">
+    <a href="Qualify/Europe-Q.html" class="n-link europe">Europe[2] [2230]</a>
+    <div class="b-item"><span>B1: Andscacs</span><span class="elo-val">2293</span></div>
+    <div class="b-item"><span>B2: Chiron</span><span class="elo-val">2230</span></div>
+    <div class="b-item"><span>B3: Sturddle</span><span class="elo-val">2233</span></div>
+    <div class="b-item"><span>B4: Rybka</span><span class="elo-val">2167</span></div>
+</div>
+
+<div class="n-card france">
+    <a href="Qualify/France-Q.html" class="n-link france">France[2] [2201]</a>
+    <div class="b-item"><span>B1: Simbelmyne</span><span class="elo-val">2232</span></div>
+    <div class="b-item"><span>B2: Senpai</span><span class="elo-val">2157</span></div>
+    <div class="b-item"><span>B3: Minic</span><span class="elo-val">2341</span></div>
+    <div class="b-item"><span>B4: Amoeba</span><span class="elo-val">2074</span></div>
+</div>
+<div class="n-card world">
+    <a href="Qualify/World-Q.html" class="n-link world">World[2] [2184]</a>
+	<div class="b-item"><span>B1: Seredina</span><span class="elo-val">2193</span></div>
+	<div class="b-item"><span>B2: Atlas</span><span class="elo-val">2185</span></div>
+	<div class="b-item"><span>B3: Nirvana</span><span class="elo-val">2201</span></div>
+	<div class="b-item"><span>B4: Hannibal</span><span class="elo-val">2158</span></div>
+</div>
+
+<div class="n-card germany">
+    <a href="Qualify/Germany-Q.html" class="n-link germany">Germany[4] [2167]</a>
+	<div class="b-item"><span>B1: Priessnitz</span><span class="elo-val">2193</span></div>
+	<div class="b-item"><span>B2: iCE</span><span class="elo-val">2219</span></div>
+	<div class="b-item"><span>B3: LGEvolution</span><span class="elo-val">2168</span></div>
+	<div class="b-item"><span>B4: Protector</span><span class="elo-val">2091</span></div>
+</div>
+
+ </body>
+
+</html>
