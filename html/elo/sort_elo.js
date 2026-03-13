@@ -18,18 +18,17 @@ function renderTable(sortedData) {
 		if (index < 10) {
 			tr.classList.add('top-10');
 		}
-
-		tr.innerHTML = `
-			<td class="rank">${row[0]}</td>
-			<td class="engine-name">${row[1]}</td>
-			<td class="elo-rating">${row[2]}</td>
-			<td>${row[3]}</td>
-			<td>${row[4]}</td>
-			<td>${row[5]}</td>
-			<td>${row[6]}%</td>
-			<td>${row[7]}</td>
-			<td>${row[8]}%</td>
-		`;
+tr.innerHTML = `
+    <td class="rank">${row[0]}</td>
+    <td class="engine-name">${row[1]}</td>
+    <td class="elo-rating">${row[2]}</td>
+    <td>${row[3]}</td>
+    <td>${row[4]}</td>
+    <td>${row[5].toLocaleString('en-US')}</td>
+    <td>${row[6]}%</td>
+    <td>${row[7]}</td>
+    <td>${row[8]}%</td>
+`;
 
 		tbody.appendChild(tr);
 	});

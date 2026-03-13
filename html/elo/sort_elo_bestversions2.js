@@ -1,9 +1,9 @@
-
 const initialSort = { column: 2, ascending: false };
 let currentSort = { column: -1, ascending: true };
 
 function renderTable(sortedData) {
     const tbody = document.getElementById('tableBody');
+    if (!tbody) return; // Sigurohu që ekziston
     tbody.innerHTML = '';
     sortedData.forEach((row, index) => {
         const tr = document.createElement('tr');
@@ -12,7 +12,7 @@ function renderTable(sortedData) {
             <td class="rank">${row[0]}</td>
             <td class="engine-name">${row[1]}</td>
             <td class="elo-rating">${row[2]}</td>
- 			      <td>${row[3].toLocaleString()}</td>
+            <td>${row[3].toLocaleString()}</td>
             <td>${row[4]}</td>
         `;
         tbody.appendChild(tr);
@@ -21,20 +21,30 @@ function renderTable(sortedData) {
 
 function sortData(column) {
     let isAscending;
-    if (currentSort.column !== column) {
-        isAscending = (column === initialSort.column) ? initialSort.ascending : true;
-    } else {
+    
+    // LOGJIKA E TOGGLE
+    if (currentSort.column === column) {
         isAscending = !currentSort.ascending;
+    } else {
+        isAscending = (column === initialSort.column) ? initialSort.ascending : true;
     }
+
     currentSort = { column, ascending: isAscending };
 
+    // RENDITJA
     const sorted = [...data].sort((a, b) => {
         let valA = a[column];
         let valB = b[column];
-        if (typeof valA === 'string' && typeof valB === 'string') {
-            return isAscending ? valA.localeCompare(valB) : valB.localeCompare(valA);
+
+        // Trajtimi i vlerave numerike (Elo, Games)
+        if (!isNaN(valA) && !isNaN(valB)) {
+            return isAscending ? parseFloat(valA) - parseFloat(valB) : parseFloat(valB) - parseFloat(valA);
         }
-        return isAscending ? parseFloat(valA) - parseFloat(valB) : parseFloat(valB) - parseFloat(valA);
+        
+        // Trajtimi i tekstit (Emrat)
+        valA = valA.toString();
+        valB = valB.toString();
+        return isAscending ? valA.localeCompare(valB) : valB.localeCompare(valA);
     });
 
     updateSortIndicators(column, isAscending);
@@ -46,8 +56,14 @@ function updateSortIndicators(column, isAscending) {
         th.classList.remove('sorted-asc', 'sorted-desc');
     });
     const th = document.querySelector(`#bestversions th[data-column="${column}"]`);
-    th.classList.add(isAscending ? 'sorted-asc' : 'sorted-desc');
+    if (th) {
+        th.classList.add(isAscending ? 'sorted-asc' : 'sorted-desc');
+    }
 }
+
+document.querySelectorAll('#bestversions th.sortable').forEach(th => {
+    th.addEventListener('click', () => sortData(parseInt(th.dataset.column)));
+});
 
 function toggleTheme() {
 	document.body.classList.toggle('dark-mode');
@@ -66,8 +82,13 @@ if (localStorage.getItem('theme') === 'dark') {
 	document.querySelector('.theme-toggle').textContent = '☀️ Light Mode';
 }
 
+// 2. HIQ DUPLIKATAT E EVENTEVE - Përdor vetëm një bllok
 document.querySelectorAll('#bestversions th.sortable').forEach(th => {
-    th.addEventListener('click', () => sortData(parseInt(th.dataset.column)));
+    th.addEventListener('click', () => {
+        const columnId = parseInt(th.dataset.column);
+        sortData(columnId);
+    });
 });
 
+// Inicializimi i parë
 sortData(initialSort.column);
