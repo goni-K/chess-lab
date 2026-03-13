@@ -1,0 +1,167 @@
+﻿[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "B05"]
+[Opening "Alekhine Defense"]
+[Variation "Modern Variation, Main Line"]
+[PlyCount "8"]
+
+1.e4 Nf6 2.e5 Nd5 3.d4 d6 4.Nf3 Bg4
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "B22"]
+[Opening "Sicilian Defense, Alapin Variation"]
+[Variation "Smith-Morra Declined"]
+[PlyCount "8"]
+
+1.e4 c5 2.c3 Nf6 3.e5 Nd5 4.d4 cxd4
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "C34"]
+[Opening "King's Gambit Accepted"]
+[Variation "Schallopp Defense"]
+[PlyCount "8"]
+
+1. e4 e5 2. f4 exf4 3. Nf3 Nf6 4. e5 Nh5 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "D00"]
+[Opening "Blackmar-Diemer Gambit"]
+[Variation "Euwe Defense"]
+[PlyCount "10"]
+
+1. d4 d5 2. e4 dxe4 3. Nc3 Nf6 4. f3 exf3 5. Nxf3 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "B09"]
+[Opening "Pirc, Austrian Attack"]
+[Variation "Modern Variation"]
+[PlyCount "10"]
+
+1. e4 d6 2. d4 Nf6 3. Nc3 g6 4. f4 Bg7 5. Nf3 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "C47"]
+[Opening "Four Knights Game"]
+[Variation "Halloween Gambit"]
+[PlyCount "10"]
+
+1. e4 e5 2. Nf3 Nc6 3. Nc3 Nf6 4. Nxe5 Nxe5 5. d4 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "A60"]
+[Opening "Benoni Defense"]
+[Variation "Modern Variation"]
+[PlyCount "10"]
+
+1. d4 Nf6 2. c4 c5 3. d5 e6 4. Nc3 exd5 5. cxd5 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "C40"]
+[Opening "Latvian Gambit"]
+[Variation "Main Line"]
+[PlyCount "8"]
+
+1. e4 e5 2. Nf3 f5 3. Nxe5 Qf6 4. d4 d6 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "A00"]
+[Opening "Grob's Attack"]
+[Variation "The Spike"]
+[PlyCount "6"]
+
+1. g4 d5 2. Bg2 Bxg4 3. c4 c6 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "B21"]
+[Opening "Sicilian Defense"]
+[Variation "Smith-Morra Gambit"]
+[PlyCount "8"]
+
+1. e4 c5 2. d4 cxd4 3. c3 dxc3 4. Nxc3 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[Number "?"]
+[White "?"]
+[Black "?"]
+[Result "1/2-1/2"]
+[ECO "C47"]
+[Opening "Four Knights Game"]
+[Variation "Belgrade Gambit"]
+[PlyCount "10"]
+
+1. e4 e5 2. Nf3 Nc6 3. Nc3 Nf6 4. d4 exd4 5. Nd5 1/2-1/2
+
